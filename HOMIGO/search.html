@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search and discover amazing local experiences with Homeigo">
+    <meta name="keywords" content="search experiences, local tours, activities, homeigo booking">
+    <meta name="theme-color" content="#954C2E">
+    <title>Search Experiences - Homeigo</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+
+    <style>
+        :root {
+            --bronze: #954C2E;
+            --beige: #FDFAF6;
+            --bronze-light: #b8653a;
+            --bronze-dark: #773D25;
+            --glass-bg: rgba(253, 250, 246, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.25);
+            --color-primary: #954C2E;
+            --color-primary-light: #FDFAF6;
+            --color-primary-dark: #773D25;
+            --color-secondary: #4caf50;
+            --color-accent: #ff6b35;
+            --transition-base: 0.3s ease;
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f8f9fb;
+            color: #333;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-base);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary) !important;
+        }
+
+        .logo-icon {
+            font-size: 1.5rem;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: #333 !important;
+            position: relative;
+            transition: color var(--transition-base);
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--color-primary) !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: width var(--transition-base);
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+
+        .btn-primary-custom {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+            color: white;
+            transition: all var(--transition-base);
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-weight: 500;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary);
+            color: white;
+        }
+
+        .btn-outline-primary-custom {
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+            transition: all var(--transition-base);
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-weight: 500;
+            background-color: transparent;
+        }
+
+        .btn-outline-primary-custom:hover {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-primary);
+        }
+
+        a:hover {
+            color: var(--color-primary-dark);
+        }
+
+        /* Search Hero Section */
+        .search-hero-section {
+            background: linear-gradient(135deg, var(--beige) 0%, #ffffff 50%, var(--beige) 100%);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(149,76,46,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(149,76,46,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }
+
+        .search-hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .search-hero-description {
+            font-size: 1.25rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .highlight {
+            color: var(--bronze);
+            position: relative;
+        }
+
+        .highlight::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--bronze), var(--bronze-light));
+            border-radius: 2px;
+        }
+
+        /* Search Form */
+        .search-form-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-xl);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(149, 76, 46, 0.1);
+        }
+
+        .search-input-group {
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 1fr auto;
+            gap: 1rem;
+            align-items: end;
+        }
+
+        .search-field {
+            position: relative;
+        }
+
+        .search-field-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--bronze);
+            z-index: 2;
+        }
+
+        .search-input {
+            border: 2px solid rgba(149, 76, 46, 0.2);
+            border-radius: 12px;
+            padding: 15px 20px 15px 45px;
+            font-size: 1rem;
+            transition: all var(--transition-base);
+            background: rgba(255, 255, 255, 0.8);
+            font-family: 'Outfit', sans-serif;
+            width: 100%;
+        }
+
+        .search-input:focus {
+            border-color: var(--bronze);
+            box-shadow: 0 0 0 0.2rem rgba(149, 76, 46, 0.25);
+            background: white;
+            outline: none;
+        }
+
+        .btn-search {
+            background: var(--bronze);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-weight: 600;
+            color: white;
+            transition: all var(--transition-base);
+            white-space: nowrap;
+        }
+
+        .btn-search:hover {
+            background: var(--bronze-dark);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Search Suggestions */
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            display: none;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .suggestion-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+
+        .suggestion-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Quick Filters */
+        .quick-filters {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .filter-label {
+            color: #666;
+            font-weight: 500;
+            margin-right: 0.5rem;
+        }
+
+        .filter-tag {
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid var(--bronze);
+            color: var(--bronze);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all var(--transition-base);
+            cursor: pointer;
+        }
+
+        .filter-tag:hover,
+        .filter-tag.active {
+            background: var(--bronze);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        /* Search Results Section */
+        .search-results-section {
+            padding: 4rem 0;
+            background-color: #f8f9fb;
+        }
+
+        .results-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .results-subtitle {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .search-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .sort-dropdown select {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 8px 12px;
+            background: white;
+            color: #333;
+            font-weight: 500;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .view-toggle {
+            display: flex;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .view-btn {
+            background: white;
+            border: none;
+            padding: 8px 12px;
+            color: #666;
+            transition: all var(--transition-base);
+            cursor: pointer;
+        }
+
+        .view-btn.active,
+        .view-btn:hover {
+            background: var(--bronze);
+            color: white;
+        }
+
+        /* Experience Cards Grid */
+        .experiences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .experiences-grid.list-view {
+            grid-template-columns: 1fr;
+        }
+
+        .experiences-grid.list-view .experience-card {
+            display: flex;
+            max-width: none;
+        }
+
+        .experiences-grid.list-view .experience-image {
+            width: 300px;
+            height: 200px;
+            flex-shrink: 0;
+        }
+
+        .experiences-grid.list-view .experience-content {
+            flex: 1;
+        }
+
+        .experience-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-base);
+            cursor: pointer;
+            border: 1px solid rgba(149, 76, 46, 0.1);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--bronze);
+        }
+
+        .experience-image {
+            height: 250px;
+            background: linear-gradient(135deg, var(--bronze), var(--bronze-light));
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            overflow: hidden;
+        }
+
+        .experience-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .experience-card:hover .experience-image::before {
+            transform: translateX(100%);
+        }
+
+        .verified-badge {
+            background: var(--color-accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 2;
+        }
+
+        .experience-content {
+            padding: 1.5rem;
+        }
+
+        .experience-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .experience-subtitle {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .experience-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        .meta-item i {
+            color: var(--bronze);
+        }
+
+        .experience-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--bronze);
+        }
+
+        /* Modal Styles */
+        .modal-image-header {
+            height: 200px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .modal-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px 15px 0 0;
+        }
+
+        .modal-image-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .modal-verified-badge {
+            background: var(--color-accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+
+        .booking-card {
+            background: #f8f9fa;
+            border: 2px solid var(--color-primary) !important;
+        }
+
+        .price-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .price-unit {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .experience-meta-modal .meta-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .experience-meta-modal .meta-row i {
+            width: 16px;
+        }
+
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .modal-header {
+            padding: 0;
+        }
+
+        #modalIncludes li, #modalHighlights li {
+            padding: 0.25rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        #modalIncludes li::before {
+            content: "✓";
+            color: var(--color-secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        #modalHighlights li::before {
+            content: "★";
+            color: var(--color-primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9998;
+        }
+
+        .loading-content {
+            text-align: center;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--bronze);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .search-hero-title {
+                font-size: 2.5rem;
+            }
+
+            .search-input-group {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .experiences-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .experiences-grid.list-view .experience-card {
+                flex-direction: column;
+            }
+
+            .experiences-grid.list-view .experience-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .search-controls {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+
+            .quick-filters {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .search-hero-section {
+                padding: 100px 0 60px;
+            }
+
+            .search-hero-title {
+                font-size: 2rem;
+            }
+
+            .search-form-container {
+                padding: 1rem;
+            }
+
+            .modal-image-header {
+                height: 150px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="logo-icon me-2">🏠</span>
+                Homeigo
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#search">Experiences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./profile.html">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showHostDashboard()">Become a Host</a>
+                    </li>
+                </ul>
+                <div class="d-flex ms-3">
+                    <a href="login.html" class="btn btn-outline-primary-custom me-2">Sign In</a>
+                    <a href="signup.html" class="btn btn-primary-custom">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Hero Section -->
+    <section class="search-hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    <div class="search-hero-content text-center">
+                        <h1 class="search-hero-title">
+                            Find Your Perfect <span class="highlight">Experience</span>
+                        </h1>
+                        <p class="search-hero-description">
+                            Discover amazing activities, tours, and adventures tailored just for you
+                        </p>
+                        
+                        <!-- Main Search Form -->
+                        <div class="search-form-container">
+                            <form id="searchForm" class="search-form">
+                                <div class="search-input-group">
+                                    <div class="search-field">
+                                        <i class="bi bi-search search-field-icon"></i>
+                                        <input type="text" id="searchInput" class="form-control search-input" 
+                                               placeholder="What experience are you looking for?" autocomplete="off">
+                                        <div id="searchSuggestions" class="search-suggestions"></div>
+                                    </div>
+                                    <div class="search-field">
+                                        <i class="bi bi-geo-alt search-field-icon"></i>
+                                        <input type="text" id="locationInput" class="form-control search-input" 
+                                               placeholder="Where?" autocomplete="off">
+                                    </div>
+                                    <div class="search-field">
+                                        <i class="bi bi-calendar search-field-icon"></i>
+                                        <input type="date" id="dateInput" class="form-control search-input">
+                                    </div>
+                                    <button type="submit" class="btn btn-search">
+                                        <i class="bi bi-search me-2"></i>
+                                        Search
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Quick Filters -->
+                        <div class="quick-filters">
+                            <span class="filter-label">Popular searches:</span>
+                            <button class="filter-tag" data-filter="adventure">Adventure</button>
+                            <button class="filter-tag" data-filter="food">Food Tours</button>
+                            <button class="filter-tag" data-filter="culture">Cultural</button>
+                            <button class="filter-tag" data-filter="nature">Nature</button>
+                            <button class="filter-tag" data-filter="nightlife">Nightlife</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Results Section -->
+    <section class="search-results-section">
+        <div class="container">
+            <!-- Search Stats -->
+            <div class="search-stats mb-4">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h2 class="results-title">Featured Experiences</h2>
+                        <p class="results-subtitle" id="resultsCount">Showing 6 amazing experiences</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search-controls">
+                            <div class="sort-dropdown">
+                                <select class="form-select" id="sortSelect">
+                                    <option value="featured">Featured</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="rating">Highest Rated</option>
+                                    <option value="newest">Newest</option>
+                                </select>
+                            </div>
+                            <div class="view-toggle">
+                                <button class="view-btn active" data-view="grid" title="Grid View">
+                                    <i class="bi bi-grid"></i>
+                                </button>
+                                <button class="view-btn" data-view="list" title="List View">
+                                    <i class="bi bi-list"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Cards Grid -->
+            <div class="experiences-grid" id="experiencesGrid">
+                <!-- Experience Card 1 -->
+                <div class="experience-card" data-category="adventure" data-price="150" data-rating="4.8">
+                    <div class="experience-image">
+                        <div class="verified-badge">Verified</div>
+                        <div class="image-placeholder">🏔️ Mountain Adventure</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">Mountain Hiking Adventure</h3>
+                        <p class="experience-subtitle">Guided mountain trek with stunning views</p>
+                        <div class="experience-meta">
+                            <span class="meta-item">
+                                <i class="bi bi-star-fill"></i>
+                                4.8 (124 reviews)
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-clock"></i>
+                                6 hours
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-people"></i>
+                                Max 8 people
+                            </span>
+                        </div>
+                        <div class="experience-footer">
+                            <span class="price">$150</span>
+                            <button class="btn btn-primary-custom btn-sm">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Card 2 -->
+                <div class="experience-card" data-category="food" data-price="85" data-rating="4.9">
+                    <div class="experience-image">
+                        <div class="verified-badge">Verified</div>
+                        <div class="image-placeholder">🍽️ Food Tour</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">Local Food Walking Tour</h3>
+                        <p class="experience-subtitle">Taste authentic local cuisine and hidden gems</p>
+                        <div class="experience-meta">
+                            <span class="meta-item">
+                                <i class="bi bi-star-fill"></i>
+                                4.9 (89 reviews)
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-clock"></i>
+                                3 hours
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-people"></i>
+                                Max 12 people
+                            </span>
+                        </div>
+                        <div class="experience-footer">
+                            <span class="price">$85</span>
+                            <button class="btn btn-primary-custom btn-sm">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Card 3 -->
+                <div class="experience-card" data-category="culture" data-price="120" data-rating="4.7">
+                    <div class="experience-image">
+                        <div class="verified-badge">Verified</div>
+                        <div class="image-placeholder">🏛️ Cultural Tour</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">Historical City Tour</h3>
+                        <p class="experience-subtitle">Explore ancient landmarks and cultural sites</p>
+                        <div class="experience-meta">
+                            <span class="meta-item">
+                                <i class="bi bi-star-fill"></i>
+                                4.7 (156 reviews)
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-clock"></i>
+                                4 hours
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-people"></i>
+                                Max 15 people
+                            </span>
+                        </div>
+                        <div class="experience-footer">
+                            <span class="price">$120</span>
+                            <button class="btn btn-primary-custom btn-sm">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Card 4 -->
+                <div class="experience-card" data-category="nature" data-price="95" data-rating="4.6">
+                    <div class="experience-image">
+                        <div class="verified-badge">Verified</div>
+                        <div class="image-placeholder">🦁 Nature Safari</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">Wildlife Safari Experience</h3>
+                        <p class="experience-subtitle">Discover local wildlife in their natural habitat</p>
+                        <div class="experience-meta">
+                            <span class="meta-item">
+                                <i class="bi bi-star-fill"></i>
+                                4.6 (78 reviews)
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-clock"></i>
+                                5 hours
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-people"></i>
+                                Max 10 people
+                            </span>
+                        </div>
+                        <div class="experience-footer">
+                            <span class="price">$95</span>
+                            <button class="btn btn-primary-custom btn-sm">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Card 5 -->
+                <div class="experience-card" data-category="adventure" data-price="200" data-rating="4.9">
+                    <div class="experience-image">
+                        <div class="verified-badge">Verified</div>
+                        <div class="image-placeholder">🏄‍♂️ Water Sports</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">Water Sports Adventure</h3>
+                        <p class="experience-subtitle">Kayaking, snorkeling, and beach activities</p>
+                        <div class="experience-meta">
+                            <span class="meta-item">
+                                <i class="bi bi-star-fill"></i>
+                                4.9 (203 reviews)
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-clock"></i>
+                                8 hours
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-people"></i>
+                                Max 6 people
+                            </span>
+                        </div>
+                        <div class="experience-footer">
+                            <span class="price">$200</span>
+                            <button class="btn btn-primary-custom btn-sm">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Card 6 -->
+                <div class="experience-card" data-category="nightlife" data-price="75" data-rating="4.5">
+                    <div class="experience-image">
+                        <div class="verified-badge">Verified</div>
+                        <div class="image-placeholder">🌃 Nightlife Tour</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">Evening City Lights Tour</h3>
+                        <p class="experience-subtitle">Experience the city's vibrant nightlife</p>
+                        <div class="experience-meta">
+                            <span class="meta-item">
+                                <i class="bi bi-star-fill"></i>
+                                4.5 (92 reviews)
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-clock"></i>
+                                4 hours
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-people"></i>
+                                Max 20 people
+                            </span>
+                        </div>
+                        <div class="experience-footer">
+                            <span class="price">$75</span>
+                            <button class="btn btn-primary-custom btn-sm">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-5">
+                <button class="btn btn-outline-primary-custom btn-lg" id="loadMoreBtn">
+                    <i class="bi bi-plus me-2"></i>
+                    Load More Experiences
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Detail Modal -->
+    <div class="modal fade" id="experienceModal" tabindex="-1" aria-labelledby="experienceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 position-relative">
+                    <div class="modal-image-header w-100" id="modalImageHeader">
+                        <div class="modal-image-overlay"></div>
+                        <div class="modal-image-content">
+                            <h4 class="modal-title text-white" id="experienceModalLabel">Experience Title</h4>
+                            <div class="modal-verified-badge">Verified</div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white position-absolute" data-bs-dismiss="modal" aria-label="Close" style="top: 15px; right: 15px; z-index: 10;"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="text-muted mb-3" id="modalSubtitle">Experience subtitle</p>
+                            <div class="experience-details mb-4">
+                                <h5 class="mb-3">About This Experience</h5>
+                                <p id="modalDescription">Detailed description of the experience...</p>
+                            </div>
+                            
+                            <div class="experience-highlights mb-4">
+                                <h5 class="mb-3">What's Included</h5>
+                                <ul id="modalIncludes" class="list-unstyled">
+                                    <!-- Includes will be populated by JavaScript -->
+                                </ul>
+                            </div>
+                            
+                            <div class="experience-highlights">
+                                <h5 class="mb-3">Highlights</h5>
+                                <ul id="modalHighlights" class="list-unstyled">
+                                    <!-- Highlights will be populated by JavaScript -->
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="booking-card p-3 border rounded">
+                                <div class="price-section mb-3">
+                                    <span class="price-amount" id="modalPrice">$0</span>
+                                    <span class="price-unit">per person</span>
+                                </div>
+                                
+                                <div class="experience-meta-modal mb-3">
+                                    <div class="meta-row">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <span id="modalRating">4.8</span>
+                                        <span class="text-muted">(<span id="modalReviews">124</span> reviews)</span>
+                                    </div>
+                                    <div class="meta-row">
+                                        <i class="fas fa-clock text-primary"></i>
+                                        <span id="modalDuration">6 hours</span>
+                                    </div>
+                                    <div class="meta-row">
+                                        <i class="fas fa-users text-success"></i>
+                                        <span>Max <span id="modalMaxPeople">8</span> people</span>
+                                    </div>
+                                    <div class="meta-row">
+                                        <i class="fas fa-map-marker-alt text-danger"></i>
+                                        <span id="modalLocation">Location</span>
+                                    </div>
+                                    <div class="meta-row">
+                                        <i class="fas fa-user-tie text-info"></i>
+                                        <span>Host: <span id="modalHost">Host Name</span></span>
+                                    </div>
+                                </div>
+                                
+                                <button type="button" class="btn btn-primary-custom w-100 btn-lg" id="bookNowBtn">
+                                    <i class="fas fa-calendar-check me-2"></i>
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Searching for experiences...</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Enhanced Search Page JavaScript with Modal Functionality
+        document.addEventListener("DOMContentLoaded", function() {
+            // Experience data
+            const experienceData = {
+                "Mountain Hiking Adventure": {
+                    title: "Mountain Hiking Adventure",
+                    subtitle: "Guided mountain trek with stunning views",
+                    description: "Experience the breathtaking beauty of mountain landscapes on this guided hiking adventure. Our expert guides will take you through scenic trails, sharing local knowledge about flora, fauna, and geological formations. Perfect for adventure seekers and nature lovers.",
+                    price: 150,
+                    rating: 4.8,
+                    reviews: 124,
+                    duration: "6 hours",
+                    maxPeople: 8,
+                    location: "Rocky Mountains, Colorado",
+                    host: "Alex Mountain Guide",
+                    includes: [
+                        "Professional mountain guide",
+                        "Safety equipment and gear",
+                        "Light refreshments and water",
+                        "Transportation to trailhead",
+                        "Photography assistance"
+                    ],
+                    highlights: [
+                        "Stunning panoramic mountain views",
+                        "Wildlife spotting opportunities",
+                        "Professional photography tips",
+                        "Local geological insights",
+                        "Small group experience"
+                    ]
+                },
+                "Local Food Walking Tour": {
+                    title: "Local Food Walking Tour",
+                    subtitle: "Taste authentic local cuisine and hidden gems",
+                    description: "Embark on a culinary journey through the heart of the city. Discover hidden food gems, taste authentic local dishes, and learn about the cultural significance of traditional recipes from local food experts.",
+                    price: 85,
+                    rating: 4.9,
+                    reviews: 89,
+                    duration: "3 hours",
+                    maxPeople: 12,
+                    location: "Historic Downtown",
+                    host: "Maria Food Expert",
+                    includes: [
+                        "Food tastings at 6 locations",
+                        "Local culinary guide",
+                        "Cultural insights and stories",
+                        "Recipe cards to take home",
+                        "Dietary accommodations available"
+                    ],
+                    highlights: [
+                        "Authentic local cuisine",
+                        "Hidden neighborhood gems",
+                        "Cultural food stories",
+                        "Recipe sharing session",
+                        "Meet local vendors"
+                    ]
+                },
+                "Historical City Tour": {
+                    title: "Historical City Tour",
+                    subtitle: "Explore ancient landmarks and cultural sites",
+                    description: "Step back in time and explore the rich history of our city. Visit ancient landmarks, learn about historical events, and discover the stories that shaped our cultural heritage with an expert historian guide.",
+                    price: 120,
+                    rating: 4.7,
+                    reviews: 156,
+                    duration: "4 hours",
+                    maxPeople: 15,
+                    location: "Old Town District",
+                    host: "Dr. Sarah Historian",
+                    includes: [
+                        "Expert historian guide",
+                        "Museum entry tickets",
+                        "Historical documents viewing",
+                        "Walking tour map",
+                        "Audio headsets"
+                    ],
+                    highlights: [
+                        "Ancient landmark visits",
+                        "Historical insights and stories",
+                        "Cultural heritage exploration",
+                        "Expert commentary",
+                        "Photo opportunities"
+                    ]
+                },
+                "Wildlife Safari Experience": {
+                    title: "Wildlife Safari Experience",
+                    subtitle: "Discover local wildlife in their natural habitat",
+                    description: "Join us for an unforgettable wildlife safari experience. Observe animals in their natural habitat, learn about conservation efforts, and capture amazing photos of local wildlife with professional photography guidance.",
+                    price: 95,
+                    rating: 4.6,
+                    reviews: 78,
+                    duration: "5 hours",
+                    maxPeople: 10,
+                    location: "Nature Reserve",
+                    host: "Jake Wildlife Expert",
+                    includes: [
+                        "Wildlife expert guide",
+                        "Binoculars provided",
+                        "Photography tips and guidance",
+                        "Conservation education talk",
+                        "Light snacks and drinks"
+                    ],
+                    highlights: [
+                        "Wildlife observation",
+                        "Photography opportunities",
+                        "Conservation insights",
+                        "Natural habitat exploration",
+                        "Educational experience"
+                    ]
+                },
+                "Water Sports Adventure": {
+                    title: "Water Sports Adventure",
+                    subtitle: "Kayaking, snorkeling, and beach activities",
+                    description: "Dive into an action-packed day of water sports! Experience kayaking through crystal clear waters, snorkeling among colorful marine life, and enjoy various beach activities with professional instructors.",
+                    price: 200,
+                    rating: 4.9,
+                    reviews: 203,
+                    duration: "8 hours",
+                    maxPeople: 6,
+                    location: "Crystal Bay",
+                    host: "Captain Mike",
+                    includes: [
+                        "All water sports equipment",
+                        "Professional instruction",
+                        "Lunch and refreshments",
+                        "Safety briefing and gear",
+                        "Underwater camera rental"
+                    ],
+                    highlights: [
+                        "Kayaking adventure",
+                        "Snorkeling experience",
+                        "Marine life observation",
+                        "Beach activities",
+                        "Professional instruction"
+                    ]
+                },
+                "Evening City Lights Tour": {
+                    title: "Evening City Lights Tour",
+                    subtitle: "Experience the city's vibrant nightlife",
+                    description: "Discover the city that never sleeps! Experience vibrant nightlife, visit popular entertainment districts, enjoy rooftop views, and learn about the city's evening culture from a local nightlife expert.",
+                    price: 75,
+                    rating: 4.5,
+                    reviews: 92,
+                    duration: "4 hours",
+                    maxPeople: 20,
+                    location: "Entertainment District",
+                    host: "Emma Night Guide",
+                    includes: [
+                        "Local nightlife guide",
+                        "Rooftop bar access",
+                        "Welcome drink included",
+                        "Transportation between venues",
+                        "VIP club entry"
+                    ],
+                    highlights: [
+                        "City lights panoramic views",
+                        "Nightlife hotspot visits",
+                        "Rooftop bar experiences",
+                        "Local culture immersion",
+                        "Photography opportunities"
+                    ]
+                }
+            };
+
+            // Get elements
+            const searchForm = document.getElementById("searchForm");
+            const searchInput = document.getElementById("searchInput");
+            const locationInput = document.getElementById("locationInput");
+            const dateInput = document.getElementById("dateInput");
+            const searchSuggestions = document.getElementById("searchSuggestions");
+            const filterTags = document.querySelectorAll(".filter-tag");
+            const sortSelect = document.getElementById("sortSelect");
+            const viewBtns = document.querySelectorAll(".view-btn");
+            const experiencesGrid = document.getElementById("experiencesGrid");
+            const loadMoreBtn = document.getElementById("loadMoreBtn");
+            const loadingOverlay = document.getElementById("loadingOverlay");
+            const resultsCount = document.getElementById("resultsCount");
+
+            // Sample search suggestions
+            const suggestions = [
+                "Mountain hiking", "Food tours", "Cultural experiences", "Adventure sports",
+                "Nature walks", "City tours", "Water activities", "Photography tours",
+                "Wine tasting", "Cooking classes"
+            ];
+
+            // Modal functionality
+            function openExperienceModal(experienceTitle) {
+                const data = experienceData[experienceTitle];
+                if (!data) return;
+
+                // Populate modal content
+                document.getElementById('experienceModalLabel').textContent = data.title;
+                document.getElementById('modalSubtitle').textContent = data.subtitle;
+                document.getElementById('modalDescription').textContent = data.description;
+                document.getElementById('modalPrice').textContent = `$${data.price}`;
+                document.getElementById('modalRating').textContent = data.rating;
+                document.getElementById('modalReviews').textContent = data.reviews;
+                document.getElementById('modalDuration').textContent = data.duration;
+                document.getElementById('modalMaxPeople').textContent = data.maxPeople;
+                document.getElementById('modalLocation').textContent = data.location;
+                document.getElementById('modalHost').textContent = data.host;
+
+                // Populate includes
+                const includesList = document.getElementById('modalIncludes');
+                includesList.innerHTML = data.includes.map(item => `<li>${item}</li>`).join('');
+
+                // Populate highlights
+                const highlightsList = document.getElementById('modalHighlights');
+                highlightsList.innerHTML = data.highlights.map(item => `<li>${item}</li>`).join('');
+
+                // Set up book now button
+                const bookNowBtn = document.getElementById('bookNowBtn');
+                bookNowBtn.onclick = function() { bookExperience(data); };
+
+                // Show modal
+                const modal = new bootstrap.Modal(document.getElementById('experienceModal'));
+                modal.show();
+            }
+
+            function bookExperience(data) {
+                // Create URL parameters with experience data
+                const params = new URLSearchParams({
+                    experience: data.title,
+                    host: data.host,
+                    price: data.price,
+                    duration: data.duration,
+                    location: data.location,
+                    maxPeople: data.maxPeople,
+                    rating: data.rating,
+                    reviews: data.reviews
+                });
+
+                // Redirect to payment page with pre-filled data
+                window.location.href = `payment.html?${params.toString()}`;
+            }
+
+            // Add click handlers to experience cards
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.experience-card')) {
+                    const card = e.target.closest('.experience-card');
+                    const title = card.querySelector('.experience-title').textContent;
+                    
+                    // If clicked on View Details button, open modal
+                    if (e.target.classList.contains('btn-primary-custom') || e.target.closest('.btn-primary-custom')) {
+                        e.preventDefault();
+                        openExperienceModal(title);
+                    }
+                    // If clicked anywhere else on the card, open modal
+                    else {
+                        openExperienceModal(title);
+                    }
+                }
+            });
+
+            // Search suggestions functionality
+            searchInput.addEventListener("input", function() {
+                const query = this.value.toLowerCase().trim();
+                if (query.length > 0) {
+                    const filteredSuggestions = suggestions.filter(suggestion => 
+                        suggestion.toLowerCase().includes(query));
+                    if (filteredSuggestions.length > 0) {
+                        showSuggestions(filteredSuggestions);
+                    } else {
+                        hideSuggestions();
+                    }
+                } else {
+                    hideSuggestions();
+                }
+            });
+
+            function showSuggestions(suggestions) {
+                searchSuggestions.innerHTML = suggestions
+                    .map(suggestion => `<div class="suggestion-item">${suggestion}</div>`)
+                    .join("");
+                searchSuggestions.style.display = "block";
+
+                searchSuggestions.querySelectorAll(".suggestion-item").forEach(item => {
+                    item.addEventListener("click", function() {
+                        searchInput.value = item.textContent;
+                        hideSuggestions();
+                        performSearch();
+                    });
+                });
+            }
+
+            function hideSuggestions() {
+                searchSuggestions.style.display = "none";
+            }
+
+            // Hide suggestions when clicking outside
+            document.addEventListener("click", function(e) {
+                if (!e.target.closest(".search-field")) {
+                    hideSuggestions();
+                }
+            });
+
+            // Filter tags functionality
+            filterTags.forEach(tag => {
+                tag.addEventListener("click", function() {
+                    filterTags.forEach(t => t.classList.remove("active"));
+                    tag.classList.add("active");
+                    const filterValue = tag.dataset.filter;
+                    searchInput.value = filterValue;
+                    performSearch();
+                });
+            });
+
+            // Search form submission
+            searchForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+                performSearch();
+            });
+
+            // Sort functionality
+            sortSelect.addEventListener("change", function() {
+                sortExperiences(sortSelect.value);
+            });
+
+            // View toggle functionality
+            viewBtns.forEach(btn => {
+                btn.addEventListener("click", function() {
+                    viewBtns.forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    const view = btn.dataset.view;
+                    if (view === "list") {
+                        experiencesGrid.classList.add("list-view");
+                    } else {
+                        experiencesGrid.classList.remove("list-view");
+                    }
+                });
+            });
+
+            // Load more functionality
+            loadMoreBtn.addEventListener("click", function() {
+                loadMoreExperiences();
+            });
+
+            // Search functionality
+            function performSearch() {
+                const query = searchInput.value.trim();
+                const location = locationInput.value.trim();
+                const date = dateInput.value;
+
+                showLoading();
+                setTimeout(function() {
+                    hideLoading();
+                    filterExperiences(query, location, date);
+                    updateResultsCount();
+                }, 1000);
+            }
+
+            function filterExperiences(query, location, date) {
+                const cards = document.querySelectorAll(".experience-card");
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const title = card.querySelector(".experience-title").textContent.toLowerCase();
+                    const category = card.dataset.category.toLowerCase();
+
+                    const matchesQuery = !query || title.includes(query.toLowerCase()) || 
+                                       category.includes(query.toLowerCase());
+                    const matchesLocation = !location;
+                    const matchesDate = !date;
+
+                    if (matchesQuery && matchesLocation && matchesDate) {
+                        card.style.display = "block";
+                        visibleCount++;
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+
+                resultsCount.textContent = `Showing ${visibleCount} experiences`;
+            }
+
+            function sortExperiences(sortBy) {
+                const cards = Array.from(document.querySelectorAll(".experience-card"));
+                cards.sort((a, b) => {
+                    switch (sortBy) {
+                        case "price-low":
+                            return parseInt(a.dataset.price) - parseInt(b.dataset.price);
+                        case "price-high":
+                            return parseInt(b.dataset.price) - parseInt(a.dataset.price);
+                        case "rating":
+                            return parseFloat(b.dataset.rating) - parseFloat(a.dataset.rating);
+                        case "newest":
+                            return cards.indexOf(b) - cards.indexOf(a);
+                        default:
+                            return 0;
+                    }
+                });
+                cards.forEach(card => experiencesGrid.appendChild(card));
+            }
+
+            function loadMoreExperiences() {
+                showLoading();
+                setTimeout(function() {
+                    hideLoading();
+                    const alertDiv = document.createElement("div");
+                    alertDiv.className = "alert alert-info text-center";
+                    alertDiv.innerHTML = '<i class="fas fa-info-circle me-2"></i>All experiences loaded!';
+                    loadMoreBtn.parentNode.insertBefore(alertDiv, loadMoreBtn);
+                    loadMoreBtn.style.display = "none";
+                    setTimeout(() => alertDiv.remove(), 3000);
+                }, 1500);
+            }
+
+            function showLoading() {
+                loadingOverlay.style.display = "flex";
+            }
+
+            function hideLoading() {
+                loadingOverlay.style.display = "none";
+            }
+
+            function updateResultsCount() {
+                const visibleCards = document.querySelectorAll(
+                    ".experience-card[style*='block'], .experience-card:not([style*='none'])"
+                );
+                resultsCount.textContent = `Showing ${visibleCards.length} experiences`;
+            }
+
+            // Initialize page
+            updateResultsCount();
+            const today = new Date().toISOString().split("T")[0];
+            dateInput.setAttribute("min", today);
+
+            // Keyboard shortcuts
+            document.addEventListener("keydown", function(e) {
+                if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+                    e.preventDefault();
+                    searchInput.focus();
+                }
+                if (e.key === "Escape") {
+                    searchInput.value = "";
+                    locationInput.value = "";
+                    dateInput.value = "";
+                    hideSuggestions();
+                    filterTags.forEach(tag => tag.classList.remove("active"));
+                    const cards = document.querySelectorAll(".experience-card");
+                    cards.forEach(card => card.style.display = "block");
+                    updateResultsCount();
+                }
+            });
+
+            // Placeholder function for host dashboard
+            window.showHostDashboard = function() {
+                alert("Host dashboard feature coming soon!");
+            };
+        });
+    </script>
+</body>
+</html>

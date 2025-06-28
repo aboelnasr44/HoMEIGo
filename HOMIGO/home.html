@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover breathtaking destinations and create unforgettable memories with WanderLust's curated travel experiences worldwide.">
-    <meta name="keywords" content="travel, destinations, tours, adventure, vacation, wanderlust">
-    <meta name="theme-color" content="#A86523">
-    <meta property="og:title" content="WanderLust - Discover Amazing Destinations">
-    <meta property="og:description" content="Discover breathtaking destinations and create unforgettable memories with WanderLust's curated travel experiences worldwide.">
+    <meta name="description" content="Live like a local, not a tourist. Discover authentic experiences with verified local hosts worldwide.">
+    <meta name="keywords" content="local experiences, authentic travel, local hosts, cultural immersion, Homeigo">
+    <meta name="theme-color" content="#954C2E">
+    <meta property="og:title" content="Homeigo - Live Like a Local, Not a Tourist">
+    <meta property="og:description" content="Discover authentic experiences with verified local hosts. Stay in real homes, eat traditional food, and explore hidden gems.">
     <meta property="og:type" content="website">
-    <title>WanderLust - Discover Amazing Destinations</title>
+    <title>Homeigo - Live Like a Local, Not a Tourist</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,535 +19,1052 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
 <link rel="stylesheet" href="./style.css">
+<style>
+       :root {
+        --color-primary: #954c2e;
+        --color-primary-light: #fdfaf6;
+        --color-primary-dark: #773d25;
+        --transition-base: 0.3s ease;
+        --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+        --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    body {
+        font-family: "Inter", Arial, sans-serif;
+        scroll-behavior: smooth;
+    }
+
+    /* Header Styles */
+    .navbar {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-lg);
+        transition: all var(--transition-base);
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--color-primary) !important;
+    }
+
+    .logo-icon {
+        font-size: 1.5rem;
+        animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    .navbar-nav .nav-link {
+        font-weight: 500;
+        color: #333 !important;
+        position: relative;
+        transition: color var(--transition-base);
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+        color: var(--color-primary) !important;
+    }
+
+    .navbar-nav .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--color-primary);
+        transition: width var(--transition-base);
+    }
+
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link.active::after {
+        width: 100%;
+    }
+
+    .btn-primary-custom {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+        color: white;
+        transition: all var(--transition-base);
+        border-radius: 25px;
+        padding: 10px 25px;
+        font-weight: 500;
+    }
+
+    .btn-primary-custom:hover {
+        background-color: var(--color-primary-dark);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--color-primary);
+        color: white;
+    }
+
+    .btn-outline-primary-custom {
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+        transition: all var(--transition-base);
+        border-radius: 25px;
+        padding: 10px 25px;
+        font-weight: 500;
+        background-color: transparent;
+    }
+
+    .btn-outline-primary-custom:hover {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+        transform: translateY(-2px);
+        color: white;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--color-primary);
+    }
+
+    a:hover {
+        color: var(--color-primary-dark);
+    }
+
+    /* Hero Section - Single Color Background */
+    .hero-section {
+        min-height: 100vh;
+        background: var(--color-primary-light);
+        padding-top: 100px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-description {
+        font-size: 1.25rem;
+        color: #666;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+    }
+
+    .highlight {
+        color: var(--color-primary);
+        position: relative;
+    }
+
+    .highlight::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--color-primary);
+        border-radius: 2px;
+    }
+
+    .stat-item {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .stat-number {
+        display: block;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--color-primary);
+    }
+
+    .stat-label {
+        font-size: 0.875rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Experience Preview - Single Color */
+    .experience-preview {
+        width: 100%;
+        height: 400px;
+        background: var(--color-primary);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.25rem;
+        font-weight: 600;
+        box-shadow: var(--shadow-xl);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Floating Cards - Single Color Theme */
+    .floating-card {
+        position: absolute;
+        background: white;
+        padding: 0.75rem 1rem;
+        border-radius: 50px;
+        border: 2px solid var(--color-primary);
+        box-shadow: var(--shadow-lg);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--color-primary);
+        font-weight: 500;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-card-1 {
+        top: 20%;
+        left: -10%;
+        animation-delay: 0s;
+    }
+
+    .floating-card-2 {
+        bottom: 30%;
+        right: -10%;
+        animation-delay: 2s;
+    }
+
+    .floating-card-3 {
+        top: 60%;
+        left: 10%;
+        animation-delay: 4s;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+            transform: translateY(-20px) rotate(2deg);
+        }
+    }
+
+    .scroll-indicator {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: var(--color-primary);
+        cursor: pointer;
+    }
+
+    .scroll-arrow {
+        width: 20px;
+        height: 20px;
+        border-right: 2px solid var(--color-primary);
+        border-bottom: 2px solid var(--color-primary);
+        transform: rotate(45deg);
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: rotate(45deg) translateY(0);
+        }
+        40% {
+            transform: rotate(45deg) translateY(-10px);
+        }
+        60% {
+            transform: rotate(45deg) translateY(-5px);
+        }
+    }
+
+    /* Search Section */
+    .search-section {
+        background-color: #f8f9fb;
+        padding: 4rem 0;
+    }
+
+    .search-form {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .search-field-icon {
+        color: var(--color-primary);
+    }
+
+    .form-control {
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        padding: 15px 20px;
+        font-size: 1rem;
+        transition: all var(--transition-base);
+    }
+
+    .form-control:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 0.2rem rgba(149, 76, 46, 0.25);
+    }
+
+    .btn-search {
+        background: var(--color-primary);
+        border: none;
+        padding: 15px 30px;
+        border-radius: 10px;
+        font-weight: 600;
+        color: white;
+        transition: all var(--transition-base);
+    }
+
+    .btn-search:hover {
+        background: var(--color-primary-dark);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    /* Experience Cards - Single Color */
+    .experience-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        transition: all var(--transition-base);
+        cursor: pointer;
+        margin-bottom: 2rem;
+        border: 1px solid rgba(149, 76, 46, 0.1);
+    }
+
+    .experience-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--color-primary);
+    }
+
+    .experience-image {
+        height: 250px;
+        background: var(--color-primary);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .experience-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity var(--transition-base);
+    }
+
+    .experience-card:hover .experience-overlay {
+        opacity: 1;
+    }
+
+    .quick-view-btn {
+        background: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-primary);
+        transition: all var(--transition-base);
+    }
+
+    .quick-view-btn:hover {
+        transform: scale(1.1);
+    }
+
+    .experience-content {
+        padding: 1.5rem;
+    }
+
+    .experience-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+
+    .experience-subtitle {
+        color: #666;
+        margin-bottom: 1rem;
+    }
+
+    .meta-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        margin-right: 1rem;
+        color: #666;
+        font-size: 0.875rem;
+    }
+
+    .meta-item i {
+        color: var(--color-primary);
+    }
+
+    .price {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--color-primary);
+    }
+
+    .verified-badge {
+        background: var(--color-primary-dark);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+
+    /* Features Section */
+    .features-section {
+        background-color: #f8f9fb;
+        padding: 5rem 0;
+    }
+
+    .feature-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: var(--shadow-lg);
+        text-align: center;
+        margin-bottom: 2rem;
+        transition: all var(--transition-base);
+        border: 1px solid rgba(149, 76, 46, 0.1);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--color-primary);
+    }
+
+    .feature-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--color-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        color: white;
+        font-size: 2rem;
+    }
+
+    .feature-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .feature-description {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    /* How It Works Section */
+    .how-it-works-section {
+        padding: 5rem 0;
+    }
+
+    .step-card {
+        text-align: center;
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .step-number {
+        width: 60px;
+        height: 60px;
+        background: var(--color-primary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 auto 1.5rem;
+    }
+
+    .step-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .step-description {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    /* Stats Section - Single Color */
+    .stats-section {
+        background: var(--color-primary);
+        color: white;
+        padding: 5rem 0;
+    }
+
+    .stats-item {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .stats-number {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .stats-label {
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+
+    /* Footer */
+    .footer {
+        background-color: #333;
+        color: white;
+        padding: 3rem 0 1rem;
+    }
+.text-muted{
+    color: white !important;
+}
+    .footer-section h5 {
+        color: var(--color-primary-light);
+        margin-bottom: 1rem;
+    }
+
+    .footer-link {
+        color: #ccc;
+        text-decoration: none;
+        transition: color var(--transition-base);
+    }
+
+    .footer-link:hover {
+        color: var(--color-primary-light);
+    }
+
+    .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: var(--color-primary);
+        color: white;
+        border-radius: 50%;
+        text-decoration: none;
+        margin-right: 0.5rem;
+        transition: all var(--transition-base);
+    }
+
+    .social-icon:hover {
+        background: var(--color-primary-dark);
+        transform: translateY(-2px);
+        color: white;
+    }
+
+    /* Loading Animation */
+    .loading {
+        display: none;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .spinner {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid var(--color-primary);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1rem;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Spinning animation for loading states */
+    .spin {
+        animation: spin 1s linear infinite;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+        }
+
+        .experience-preview {
+            height: 300px;
+        }
+
+        .floating-card {
+            display: none;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        .search-form {
+            padding: 1rem;
+        }
+    }
+</style>
 </head>
 <body>
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
-
-    <!-- Header Navigation -->
+    
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <span class="logo-icon me-2">🌍</span>
-                WanderLust
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="logo-icon me-2">🏠</span>
+                Homeigo
             </a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#home">Home</a>
+                        <a class="nav-link active" href="./home.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#destinations">Destinations</a>
+                        <a class="nav-link" href="./search.html">Experiences</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#tours">Tours</a>
+                        <a class="nav-link" href="./profile.html">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link" href="./about.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="./contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./dashbord.html" onclick="showHostDashboard()">Become a Host</a>
                     </li>
                 </ul>
-                
-                <div class="d-flex gap-2">
-                    <button class="btn btn-outline-primary-custom btn-sm" type="button">
-                        <i class="bi bi-person me-1"></i>
-                        Sign In
+                <div class="d-flex ms-3">
+                    <button class="btn btn-outline-primary-custom me-2">
+                        <a href="login.html" style="color: inherit; text-decoration: none;">Sign In</a>
                     </button>
-                    <button class="btn btn-primary-custom btn-sm" type="button">
-                        <i class="bi bi-airplane me-1"></i>
-                        Book Now
+                    <button class="btn btn-primary-custom">
+                        <a href="signup.html" style="color: white; text-decoration: none;">Sign Up</a>
                     </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main id="main-content">
-        <!-- Hero Section -->
-        <section id="home" class="hero-section d-flex align-items-center">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <h1 class="hero-title">
-                            Discover Your Next 
-                            <span class="highlight">Adventure</span>
-                        </h1>
-                        <p class="hero-description">
-                            Explore breathtaking destinations and create unforgettable memories with our curated travel experiences around the globe
-                        </p>
-                        
-                        <div class="row mb-4">
-                            <div class="col-4">
-                                <div class="stat-item">
-                                    <span class="stat-number" data-count="150">0</span>
-                                    <span class="stat-label">Destinations</span>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="stat-item">
-                                    <span class="stat-number" data-count="50000">0</span>
-                                    <span class="stat-label">Happy Travelers</span>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="stat-item">
-                                    <span class="stat-number" data-count="25">0</span>
-                                    <span class="stat-label">Countries</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="d-flex gap-3 flex-wrap">
-                            <button class="btn btn-primary-custom btn-lg" type="button" data-scroll-to="destinations">
-                                <i class="bi bi-compass me-2"></i>
-                                Explore Destinations
-                            </button>
-                            <button class="btn btn-outline-primary-custom btn-lg" type="button" data-scroll-to="tours">
-                                <i class="bi bi-map me-2"></i>
-                                View Tours
-                            </button>
-                        </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">
+                        Live Like a <span class="highlight">Local</span>,<br>
+                        Not a Tourist
+                    </h1>
+                    <p class="hero-description">
+                        Discover authentic experiences with verified local hosts. Stay in real homes, eat traditional food, and explore hidden gems that only locals know about.
+                    </p>
+                    
+                    <div class="d-flex flex-wrap gap-3 mb-4">
+                        <button class="btn btn-primary-custom btn-lg" onclick="scrollToSearch()">
+                            <i class="bi bi-search me-2"></i>Find Experiences
+                        </button>
+                        <button class="btn btn-outline-primary-custom btn-lg" onclick="showHostDashboard()">
+                            <i class="bi bi-house-add me-2"></i>Become a Host
+                        </button>
                     </div>
                     
-                    <div class="col-lg-6">
-                        <div class="destination-preview position-relative">
-                            Beautiful Destinations Await
-                            
-                            <div class="floating-card floating-card-1">
-                                <i class="bi bi-mountain"></i>
-                                <span>Swiss Alps</span>
+                    <div class="row mt-5">
+                        <div class="col-4">
+                            <div class="stat-item">
+                                <span class="stat-number" data-count="10000">0</span>
+                                <span class="stat-label">Happy Travelers</span>
                             </div>
-                            <div class="floating-card floating-card-2">
-                                <i class="bi bi-water"></i>
-                                <span>Maldives</span>
+                        </div>
+                        <div class="col-4">
+                            <div class="stat-item">
+                                <span class="stat-number" data-count="2500">0</span>
+                                <span class="stat-label">Verified Hosts</span>
                             </div>
-                            <div class="floating-card floating-card-3">
-                                <i class="bi bi-building"></i>
-                                <span>Japan</span>
+                        </div>
+                        <div class="col-4">
+                            <div class="stat-item">
+                                <span class="stat-number" data-count="150">0</span>
+                                <span class="stat-label">Countries</span>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                <div class="col-lg-6">
+                    <div class="experience-preview">
+                        <i class="bi bi-camera-video" style="font-size: 3rem;"></i>
+                        
+                        <div class="floating-card floating-card-1">
+                            <i class="bi bi-patch-check-fill"></i>
+                            <span>Verified Host</span>
+                        </div>
+                        
+                        <div class="floating-card floating-card-2">
+                            <i class="bi bi-star-fill"></i>
+                            <span>4.9 Rating</span>
+                        </div>
+                        
+                        <div class="floating-card floating-card-3">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <span>Cairo, Egypt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator" onclick="scrollToSearch()">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section id="search" class="search-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="text-center mb-5">
+                        <h2 class="display-5 fw-bold mb-3">Find Your Perfect Local Experience</h2>
+                        <p class="lead text-muted">Search by destination, experience type, or host preferences</p>
+                    </div>
+                    
+                    <div class="search-form">
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <div class="position-relative">
+                                    <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 search-field-icon"></i>
+                                    <input type="text" class="form-control ps-5" id="searchInput" placeholder="I want to live a local experience in...">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <button class="btn btn-search w-100" onclick="performSearch()">
+                                    <i class="bi bi-search me-2"></i>Search Experiences
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="row g-3 mt-3">
+                            <div class="col-md-4">
+                                <select class="form-select">
+                                    <option>Experience Type</option>
+                                    <option>Stay</option>
+                                    <option>Food</option>
+                                    <option>Tours</option>
+                                    <option>All Inclusive</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select">
+                                    <option>Number of Nights</option>
+                                    <option>1 Night</option>
+                                    <option>2-3 Nights</option>
+                                    <option>4-7 Nights</option>
+                                    <option>1+ Week</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select">
+                                    <option>Price Range</option>
+                                    <option>$50-100/night</option>
+                                    <option>$100-200/night</option>
+                                    <option>$200-500/night</option>
+                                    <option>$500+/night</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Experiences Section -->
+    <section id="experiences" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Popular Local Experiences</h2>
+                <p class="lead text-muted">Discover amazing experiences from our verified hosts around the world</p>
             </div>
             
-            <!-- Scroll indicator -->
-            <div class="scroll-indicator" onclick="scrollToSection('search')">
-                <div class="scroll-arrow"></div>
+            <div class="row" id="experiencesContainer">
+                <!-- Experiences will be loaded here -->
             </div>
-        </section>
-
-        <!-- Search Section -->
-        <section id="search" class="search-section">
-            <div class="container">
-                <h2 class="text-center mb-5">Find Your Perfect Trip</h2>
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <form class="search-form">
-                            <div class="row g-3">
-                                <div class="col-md-3">
-                                    <label for="destination-input" class="form-label d-flex align-items-center">
-                                        <i class="bi bi-geo-alt search-field-icon me-2"></i>
-                                        Destination
-                                    </label>
-                                    <input type="text" class="form-control" id="destination-input" placeholder="Where do you want to go?">
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="date-input" class="form-label d-flex align-items-center">
-                                        <i class="bi bi-calendar search-field-icon me-2"></i>
-                                        Departure Date
-                                    </label>
-                                    <input type="date" class="form-control" id="date-input">
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="travelers-input" class="form-label d-flex align-items-center">
-                                        <i class="bi bi-people search-field-icon me-2"></i>
-                                        Travelers
-                                    </label>
-                                    <select class="form-select" id="travelers-input">
-                                        <option value="1">1 Traveler</option>
-                                        <option value="2">2 Travelers</option>
-                                        <option value="3">3 Travelers</option>
-                                        <option value="4">4+ Travelers</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3 d-flex align-items-end">
-                                    <button type="submit" class="btn btn-primary-custom w-100">
-                                        <i class="bi bi-search me-2"></i>
-                                        Search
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+            
+            <div class="loading" id="loadingExperiences">
+                <div class="spinner"></div>
+                <p>Loading amazing experiences...</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Popular Destinations Section -->
-        <section id="destinations" class="py-5">
-            <div class="container">
-                <div class="text-center mb-5">
-                    <h2 class="mb-3">Popular Destinations</h2>
-                    <p class="lead text-muted">Discover the world's most captivating places</p>
-                </div>
-                
-                <div class="row" id="destinations-grid">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="destination-card">
-                            <div class="destination-image">
-                                <i class="bi bi-building" style="font-size: 3rem;"></i>
-                                <div class="destination-overlay">
-                                    <button class="quick-view-btn">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="destination-content">
-                                <h3 class="destination-title">Paris, France</h3>
-                                <p class="destination-subtitle">City of Love & Lights</p>
-                                <div class="mb-3">
-                                    <span class="meta-item">
-                                        <i class="bi bi-star-fill"></i>
-                                        4.9
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="bi bi-clock"></i>
-                                        7 days
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="bi bi-people"></i>
-                                        2-8 people
-                                    </span>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="price">$1,299</span>
-                                    <button class="btn btn-outline-primary-custom btn-sm">View Details</button>
-                                </div>
-                            </div>
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Why Choose Homeigo?</h2>
+                <p class="lead text-muted">Experience authentic local culture with verified hosts and transparent pricing</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-shield-check"></i>
                         </div>
-                    </div>
-                    
-                    <div class="col-lg-4 col-md-6">
-                        <div class="destination-card">
-                            <div class="destination-image">
-                                <i class="bi bi-water" style="font-size: 3rem;"></i>
-                                <div class="destination-overlay">
-                                    <button class="quick-view-btn">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="destination-content">
-                                <h3 class="destination-title">Maldives</h3>
-                                <p class="destination-subtitle">Tropical Paradise</p>
-                                <div class="mb-3">
-                                    <span class="meta-item">
-                                        <i class="bi bi-star-fill"></i>
-                                        4.8
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="bi bi-clock"></i>
-                                        5 days
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="bi bi-people"></i>
-                                        2-4 people
-                                    </span>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="price">$2,499</span>
-                                    <button class="btn btn-outline-primary-custom btn-sm">View Details</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-4 col-md-6">
-                        <div class="destination-card">
-                            <div class="destination-image">
-                                <i class="bi bi-mountain" style="font-size: 3rem;"></i>
-                                <div class="destination-overlay">
-                                    <button class="quick-view-btn">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="destination-content">
-                                <h3 class="destination-title">Swiss Alps</h3>
-                                <p class="destination-subtitle">Mountain Adventure</p>
-                                <div class="mb-3">
-                                    <span class="meta-item">
-                                        <i class="bi bi-star-fill"></i>
-                                        4.7
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="bi bi-clock"></i>
-                                        10 days
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="bi bi-people"></i>
-                                        4-12 people
-                                    </span>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="price">$1,899</span>
-                                    <button class="btn btn-outline-primary-custom btn-sm">View Details</button>
-                                </div>
-                            </div>
-                        </div>
+                        <h3 class="feature-title">Verified Hosts</h3>
+                        <p class="feature-description">All our hosts are verified with background checks and authentic reviews from real travelers.</p>
                     </div>
                 </div>
                 
-                <div class="text-center mt-4">
-                    <button class="btn btn-outline-primary-custom" id="load-more-destinations">
-                        Load More Destinations
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tours Section -->
-        <section id="tours" class="py-5 bg-light">
-            <div class="container">
-                <div class="text-center mb-5">
-                    <h2 class="mb-3">Featured Tours</h2>
-                    <p class="lead text-muted">Carefully curated experiences for every traveler</p>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-cup-hot"></i>
+                        </div>
+                        <h3 class="feature-title">Authentic Food</h3>
+                        <p class="feature-description">Taste real local cuisine prepared by your hosts using traditional family recipes.</p>
+                    </div>
                 </div>
                 
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="tour-card">
-                            <div class="tour-image">
-                                <i class="bi bi-camera" style="font-size: 2rem;"></i>
-                                Photography Tour
-                            </div>
-                            <div class="tour-content">
-                                <h3 class="tour-title">European Photography Adventure</h3>
-                                <p class="tour-description">
-                                    Capture stunning landscapes and cityscapes across Europe with professional guidance
-                                </p>
-                                <div class="tour-features">
-                                    <div class="feature-item">
-                                        <i class="bi bi-check-circle feature-icon"></i>
-                                        Professional photography guide
-                                    </div>
-                                    <div class="feature-item">
-                                        <i class="bi bi-check-circle feature-icon"></i>
-                                        Equipment provided
-                                    </div>
-                                    <div class="feature-item">
-                                        <i class="bi bi-check-circle feature-icon"></i>
-                                        Photo editing workshop
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="price">$2,199</span>
-                                    <button class="btn btn-primary-custom btn-sm">Book Tour</button>
-                                </div>
-                            </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-gem"></i>
                         </div>
+                        <h3 class="feature-title">Hidden Gems</h3>
+                        <p class="feature-description">Discover secret spots and local attractions that only locals know about.</p>
                     </div>
-                    
-                    <div class="col-lg-6">
-                        <div class="tour-card">
-                            <div class="tour-image">
-                                <i class="bi bi-heart" style="font-size: 2rem;"></i>
-                                Cultural Tour
-                            </div>
-                            <div class="tour-content">
-                                <h3 class="tour-title">Asian Cultural Immersion</h3>
-                                <p class="tour-description">
-                                    Experience authentic local culture, traditions, and cuisine across Asia
-                                </p>
-                                <div class="tour-features">
-                                    <div class="feature-item">
-                                        <i class="bi bi-check-circle feature-icon"></i>
-                                        Local cultural guides
-                                    </div>
-                                    <div class="feature-item">
-                                        <i class="bi bi-check-circle feature-icon"></i>
-                                        Traditional cooking classes
-                                    </div>
-                                    <div class="feature-item">
-                                        <i class="bi bi-check-circle feature-icon"></i>
-                                        Temple and heritage visits
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="price">$1,799</span>
-                                    <button class="btn btn-primary-custom btn-sm">Book Tour</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about-section py-5">
-            <div class="container">
-                <div class="text-center mb-5">
-                    <h2 class="mb-3">Why Choose WanderLust?</h2>
-                    <p class="lead text-muted">We make your travel dreams come true with exceptional service</p>
                 </div>
                 
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="about-card">
-                            <div class="about-icon">
-                                <i class="bi bi-shield-check"></i>
-                            </div>
-                            <h4>Safe & Secure</h4>
-                            <p>Your safety is our priority. All our tours are carefully planned with safety measures in place.</p>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-piggy-bank"></i>
                         </div>
+                        <h3 class="feature-title">Save Money</h3>
+                        <p class="feature-description">Save up to 60% compared to hotels while getting a more authentic experience.</p>
                     </div>
-                    
-                    <div class="col-lg-4">
-                        <div class="about-card">
-                            <div class="about-icon">
-                                <i class="bi bi-people"></i>
-                            </div>
-                            <h4>Expert Guides</h4>
-                            <p>Our experienced local guides provide authentic insights and unforgettable experiences.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-4">
-                        <div class="about-card">
-                            <div class="about-icon">
-                                <i class="bi bi-heart"></i>
-                            </div>
-                            <h4>Personalized Service</h4>
-                            <p>Every trip is tailored to your preferences for a truly personalized travel experience.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-5">
-            <div class="container">
-                <div class="text-center mb-5">
-                    <h2 class="mb-3">Get In Touch</h2>
-                    <p class="lead text-muted">Ready to start your adventure? Contact us today!</p>
                 </div>
                 
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <form class="contact-form">
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label for="name" class="form-label">Full Name</label>
-                                    <input type="text" class="form-control" id="name" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="email" class="form-label">Email Address</label>
-                                    <input type="email" class="form-control" id="email" required>
-                                </div>
-                                <div class="col-12">
-                                    <label for="subject" class="form-label">Subject</label>
-                                    <input type="text" class="form-control" id="subject" required>
-                                </div>
-                                <div class="col-12">
-                                    <label for="message" class="form-label">Message</label>
-                                    <textarea class="form-control" id="message" rows="5" required></textarea>
-                                </div>
-                                <div class="col-12 text-center">
-                                    <button type="submit" class="btn btn-primary-custom btn-lg">
-                                        <i class="bi bi-send me-2"></i>
-                                        Send Message
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-credit-card"></i>
+                        </div>
+                        <h3 class="feature-title">Secure Payment</h3>
+                        <p class="feature-description">Multiple payment options including Visa, PayPal, Apple Pay, and Crypto.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-headset"></i>
+                        </div>
+                        <h3 class="feature-title">24/7 Support</h3>
+                        <p class="feature-description">Round-the-clock customer support to ensure your experience is perfect.</p>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">How It Works</h2>
+                <p class="lead text-muted">Simple steps to your authentic local experience</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Search & Discover</h3>
+                        <p class="step-description">Search for local experiences by destination, type, or host preferences.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Choose Your Host</h3>
+                        <p class="step-description">Browse verified host profiles, watch intro videos, and read authentic reviews.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Book & Pay</h3>
+                        <p class="step-description">Select your dates, customize your package, and pay securely online.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Live the Experience</h3>
+                        <p class="step-description">Connect with your host and enjoy an authentic local experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-item">
+                        <div class="stats-number" data-count="10000">0</div>
+                        <div class="stats-label">Happy Travelers</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-item">
+                        <div class="stats-number" data-count="2500">0</div>
+                        <div class="stats-label">Verified Hosts</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-item">
+                        <div class="stats-number" data-count="150">0</div>
+                        <div class="stats-label">Countries</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-item">
+                        <div class="stats-number" data-count="98">0</div>
+                        <div class="stats-label">% Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer id="contact" class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
+            <div class="row g-4">
+                <div class="col-lg-4">
                     <div class="footer-section">
-                        <h5>WanderLust</h5>
-                        <p>Discover breathtaking destinations and create unforgettable memories with our curated travel experiences worldwide.</p>
+                        <h5><i class="bi bi-house-heart me-2"></i>Homeigo</h5>
+                        <p class="text-muted">Connecting travelers with authentic local experiences worldwide. Live like a local, not a tourist.</p>
                         <div class="mt-3">
-                            <a href="#" class="social-icon">
-                                <i class="bi bi-facebook"></i>
-                            </a>
-                            <a href="#" class="social-icon">
-                                <i class="bi bi-twitter"></i>
-                            </a>
-                            <a href="#" class="social-icon">
-                                <i class="bi bi-instagram"></i>
-                            </a>
-                            <a href="#" class="social-icon">
-                                <i class="bi bi-youtube"></i>
-                            </a>
+                            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-lg-2 col-md-6 mb-4">
+                <div class="col-lg-2 col-md-6">
                     <div class="footer-section">
-                        <h5>Quick Links</h5>
+                        <h5>Company</h5>
                         <ul class="list-unstyled">
-                            <li><a href="#home" class="footer-link">Home</a></li>
-                            <li><a href="#destinations" class="footer-link">Destinations</a></li>
-                            <li><a href="#tours" class="footer-link">Tours</a></li>
-                            <li><a href="#about" class="footer-link">About</a></li>
-                            <li><a href="#contact" class="footer-link">Contact</a></li>
+                            <li><a href="#" class="footer-link">About Us</a></li>
+                            <li><a href="#" class="footer-link">Careers</a></li>
+                            <li><a href="#" class="footer-link">Press</a></li>
+                            <li><a href="#" class="footer-link">Blog</a></li>
                         </ul>
                     </div>
                 </div>
                 
-                <div class="col-lg-3 col-md-6 mb-4">
+                <div class="col-lg-2 col-md-6">
                     <div class="footer-section">
-                        <h5>Destinations</h5>
+                        <h5>Support</h5>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="footer-link">Europe</a></li>
-                            <li><a href="#" class="footer-link">Asia</a></li>
-                            <li><a href="#" class="footer-link">Americas</a></li>
-                            <li><a href="#" class="footer-link">Africa</a></li>
-                            <li><a href="#" class="footer-link">Oceania</a></li>
+                            <li><a href="#" class="footer-link">Help Center</a></li>
+                            <li><a href="#" class="footer-link">Safety</a></li>
+                            <li><a href="#" class="footer-link">Cancellation</a></li>
+                            <li><a href="#" class="footer-link">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
                 
-                <div class="col-lg-3 col-md-6 mb-4">
+                <div class="col-lg-2 col-md-6">
                     <div class="footer-section">
-                        <h5>Contact Info</h5>
+                        <h5>Hosting</h5>
                         <ul class="list-unstyled">
-                            <li class="mb-2">
-                                <i class="bi bi-geo-alt me-2"></i>
-                                123 Travel Street, Adventure City
-                            </li>
-                            <li class="mb-2">
-                                <i class="bi bi-telephone me-2"></i>
-                                +1 (555) 123-4567
-                            </li>
-                            <li class="mb-2">
-                                <i class="bi bi-envelope me-2"></i>
-                                info@wanderlust.com
-                            </li>
+                            <li><a href="#" class="footer-link" onclick="showHostDashboard()">Become a Host</a></li>
+                            <li><a href="#" class="footer-link">Host Resources</a></li>
+                            <li><a href="#" class="footer-link">Community</a></li>
+                            <li><a href="#" class="footer-link">Host Insurance</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Legal</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                            <li><a href="#" class="footer-link">Terms of Service</a></li>
+                            <li><a href="#" class="footer-link">Cookie Policy</a></li>
+                            <li><a href="#" class="footer-link">Sitemap</a></li>
                         </ul>
                     </div>
                 </div>
@@ -557,12 +1074,15 @@
             
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0">&copy; 2024 WanderLust. All rights reserved.</p>
+                    <p class="mb-0">&copy; 2024 Homeigo. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <a href="#" class="footer-link me-3">Privacy Policy</a>
-                    <a href="#" class="footer-link me-3">Terms of Service</a>
-                    <a href="#" class="footer-link">Cookie Policy</a>
+                    <p class="mb-0">
+                        <i class="bi bi-credit-card me-2"></i>
+                        <i class="bi bi-paypal me-2"></i>
+                        <i class="bi bi-apple me-2"></i>
+                        <i class="bi bi-currency-bitcoin"></i>
+                    </p>
                 </div>
             </div>
         </div>
@@ -570,7 +1090,320 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="./home.js"></script>
+    
+    <script src="./home.js">
+            const experiences = [
+            {
+                id: 1,
+                title: "Live with Mostafa in Cairo",
+                location: "Cairo, Egypt",
+                price: 89,
+                rating: 4.9,
+                reviews: 127,
+                type: "stay",
+                description: "3 Days + Local Food + Old Cairo Tour",
+                verified: true,
+                image: "cairo"
+            },
+            {
+                id: 2,
+                title: "Traditional Cooking with Maria",
+                location: "Tuscany, Italy",
+                price: 65,
+                rating: 4.8,
+                reviews: 89,
+                type: "food",
+                description: "Learn authentic Italian recipes",
+                verified: true,
+                image: "tuscany"
+            },
+            {
+                id: 3,
+                title: "Mountain Adventure with Raj",
+                location: "Himalayas, Nepal",
+                price: 120,
+                rating: 4.9,
+                reviews: 156,
+                type: "tour",
+                description: "5 Days trekking with local guide",
+                verified: true,
+                image: "nepal"
+            },
+            {
+                id: 4,
+                title: "Beach Life with Carlos",
+                location: "Tulum, Mexico",
+                price: 75,
+                rating: 4.7,
+                reviews: 203,
+                type: "stay",
+                description: "Beachfront stay + Cenote tours",
+                verified: true,
+                image: "tulum"
+            },
+            {
+                id: 5,
+                title: "Safari Experience with Amara",
+                location: "Serengeti, Tanzania",
+                price: 200,
+                rating: 5.0,
+                reviews: 78,
+                type: "tour",
+                description: "3 Days wildlife safari adventure",
+                verified: true,
+                image: "safari"
+            },
+            {
+                id: 6,
+                title: "Temple Stay with Kenji",
+                location: "Kyoto, Japan",
+                price: 95,
+                rating: 4.8,
+                reviews: 134,
+                type: "stay",
+                description: "Traditional temple experience",
+                verified: true,
+                image: "kyoto"
+            }
+        ];
+
+        // Load experiences on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadExperiences();
+            animateStats();
+            initializeScrollAnimations();
+        });
+
+        // Load and display experiences
+        function loadExperiences() {
+            const container = document.getElementById('experiencesContainer');
+            const loading = document.getElementById('loadingExperiences');
+            
+            loading.style.display = 'block';
+            
+            setTimeout(() => {
+                loading.style.display = 'none';
+                
+                experiences.forEach(experience => {
+                    const experienceCard = createExperienceCard(experience);
+                    container.appendChild(experienceCard);
+                });
+            }, 1500);
+        }
+
+        // Create experience card element
+        function createExperienceCard(experience) {
+            const col = document.createElement('div');
+            col.className = 'col-lg-4 col-md-6';
+            
+            const iconMap = {
+                'stay': 'bi-house-door',
+                'food': 'bi-cup-hot',
+                'tour': 'bi-compass'
+            };
+            
+            col.innerHTML = `
+                <div class="experience-card" onclick="viewExperience(${experience.id})">
+                    <div class="experience-image">
+                        <i class="bi ${iconMap[experience.type]}" style="font-size: 3rem;"></i>
+                        ${experience.verified ? '<div class="verified-badge"><i class="bi bi-patch-check-fill me-1"></i>Verified Host</div>' : ''}
+                        <div class="experience-overlay">
+                            <button class="quick-view-btn">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">${experience.title}</h3>
+                        <p class="experience-subtitle">
+                            <i class="bi bi-geo-alt me-1"></i>${experience.location}
+                        </p>
+                        <p class="text-muted mb-3">${experience.description}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="price">$${experience.price}/night</div>
+                            <div class="text-warning">
+                                ${generateStars(experience.rating)}
+                                <small class="text-muted ms-1">(${experience.reviews})</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            return col;
+        }
+
+        // Generate star rating
+        function generateStars(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 !== 0;
+            let stars = '';
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="bi bi-star-fill"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i class="bi bi-star-half"></i>';
+            }
+            
+            return stars;
+        }
+
+        // Search functionality
+        function performSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const query = searchInput.value.trim();
+            
+            if (query) {
+                // Show loading state
+                const searchBtn = document.querySelector('.btn-search');
+                const originalText = searchBtn.innerHTML;
+                searchBtn.innerHTML = '<i class="bi bi-arrow-clockwise spin me-2"></i>Searching...';
+                searchBtn.disabled = true;
+                
+                // Simulate search delay
+                setTimeout(() => {
+                    searchBtn.innerHTML = originalText;
+                    searchBtn.disabled = false;
+                    
+                    // Scroll to experiences section
+                    document.getElementById('experiences').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Show search results notification
+                    showNotification(`Found ${experiences.length} experiences for "${query}"`, 'success');
+                }, 2000);
+            } else {
+                showNotification('Please enter a destination to search', 'warning');
+            }
+        }
+
+        // Scroll to search section
+        function scrollToSearch() {
+            document.getElementById('search').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // View experience details
+        function viewExperience(id) {
+            const experience = experiences.find(exp => exp.id === id);
+            if (experience) {
+                showNotification(`Opening details for "${experience.title}"`, 'info');
+                // In a real app, this would navigate to the experience details page
+            }
+        }
+
+        // Show host dashboard
+        function showHostDashboard() {
+            showNotification('Redirecting to Host Dashboard...', 'info');
+            // In a real app, this would navigate to the host dashboard
+        }
+
+        // Animate statistics counters
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number, .stats-number');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.getAttribute('data-count'));
+                        animateCounter(entry.target, target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            stats.forEach(stat => observer.observe(stat));
+        }
+
+        // Counter animation
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current).toLocaleString();
+            }, 20);
+        }
+
+        // Initialize scroll animations
+        function initializeScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.feature-card, .experience-card, .step-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type} position-fixed`;
+            notification.style.cssText = 'top: 100px; right: 20px; z-index: 9999; min-width: 300px;';
+            notification.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-info-circle me-2"></i>
+                    ${message}
+                    <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        // Handle search on Enter key
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+              });
+    </script>
 </body>
 </html>
-

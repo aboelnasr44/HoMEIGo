@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Become a Homeigo Host - Share your local culture and earn money by hosting authentic experiences">
+    <meta name="keywords" content="become host, homeigo hosting, local experiences, earn money hosting">
+    <meta name="theme-color" content="#954C2E">
+    <title>Become a Host - Homeigo</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+
+    <style>
+        :root {
+            --color-primary: #954C2E;
+            --color-primary-light: #FDFAF6;
+            --color-primary-dark: #773D25;
+            --color-success: #10b981;
+            --color-warning: #f59e0b;
+            --color-danger: #ef4444;
+            --color-info: #3b82f6;
+            --transition-base: 0.3s ease;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", Arial, sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f8f9fa;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-base);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary) !important;
+        }
+
+        .logo-icon {
+            font-size: 1.5rem;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: #333 !important;
+            position: relative;
+            transition: color var(--transition-base);
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--color-primary) !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: width var(--transition-base);
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+
+        .btn-primary-custom {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+            color: white;
+            transition: all var(--transition-base);
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-weight: 500;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary);
+            color: white;
+        }
+
+        .btn-outline-primary-custom {
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+            transition: all var(--transition-base);
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-weight: 500;
+            background-color: transparent;
+        }
+
+        .btn-outline-primary-custom:hover {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            background: var(--color-primary-light);
+            padding-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .highlight {
+            color: var(--color-primary);
+            position: relative;
+        }
+
+        .highlight::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--color-primary);
+            border-radius: 2px;
+        }
+
+        /* Earnings Calculator */
+        .earnings-calculator {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-xl);
+            border: 2px solid var(--color-primary);
+        }
+
+        .calculator-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .calculator-input {
+            margin-bottom: 1rem;
+        }
+
+        .calculator-input label {
+            font-weight: 500;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .calculator-input input,
+        .calculator-input select {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 12px 15px;
+            transition: all var(--transition-base);
+        }
+
+        .calculator-input input:focus,
+        .calculator-input select:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 0.2rem rgba(149, 76, 46, 0.25);
+        }
+
+        .earnings-result {
+            background: var(--color-primary);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .earnings-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .earnings-period {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--color-primary);
+            color: white;
+            padding: 5rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .benefit-card {
+            background: var(--color-primary-light);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            margin-bottom: 2rem;
+            transition: all var(--transition-base);
+            border: 2px solid transparent;
+            height: 100%;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .benefit-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .benefit-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* How It Works Section */
+        .how-it-works-section {
+            padding: 5rem 0;
+            background: #f8f9fa;
+        }
+
+        .step-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            transition: all var(--transition-base);
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--color-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-connector {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background: var(--color-primary);
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .step-card:last-child .step-connector {
+            display: none;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .step-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Success Stories Section */
+        .success-stories-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .story-card {
+            background: var(--color-primary-light);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .story-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .story-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+
+        .story-info h4 {
+            color: var(--color-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .story-location {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .story-quote {
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .story-earnings {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--color-primary);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-cta {
+            background: white;
+            color: var(--color-primary);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all var(--transition-base);
+        }
+
+        .btn-cta:hover {
+            background: var(--color-primary-light);
+            color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .text-muted {
+            color: white !important;
+        }
+
+        .footer-section h5 {
+            color: var(--color-primary-light);
+            margin-bottom: 1rem;
+        }
+
+        .footer-link {
+            color: #ccc;
+            text-decoration: none;
+            transition: color var(--transition-base);
+        }
+
+        .footer-link:hover {
+            color: var(--color-primary-light);
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--color-primary);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            margin-right: 0.5rem;
+            transition: all var(--transition-base);
+        }
+
+        .social-icon:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .earnings-calculator {
+                padding: 1.5rem;
+            }
+
+            .earnings-amount {
+                font-size: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .step-connector {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .earnings-calculator {
+                padding: 1rem;
+            }
+
+            .benefit-card,
+            .step-card,
+            .story-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Loading States */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--color-primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="logo-icon me-2">🏠</span>
+                Homeigo
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="search.html">Experiences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="become-host.html">Become a Host</a>
+                    </li>
+                </ul>
+                <div class="d-flex ms-3">
+                    <a href="login.html" class="btn btn-outline-primary-custom me-2">Sign In</a>
+                    <a href="signup.html" class="btn btn-primary-custom">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="hero-title slide-in-left">
+                        Share Your Culture,<br>
+                        <span class="highlight">Earn Money</span>
+                    </h1>
+                    <p class="hero-description slide-in-left">
+                        Become a Homeigo host and share your local culture with travelers from around the world. 
+                        Create authentic experiences, build meaningful connections, and earn extra income.
+                    </p>
+                    
+                    <div class="d-flex flex-wrap gap-3 mb-4 slide-in-left">
+                        <button class="btn btn-primary-custom btn-lg" onclick="scrollToCalculator()">
+                            <i class="bi bi-calculator me-2"></i>Calculate Earnings
+                        </button>
+                        <button class="btn btn-outline-primary-custom btn-lg" onclick="scrollToSteps()">
+                            <i class="bi bi-info-circle me-2"></i>How It Works
+                        </button>
+                    </div>
+                    
+                    <div class="row mt-5 slide-in-left">
+                        <div class="col-4">
+                            <div class="text-center">
+                                <span class="stat-number text-primary" data-count="2500">0</span>
+                                <span class="stat-label d-block text-muted">Active Hosts</span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-center">
+                                <span class="stat-number text-primary" data-count="150">0</span>
+                                <span class="stat-label d-block text-muted">Countries</span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-center">
+                                <span class="stat-number text-primary" data-count="98">0</span>
+                                <span class="stat-label d-block text-muted">% Satisfaction</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="earnings-calculator slide-in-right" id="earningsCalculator">
+                        <h3 class="calculator-title">
+                            <i class="bi bi-calculator me-2"></i>
+                            Earnings Calculator
+                        </h3>
+                        
+                        <div class="calculator-input">
+                            <label for="experienceType">Experience Type</label>
+                            <select class="form-select" id="experienceType">
+                                <option value="stay">Home Stay (per night)</option>
+                                <option value="food">Food Experience (per person)</option>
+                                <option value="tour">Tour/Activity (per person)</option>
+                                <option value="workshop">Workshop (per person)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="calculator-input">
+                            <label for="pricePerNight">Price per Night/Person ($)</label>
+                            <input type="number" class="form-control" id="pricePerNight" value="75" min="10" max="500">
+                        </div>
+                        
+                        <div class="calculator-input">
+                            <label for="nightsPerMonth">Bookings per Month</label>
+                            <input type="number" class="form-control" id="nightsPerMonth" value="15" min="1" max="30">
+                        </div>
+                        
+                        <div class="calculator-input">
+                            <label for="occupancyRate">Occupancy Rate (%)</label>
+                            <input type="range" class="form-range" id="occupancyRate" value="70" min="30" max="100">
+                            <div class="d-flex justify-content-between">
+                                <small>30%</small>
+                                <small id="occupancyValue">70%</small>
+                                <small>100%</small>
+                            </div>
+                        </div>
+                        
+                        <div class="earnings-result">
+                            <div class="earnings-amount" id="monthlyEarnings">$787</div>
+                            <div class="earnings-period">Estimated Monthly Earnings</div>
+                            <small class="d-block mt-2 opacity-75">
+                                *After Homeigo's 15% service fee
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Join Our Growing Community</h2>
+                <p class="lead opacity-90">Thousands of hosts worldwide are already earning with Homeigo</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="2500">0</span>
+                    <div class="stat-label">Active Hosts</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="50000">0</span>
+                    <div class="stat-label">Happy Guests</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="150">0</span>
+                    <div class="stat-label">Countries</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="1200">$0</span>
+                    <div class="stat-label">Avg Monthly Earnings</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Why Host with Homeigo?</h2>
+                <p class="lead text-muted">Discover the benefits of sharing your culture and space</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="bi bi-currency-dollar"></i>
+                        </div>
+                        <h3 class="benefit-title">Earn Extra Income</h3>
+                        <p class="benefit-description">
+                            Generate substantial income by sharing your space and local knowledge. 
+                            Our hosts earn an average of $1,200 per month.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h3 class="benefit-title">Meet Amazing People</h3>
+                        <p class="benefit-description">
+                            Connect with travelers from around the world and build lasting friendships 
+                            while sharing your local culture and traditions.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+                        <h3 class="benefit-title">Flexible Schedule</h3>
+                        <p class="benefit-description">
+                            Host on your own terms. Set your availability, prices, and house rules. 
+                            You're in complete control of your hosting experience.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h3 class="benefit-title">Host Protection</h3>
+                        <p class="benefit-description">
+                            Comprehensive insurance coverage, verified guest profiles, and 24/7 support 
+                            ensure your safety and peace of mind.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                        <h3 class="benefit-title">Marketing Support</h3>
+                        <p class="benefit-description">
+                            Professional photography, listing optimization, and marketing tools 
+                            to help you attract more guests and maximize bookings.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="bi bi-headset"></i>
+                        </div>
+                        <h3 class="benefit-title">24/7 Support</h3>
+                        <p class="benefit-description">
+                            Round-the-clock customer support, host community forums, and resources 
+                            to help you succeed as a Homeigo host.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">How to Become a Host</h2>
+                <p class="lead text-muted">Start hosting in just a few simple steps</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-connector"></div>
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Sign Up</h3>
+                        <p class="step-description">
+                            Create your host profile with basic information about yourself and your space.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-connector"></div>
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Create Listing</h3>
+                        <p class="step-description">
+                            Add photos, describe your experience, set your prices and availability.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-connector"></div>
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Get Verified</h3>
+                        <p class="step-description">
+                            Complete our verification process to build trust with potential guests.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Start Hosting</h3>
+                        <p class="step-description">
+                            Welcome your first guests and start earning money while sharing your culture.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section class="success-stories-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Host Success Stories</h2>
+                <p class="lead text-muted">Hear from our successful hosts around the world</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">MH</div>
+                            <div class="story-info">
+                                <h4>Mostafa Hassan</h4>
+                                <div class="story-location">Cairo, Egypt</div>
+                            </div>
+                        </div>
+                        <p class="story-quote">
+                            "Hosting with Homeigo has been incredible! I've met amazing people from all over the world 
+                            and earned enough to support my family. The platform makes everything so easy."
+                        </p>
+                        <div class="story-earnings">Earns $1,800/month</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">MR</div>
+                            <div class="story-info">
+                                <h4>Maria Rossi</h4>
+                                <div class="story-location">Tuscany, Italy</div>
+                            </div>
+                        </div>
+                        <p class="story-quote">
+                            "Teaching cooking classes through Homeigo has been a dream come true. I love sharing 
+                            my grandmother's recipes and seeing guests' faces light up when they taste authentic Italian food."
+                        </p>
+                        <div class="story-earnings">Earns $2,200/month</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">RS</div>
+                            <div class="story-info">
+                                <h4>Raj Sharma</h4>
+                                <div class="story-location">Himalayas, Nepal</div>
+                            </div>
+                        </div>
+                        <p class="story-quote">
+                            "As a mountain guide, Homeigo has helped me reach travelers who want authentic experiences. 
+                            I've been able to expand my business and share the beauty of Nepal with the world."
+                        </p>
+                        <div class="story-earnings">Earns $1,500/month</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="cta-title">Ready to Start Hosting?</h2>
+                    <p class="cta-description">
+                        Join thousands of hosts worldwide and start earning money by sharing your culture and space.
+                    </p>
+                    <button class="btn btn-cta btn-lg" onclick="startHosting()">
+                        <i class="bi bi-rocket-takeoff me-2"></i>
+                        Start Hosting Today
+                    </button>
+                    <div class="mt-4">
+                        <small class="opacity-75">
+                            <i class="bi bi-shield-check me-1"></i>
+                            Free to list • No upfront costs • 24/7 support
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h5><i class="bi bi-house-heart me-2"></i>Homeigo</h5>
+                        <p class="text-muted">Connecting travelers with authentic local experiences worldwide. Live like a local, not a tourist.</p>
+                        <div class="mt-3">
+                            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Company</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">About Us</a></li>
+                            <li><a href="#" class="footer-link">Careers</a></li>
+                            <li><a href="#" class="footer-link">Press</a></li>
+                            <li><a href="#" class="footer-link">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Support</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Help Center</a></li>
+                            <li><a href="#" class="footer-link">Safety</a></li>
+                            <li><a href="#" class="footer-link">Cancellation</a></li>
+                            <li><a href="#" class="footer-link">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Hosting</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Become a Host</a></li>
+                            <li><a href="#" class="footer-link">Host Resources</a></li>
+                            <li><a href="#" class="footer-link">Community</a></li>
+                            <li><a href="#" class="footer-link">Host Insurance</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Legal</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                            <li><a href="#" class="footer-link">Terms of Service</a></li>
+                            <li><a href="#" class="footer-link">Cookie Policy</a></li>
+                            <li><a href="#" class="footer-link">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Homeigo. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        <i class="bi bi-credit-card me-2"></i>
+                        <i class="bi bi-paypal me-2"></i>
+                        <i class="bi bi-apple me-2"></i>
+                        <i class="bi bi-currency-bitcoin"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCalculator();
+            animateStats();
+            initializeScrollAnimations();
+        });
+
+        // Earnings Calculator
+        function initializeCalculator() {
+            const experienceType = document.getElementById('experienceType');
+            const pricePerNight = document.getElementById('pricePerNight');
+            const nightsPerMonth = document.getElementById('nightsPerMonth');
+            const occupancyRate = document.getElementById('occupancyRate');
+            const occupancyValue = document.getElementById('occupancyValue');
+            const monthlyEarnings = document.getElementById('monthlyEarnings');
+
+            // Update occupancy display
+            occupancyRate.addEventListener('input', function() {
+                occupancyValue.textContent = this.value + '%';
+                calculateEarnings();
+            });
+
+            // Calculate earnings on input change
+            [experienceType, pricePerNight, nightsPerMonth, occupancyRate].forEach(input => {
+                input.addEventListener('input', calculateEarnings);
+            });
+
+            function calculateEarnings() {
+                const price = parseFloat(pricePerNight.value) || 0;
+                const nights = parseFloat(nightsPerMonth.value) || 0;
+                const occupancy = parseFloat(occupancyRate.value) || 0;
+                
+                const grossEarnings = price * nights * (occupancy / 100);
+                const netEarnings = grossEarnings * 0.85; // After 15% service fee
+                
+                monthlyEarnings.textContent = '$' + Math.round(netEarnings).toLocaleString();
+                
+                // Add animation effect
+                monthlyEarnings.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    monthlyEarnings.style.transform = 'scale(1)';
+                }, 200);
+            }
+
+            // Initial calculation
+            calculateEarnings();
+        }
+
+        // Animate statistics
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number[data-count]');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.getAttribute('data-count'));
+                        const isDollar = entry.target.textContent.includes('$');
+                        animateCounter(entry.target, target, isDollar);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            stats.forEach(stat => observer.observe(stat));
+        }
+
+        // Counter animation
+        function animateCounter(element, target, isDollar = false) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                const value = Math.floor(current).toLocaleString();
+                element.textContent = isDollar ? '$' + value : value;
+            }, 20);
+        }
+
+        // Initialize scroll animations
+        function initializeScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.benefit-card, .step-card, .story-card').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Scroll functions
+        function scrollToCalculator() {
+            document.getElementById('earningsCalculator').scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        function scrollToSteps() {
+            document.getElementById('how-it-works').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Start hosting function
+        function startHosting() {
+            showNotification('Redirecting to host registration...', 'success');
+            setTimeout(() => {
+                // In a real app, this would redirect to the registration page
+                window.location.href = 'host-registration.html';
+            }, 1500);
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type} position-fixed`;
+            notification.style.cssText = 'top: 100px; right: 20px; z-index: 9999; min-width: 300px;';
+            notification.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-${type === 'success' ? 'check-circle' : 'info-circle'} me-2"></i>
+                    ${message}
+                    <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add interactive effects to cards
+        document.querySelectorAll('.benefit-card, .step-card, .story-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Calculator input validation
+        document.getElementById('pricePerNight').addEventListener('input', function() {
+            if (this.value < 10) this.value = 10;
+            if (this.value > 500) this.value = 500;
+        });
+
+        document.getElementById('nightsPerMonth').addEventListener('input', function() {
+            if (this.value < 1) this.value = 1;
+            if (this.value > 30) this.value = 30;
+        });
+
+        console.log('Become a Host page initialized successfully!');
+    </script>
+</body>
+</html>

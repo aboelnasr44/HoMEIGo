@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your Homeigo Profile - Manage your local experiences and travel preferences">
+    <meta name="theme-color" content="#954C2E">
+    <title>My Profile - Homeigo</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+
+   <link rel="stylesheet" href="./profile.css">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
+
+  <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="logo-icon me-2">🏠</span>
+                Homeigo
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " href="./home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./search.html">Experiences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showHostDashboard()">Become a Host</a>
+                    </li>
+                </ul>
+                <div class="d-flex ms-3">
+                    <button class="btn btn-outline-primary-custom me-2">
+                        <a href="login.html" style="color: inherit; text-decoration: none;">Sign In</a>
+                    </button>
+                    <button class="btn btn-primary-custom">
+                        <a href="signup.html" style="color: white; text-decoration: none;">Sign Up</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Profile Header -->
+    <section class="profile-header">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="profile-avatar">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    
+                    <h1 class="profile-name">Sarah Johnson</h1>
+                    <p class="profile-title">
+                        <i class="bi bi-geo-alt me-2"></i>San Francisco, CA • Joined March 2023
+                    </p>
+                    
+                    <div class="verification-badge">
+                        <i class="bi bi-patch-check-fill"></i>
+                        Verified Traveler
+                    </div>
+                    
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="12">0</span>
+                            <span class="stat-label">Experiences</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="47">0</span>
+                            <span class="stat-label">Reviews</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="15">0</span>
+                            <span class="stat-label">Countries</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="98">0</span>
+                            <span class="stat-label">% Rating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content" class="container my-5">
+        <!-- Profile Navigation -->
+        <div class="profile-nav">
+            <ul class="nav nav-pills justify-content-center" id="profileTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="bookings-tab" data-bs-toggle="pill" data-bs-target="#bookings" type="button" role="tab">
+                        <i class="bi bi-calendar-check me-2"></i>My Bookings
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="favorites-tab" data-bs-toggle="pill" data-bs-target="#favorites" type="button" role="tab">
+                        <i class="bi bi-heart me-2"></i>Favorites
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="reviews-tab" data-bs-toggle="pill" data-bs-target="#reviews" type="button" role="tab">
+                        <i class="bi bi-star me-2"></i>Reviews
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="settings-tab" data-bs-toggle="pill" data-bs-target="#settings" type="button" role="tab">
+                        <i class="bi bi-gear me-2"></i>Settings
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="profileTabContent">
+            <!-- My Bookings Tab -->
+            <div class="tab-pane fade show active" id="bookings" role="tabpanel">
+                <div class="content-card fade-in">
+                    <h2 class="section-title">
+                        <div class="section-icon">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+                        My Bookings
+                    </h2>
+                    
+                    <div class="row" id="bookingsContainer">
+                        <!-- Bookings will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Favorites Tab -->
+            <div class="tab-pane fade" id="favorites" role="tabpanel">
+                <div class="content-card fade-in">
+                    <h2 class="section-title">
+                        <div class="section-icon">
+                            <i class="bi bi-heart"></i>
+                        </div>
+                        Favorite Experiences
+                    </h2>
+                    
+                    <div class="row" id="favoritesContainer">
+                        <!-- Favorites will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviews Tab -->
+            <div class="tab-pane fade" id="reviews" role="tabpanel">
+                <div class="content-card fade-in">
+                    <h2 class="section-title">
+                        <div class="section-icon">
+                            <i class="bi bi-star"></i>
+                        </div>
+                        My Reviews
+                    </h2>
+                    
+                    <div id="reviewsContainer">
+                        <!-- Reviews will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div class="tab-pane fade" id="settings" role="tabpanel">
+                <div class="content-card fade-in">
+                    <h2 class="section-title">
+                        <div class="section-icon">
+                            <i class="bi bi-gear"></i>
+                        </div>
+                        Account Settings
+                    </h2>
+                    
+                    <form class="settings-form">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" value="Sarah">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" value="Johnson">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" value="sarah.johnson@email.com">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" value="+1 (555) 123-4567">
+                            </div>
+                            <div class="col-12">
+                                <label for="bio" class="form-label">Bio</label>
+                                <textarea class="form-control" id="bio" rows="4" placeholder="Tell us about yourself...">Passionate traveler who loves discovering authentic local experiences. I believe the best way to understand a culture is through the eyes of locals.</textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="location" class="form-label">Location</label>
+                                <input type="text" class="form-control" id="location" value="San Francisco, CA">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="languages" class="form-label">Languages</label>
+                                <input type="text" class="form-control" id="languages" value="English, Spanish, French">
+                            </div>
+                            <div class="col-12">
+                                <h4 class="mb-3">Preferences</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="currency" class="form-label">Preferred Currency</label>
+                                <select class="form-select" id="currency">
+                                    <option value="USD" selected>USD ($)</option>
+                                    <option value="EUR">EUR (€)</option>
+                                    <option value="GBP">GBP (£)</option>
+                                    <option value="JPY">JPY (¥)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="notifications" class="form-label">Email Notifications</label>
+                                <select class="form-select" id="notifications">
+                                    <option value="all" selected>All notifications</option>
+                                    <option value="important">Important only</option>
+                                    <option value="none">None</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="newsletter" checked>
+                                    <label class="form-check-label" for="newsletter">
+                                        Subscribe to newsletter for travel tips and special offers
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="sms" checked>
+                                    <label class="form-check-label" for="sms">
+                                        Receive SMS notifications for booking updates
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary-custom me-3">
+                                    <i class="bi bi-check-circle me-2"></i>Save Changes
+                                </button>
+                                <button type="button" class="btn btn-outline-primary-custom">
+                                    <i class="bi bi-arrow-clockwise me-2"></i>Reset
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="./profile.js"></script>
+</body>
+</html>

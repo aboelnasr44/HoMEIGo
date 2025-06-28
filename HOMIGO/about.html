@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Homeigo - Learn about our mission to connect travelers with authentic local experiences worldwide">
+    <meta name="keywords" content="about homeigo, local experiences, authentic travel, company mission, team">
+    <meta name="theme-color" content="#954C2E">
+    <title>About Us - Homeigo</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+
+    <link rel="stylesheet" href="./about.css">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+   <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="logo-icon me-2">🏠</span>
+                Homeigo
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " href="./home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./search.html">Experiences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./profile.html">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showHostDashboard()">Become a Host</a>
+                    </li>
+                </ul>
+                <div class="d-flex ms-3">
+                    <button class="btn btn-outline-primary-custom me-2">
+                        <a href="login.html" style="color: inherit; text-decoration: none;">Sign In</a>
+                    </button>
+                    <button class="btn btn-primary-custom">
+                        <a href="signup.html" style="color: white; text-decoration: none;">Sign Up</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <div class="glass-container" id="heroSection">
+            <h1 class="text-center mb-4">About Homeigo</h1>
+            <p class="text-center lead">
+                We believe that the best way to experience a destination is through the eyes of locals. 
+                Homeigo connects curious travelers with authentic hosts who open their homes, share their culture, 
+                and create unforgettable memories that go beyond typical tourism.
+            </p>
+            <p class="text-center">
+                Founded in 2023, our mission is to make authentic local experiences accessible to everyone, 
+                while empowering local communities to share their unique stories and traditions with the world.
+            </p>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section" id="statsSection">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="10000">0</span>
+                    <span class="stat-label">Happy Travelers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="2500">0</span>
+                    <span class="stat-label">Verified Hosts</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="150">0</span>
+                    <span class="stat-label">Countries</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="98">0</span>
+                    <span class="stat-label">% Satisfaction</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Our Values Section -->
+        <div class="values-container" id="valuesSection">
+            <h2>Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="icon">
+                        <i class="bi bi-heart"></i>
+                    </div>
+                    <h3>Authenticity</h3>
+                    <p>We believe in genuine connections and real experiences that showcase the true essence of local culture and traditions.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <h3>Trust & Safety</h3>
+                    <p>Every host is verified and every experience is carefully curated to ensure the safety and satisfaction of our travelers.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>We foster meaningful connections between travelers and locals, building bridges across cultures and creating lasting friendships.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">
+                        <i class="bi bi-globe"></i>
+                    </div>
+                    <h3>Sustainability</h3>
+                    <p>We promote responsible travel that benefits local communities and preserves cultural heritage for future generations.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">
+                        <i class="bi bi-star"></i>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>We strive for excellence in every interaction, ensuring that both travelers and hosts have exceptional experiences.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">
+                        <i class="bi bi-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We continuously innovate to make authentic travel experiences more accessible and meaningful for everyone.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Section -->
+        <div class="glass-container">
+            <h2 class="text-center mb-4" style="color: var(--bronze); font-size: 2.2rem;">Meet Our Team</h2>
+            <p class="text-center mb-5">
+                Our diverse team of travel enthusiasts, technology experts, and cultural ambassadors work together 
+                to create the best possible experience for our community.
+            </p>
+        </div>
+
+        <div class="team-section" id="teamSection">
+            <div class="team-card">
+                <div class="avatar">👨‍💼</div>
+                <h3>Alex Rodriguez</h3>
+                <span class="role">CEO & Co-Founder</span>
+                <p>Former travel blogger with 10+ years of experience in authentic travel. Passionate about connecting cultures through meaningful experiences.</p>
+            </div>
+            <div class="team-card">
+                <div class="avatar">👩‍💻</div>
+                <h3>Sarah Chen</h3>
+                <span class="role">CTO & Co-Founder</span>
+                <p>Tech innovator with expertise in building scalable platforms. Believes technology should bring people together, not apart.</p>
+            </div>
+            <div class="team-card">
+                <div class="avatar">👨‍🎨</div>
+                <h3>Marcus Johnson</h3>
+                <span class="role">Head of Design</span>
+                <p>Award-winning designer focused on creating intuitive and beautiful user experiences that make travel planning effortless.</p>
+            </div>
+            <div class="team-card">
+                <div class="avatar">👩‍🌍</div>
+                <h3>Elena Popov</h3>
+                <span class="role">Head of Community</span>
+                <p>Cultural anthropologist who ensures our platform celebrates and respects local traditions while fostering global connections.</p>
+            </div>
+            <div class="team-card">
+                <div class="avatar">👨‍🔧</div>
+                <h3>David Kim</h3>
+                <span class="role">Head of Operations</span>
+                <p>Operations expert who ensures smooth experiences for both travelers and hosts, with a focus on safety and quality assurance.</p>
+            </div>
+            <div class="team-card">
+                <div class="avatar">👩‍📈</div>
+                <h3>Maria Santos</h3>
+                <span class="role">Head of Marketing</span>
+                <p>Marketing strategist passionate about storytelling and helping authentic local experiences reach travelers worldwide.</p>
+            </div>
+        </div>
+
+        <!-- Mission Section -->
+        <div class="glass-container" id="missionSection">
+            <h2 class="text-center mb-4" style="color: var(--bronze); font-size: 2.2rem;">Our Mission</h2>
+            <p class="text-center">
+                To transform the way people travel by creating a global community where authentic local experiences 
+                are accessible to all, fostering cultural understanding, supporting local economies, and creating 
+                memories that last a lifetime.
+            </p>
+            <div class="text-center mt-4">
+                <button class="btn btn-primary-custom btn-lg me-3" onclick="scrollToContact()">
+                    <i class="bi bi-envelope me-2"></i>Get in Touch
+                </button>
+                <button class="btn btn-outline-primary-custom btn-lg" onclick="showHostDashboard()">
+                    <i class="bi bi-house-add me-2"></i>Become a Host
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h4 style="color: var(--bronze); margin-bottom: 20px;">Stay Connected</h4>
+                    <p>Follow us on social media for travel inspiration, host stories, and community updates.</p>
+                    
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    </div>
+                    
+                    <p>&copy; 2024 Homeigo. All rights reserved. | 
+                        <a href="#" style="color: var(--bronze);">Privacy Policy</a> | 
+                        <a href="#" style="color: var(--bronze);">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loading overlay
+            setTimeout(() => {
+                document.getElementById('loadingOverlay').classList.add('hidden');
+            }, 1000);
+
+            // Initialize animations
+            initializeScrollAnimations();
+            initializeCounters();
+            initializeScrollProgress();
+            
+            // Add smooth scrolling
+            initializeSmoothScrolling();
+        });
+
+        // Scroll animations
+        function initializeScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Stagger animation for team cards
+                        if (entry.target.classList.contains('team-card') || entry.target.classList.contains('value-card')) {
+                            const cards = entry.target.parentElement.children;
+                            const index = Array.from(cards).indexOf(entry.target);
+                            entry.target.style.transitionDelay = `${index * 0.1}s`;
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Observe all animated elements
+            document.querySelectorAll('.glass-container, .team-card, .value-card, .stats-section').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Counter animations
+        function initializeCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.getAttribute('data-count'));
+                        animateCounter(entry.target, target);
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            });
+
+            counters.forEach(counter => counterObserver.observe(counter));
+        }
+
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current).toLocaleString();
+            }, 20);
+        }
+
+        // Scroll progress bar
+        function initializeScrollProgress() {
+            const progressBar = document.getElementById('scrollProgress');
+            
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.body.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                progressBar.style.width = scrollPercent + '%';
+            });
+        }
+
+        // Smooth scrolling
+        function initializeSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Utility functions
+        function scrollToContact() {
+            document.getElementById('contact').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        function showHostDashboard() {
+            showNotification('Redirecting to Host Dashboard...', 'info');
+            // In a real app, this would navigate to the host dashboard
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type} position-fixed`;
+            notification.style.cssText = 'top: 100px; right: 20px; z-index: 9999; min-width: 300px;';
+            notification.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-info-circle me-2"></i>
+                    ${message}
+                    <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroSection = document.getElementById('heroSection');
+            if (heroSection) {
+                heroSection.style.transform = `translateY(${scrolled * 0.1}px)`;
+            }
+        });
+
+        // Add hover effects to team cards
+        document.querySelectorAll('.team-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                // Close any open notifications
+                document.querySelectorAll('.alert').forEach(alert => alert.remove());
+            }
+        });
+
+        // Performance optimization - lazy load images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        console.log('About page initialized successfully!');
+    </script>
+</body>
+</html>
