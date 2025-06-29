@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - Your Platform</title>
+    <title>Sign Up - Homeigo</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,820 +14,29 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Custom CSS -->
-    <link href="./signup.css" rel="stylesheet">
-    <style>
-        /* ===== COLOR VARIABLES ===== */
-:root {
-  /* Your Custom Colors */
-  --primary-color: #954c2e; /* Your brown color */
-  --primary-dark: #7a3e24; /* Darker shade */
-  --primary-light: #fdfaf6; /* Your light cream color */
+  
 
-  /* Secondary Colors */
-  --secondary-color: #10b981; /* Success/accent color */
-  --secondary-dark: #059669; /* Darker secondary */
-
-  /* Background Colors */
-  --bg-primary: var(--primary-light); /* Main background */
-  --bg-secondary: #ffffff; /* Card/form background */
-  --bg-gradient-start: var(--primary-color); /* Gradient start */
-  --bg-gradient-end: var(--primary-dark); /* Gradient end */
-
-  /* Text Colors */
-  --text-primary: #1e293b; /* Main text */
-  --text-secondary: #64748b; /* Secondary text */
-  --text-muted: #94a3b8; /* Muted text */
-  --text-white: #ffffff; /* White text */
-
-  /* Border & Shadow */
-  --border-color: #e2e8f0; /* Border color */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-
-  /* Social Colors */
-  --google-color: #ea4335;
-  --facebook-color: #1877f2;
-  --github-color: #333333;
-
-  /* Status Colors */
-  --success-color: #10b981;
-  --error-color: #ef4444;
-  --warning-color: #f59e0b;
-
-  /* Transitions */
-  --transition-base: 0.3s ease;
-  --transition-fast: 0.15s ease;
-}
-
-/* ===== GLOBAL STYLES ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-.navbar {
-  background: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-lg);
-  transition: all var(--transition-base);
-}
-
-.navbar-brand {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-primary) !important;
-  text-decoration: none;
-}
-
-.logo-icon {
-  font-size: 1.5rem;
-  animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.navbar-nav .nav-link {
-  font-weight: 500;
-  color: #333 !important;
-  position: relative;
-  transition: color var(--transition-base);
-}
-
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link.active {
-  color: var(--color-primary) !important;
-}
-
-.navbar-nav .nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--color-primary);
-  transition: width var(--transition-base);
-}
-
-.navbar-nav .nav-link:hover::after,
-.navbar-nav .nav-link.active::after {
-  width: 100%;
-}
-
-.btn-primary-custom {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: white;
-  transition: all var(--transition-base);
-  border-radius: 25px;
-  padding: 10px 25px;
-  font-weight: 500;
-  border: none;
-}
-
-.btn-primary-custom:hover {
-  background-color: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-  color: white;
-}
-
-.btn-outline-primary-custom {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-  background: transparent;
-  transition: all var(--transition-base);
-  border-radius: 25px;
-  padding: 10px 25px;
-  font-weight: 500;
-  border-width: 2px;
-}
-
-.btn-outline-primary-custom:hover {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: white;
-  transform: translateY(-1px);
-}
-/* ===== MAIN LAYOUT ===== */
-.signup-wrapper {
-  display: flex;
-  min-height: 100vh;
-  position: relative;
-}
-
-/* ===== LEFT SIDE - BRANDING ===== */
-.signup-left {
-  flex: 1;
-  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.signup-left::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-  pointer-events: none;
-}
-   .homeigo-brand {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-bottom: 2rem;
-        }
-
-        .homeigo-logo {
-            font-size: 3rem;
-            animation: rotate 20s linear infinite;
-        }
-.brand-section {
-  text-align: center;
-  color: var(--text-white);
-  z-index: 1;
-  position: relative;
-}
-
-.brand-logo {
-  width: 80px;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 2rem;
-  font-size: 2rem;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.brand-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.brand-subtitle {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  margin-bottom: 3rem;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.features-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-.feature-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 1rem;
-  opacity: 0.9;
-}
-
-.feature-item i {
-  width: 20px;
-  text-align: center;
-}
-
-/* ===== RIGHT SIDE - SIGNUP FORM ===== */
-.signup-right {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  background: var(--bg-secondary);
-  overflow-y: auto;
-}
-
-.signup-container {
-  width: 100%;
-  max-width: 450px;
-}
-
-.signup-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.signup-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color:black;
-  margin-bottom: 0.5rem;
-}
-
-.signup-subtitle {
-  color: black;
-  font-size: 0.95rem;
-}
-
-/* ===== FORM STYLES ===== */
-.signup-form {
-  width: 100%;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-label {
-  display: flex;
-  align-items: center;
-  font-weight: 600;
-  color: black;
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-}
-
-.input-wrapper {
-  position: relative;
-}
-
-.form-control {
-  width: 100%;
-  padding: 0.75rem 1rem 0.75rem 3rem;
-  border: 2px solid var(--border-color);
-  border-radius: 12px;
-  font-size: 1rem;
-  transition: all var(--transition-base);
-  background: var(--bg-secondary);
-  color: black;
-}
-
-.form-control:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(149, 76, 46, 0.1);
-  background: var(--bg-secondary);
-}
-
-.form-control.is-valid {
-  border-color: var(--success-color);
-}
-
-.form-control.is-invalid {
-  border-color: var(--error-color);
-}
-
-.input-icon {
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: black;
-  transition: color var(--transition-base);
-}
-
-.form-control:focus + .input-icon {
-color: var(--primary-color);
-}
-
-.password-toggle {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  cursor: pointer;
-  padding: 0.25rem;
-  border-radius: 4px;
-  transition: all var(--transition-base);
-}
-
-.password-toggle:hover {
-  color: var(--primary-color);
-  background: rgba(149, 76, 46, 0.1);
-}
-
-.invalid-feedback {
-  display: none;
-  color: var(--error-color);
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-}
-
-.form-control.is-invalid ~ .invalid-feedback {
-  display: block;
-}
-
-/* ===== PASSWORD STRENGTH ===== */
-.password-strength {
-  margin-top: 0.5rem;
-}
-
-.strength-bar {
-  height: 4px;
-  background: #e2e8f0;
-  border-radius: 2px;
-  overflow: hidden;
-  margin-bottom: 0.25rem;
-}
-
-.strength-fill {
-  height: 100%;
-  width: 0%;
-  transition: all var(--transition-base);
-  border-radius: 2px;
-}
-
-.strength-fill.weak {
-  width: 25%;
-  background: var(--error-color);
-}
-
-.strength-fill.fair {
-  width: 50%;
-  background: var(--warning-color);
-}
-
-.strength-fill.good {
-  width: 75%;
-  background: #3b82f6;
-}
-
-.strength-fill.strong {
-  width: 100%;
-  background: var(--success-color);
-}
-
-.strength-text {
-  color: var(--text-muted);
-  font-size: 0.875rem;
-}
-
-/* ===== FORM OPTIONS ===== */
-.form-options {
-  margin-bottom: 2rem;
-}
-
-.form-check {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-
-.form-check-input {
-  width: 18px;
-  height: 18px;
-  border: 2px solid var(--border-color);
-  border-radius: 4px;
-  background: var(--bg-secondary);
-  margin-top: 0.125rem;
-  flex-shrink: 0;
-}
-
-.form-check-input:checked {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-}
-
-.form-check-input.is-invalid {
-  border-color: var(--error-color);
-}
-
-.form-check-label {
-  color: black;
-  font-size: 0.9rem;
-  cursor: pointer;
-  line-height: 1.4;
-}
-
-.terms-link {
-  color: #954c2e;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color var(--transition-base);
-}
-
-.terms-link:hover {
-  color: var(--primary-dark);
-  text-decoration: underline;
-}
-
-/* ===== BUTTONS ===== */
-.btn-signup {
-  width: 100%;
-  padding: 0.875rem 1.5rem;
-  background: var(--primary-color);
-  color: var(--text-white);
-  border: none;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: all var(--transition-base);
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 2rem;
-}
-
-.btn-signup:hover:not(:disabled) {
-  background: var(--primary-dark);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-lg);
-}
-
-.btn-signup:active {
-  transform: translateY(0);
-}
-
-.btn-signup:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.btn-loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.spinner {
-  width: 16px;
-  height: 16px;
-  border: 2px solid transparent;
-  border-top: 2px solid currentColor;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* ===== DIVIDER ===== */
-.divider {
-  position: relative;
-  text-align: center;
-  margin: 2rem 0;
-}
-
-.divider::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--border-color);
-}
-
-.divider span {
-  background: var(--bg-secondary);
-  color: var(--text-muted);
-  padding: 0 1rem;
-  font-size: 0.875rem;
-  position: relative;
-  z-index: 1;
-}
-
-/* ===== SOCIAL SIGNUP ===== */
-.social-signup {
-  display: flex;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
-}
-
-.btn-social {
-  flex: 1;
-  padding: 0.75rem;
-  border: 2px solid var(--border-color);
-  border-radius: 12px;
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: all var(--transition-base);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  text-decoration: none;
-}
-
-.btn-social:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-social i {
-  font-size: 1.25rem;
-}
-
-.btn-google:hover {
-  border-color: var(--google-color);
-  color: var(--google-color);
-}
-
-.btn-facebook:hover {
-  border-color: var(--facebook-color);
-  color: var(--facebook-color);
-}
-
-.btn-github:hover {
-  border-color: var(--github-color);
-  color: var(--github-color);
-}
-
-/* ===== LOGIN LINK ===== */
-.login-link {
-  text-align: center;
-}
-
-.login-link p {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  margin: 0;
-}
-
-.login-link a {
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 600;
-  transition: color var(--transition-base);
-}
-
-.login-link a:hover {
-  color: var(--primary-dark);
-  text-decoration: underline;
-}
-
-/* ===== ALERTS ===== */
-.alert {
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  border: none;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.alert-success {
-  background: rgba(16, 185, 129, 0.1);
-  color: var(--success-color);
-  border-left: 4px solid var(--success-color);
-}
-
-.alert-danger {
-  background: rgba(239, 68, 68, 0.1);
-  color: var(--error-color);
-  border-left: 4px solid var(--error-color);
-}
-
-.alert-warning {
-  background: rgba(245, 158, 11, 0.1);
-  color: var(--warning-color);
-  border-left: 4px solid var(--warning-color);
-}
-
-/* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 768px) {
-  .signup-wrapper {
-    flex-direction: column;
-  }
-
-  .signup-left {
-    min-height: 40vh;
-    padding: 1.5rem;
-  }
-
-  .brand-title {
-    font-size: 2rem;
-  }
-
-  .features-list {
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .feature-item {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.5rem;
-    font-size: 0.875rem;
-  }
-
-  .signup-right {
-    padding: 1.5rem;
-  }
-
-  .signup-container {
-    max-width: 100%;
-  }
-
-  .social-signup {
-    flex-direction: column;
-  }
-
-  .btn-social {
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .row .col-md-6 {
-    margin-bottom: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .signup-left {
-    min-height: 30vh;
-    padding: 1rem;
-  }
-
-  .brand-title {
-    font-size: 1.75rem;
-  }
-
-  .signup-right {
-    padding: 1rem;
-  }
-
-  .form-group {
-    margin-bottom: 1.25rem;
-  }
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.signup-container {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.brand-section {
-  animation: fadeInUp 0.6s ease-out 0.2s both;
-}
-
-/* ===== FOCUS STYLES FOR ACCESSIBILITY ===== */
-.btn-signup:focus,
-.btn-social:focus,
-.form-control:focus,
-.password-toggle:focus {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
-}
-
-/* ===== DARK MODE SUPPORT ===== */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-secondary: #FDFAF6;
-    --text-primary: #f1f5f9;
-    --text-secondary: #cbd5e1;
-    --text-muted: #64748b;
-    --border-color: #334155;
-  }
-}
- @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-    .logo-icon {
-    animation: rotate 20s linear infinite;
-  }
-
-  .homeigo-brand {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .homeigo-title {
-    font-size: 42px;
-    font-weight: 700;
-    color: white;
-  }
-
-    </style>
+ <link rel="stylesheet" href="./signup.css">
 </head>
+
 <body>
-    
     <!-- Main Container -->
     <div class="signup-wrapper">
-        <!-- Left Side - Branding -->
+        <!-- Left Side - Fixed Branding -->
         <div class="signup-left">
             <div class="brand-section">
-                    <div class="homeigo-brand">
+                <div class="homeigo-brand">
                     <span class="homeigo-logo">🏠</span>
                     <h1 class="homeigo-title">Homeigo</h1>
                 </div>
                 <h1 class="brand-title">Join Our Community</h1>
-                <p class="brand-subtitle">Create your account and start your journey with us</p>
+                <p class="brand-subtitle">Create your account and start your journey with authentic local experiences</p>
                 
                 <!-- Features List -->
                 <div class="features-list">
                     <div class="feature-item">
                         <i class="fas fa-shield-alt"></i>
-                        <span>Secure Registration</span>
+                        <span>Secure</span>
                     </div>
                     <div class="feature-item">
                         <i class="fas fa-rocket"></i>
@@ -835,13 +44,13 @@ color: var(--primary-color);
                     </div>
                     <div class="feature-item">
                         <i class="fas fa-heart"></i>
-                        <span>Join Thousands</span>
+                        <span>Trusted</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Right Side - Signup Form -->
+        <!-- Right Side - Scrollable Signup Form -->
         <div class="signup-right">
             <div class="signup-container">
                 <!-- Header -->
@@ -850,11 +59,30 @@ color: var(--primary-color);
                     <p class="signup-subtitle">Fill in your information to get started</p>
                 </div>
 
+                <!-- User Type Selection -->
+                <div class="user-type-selection">
+                    <h3 class="user-type-title">I want to join as a:</h3>
+                    <div class="user-type-options">
+                        <div class="user-type-card" data-type="tourist" tabindex="0">
+                            <div class="user-type-icon">🧳</div>
+                            <div class="user-type-name">Tourist</div>
+                            <div class="user-type-desc">Discover authentic local experiences</div>
+                        </div>
+                        <div class="user-type-card" data-type="host" tabindex="0">
+                            <div class="user-type-icon">🏠</div>
+                            <div class="user-type-name">Host</div>
+                            <div class="user-type-desc">Share your culture and earn money</div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Alert Container -->
                 <div id="alertContainer"></div>
 
                 <!-- Signup Form -->
                 <form id="signupForm" class="signup-form" novalidate>
+                    <input type="hidden" id="userType" name="userType" value="">
+
                     <!-- Name Fields Row -->
                     <div class="row">
                         <div class="col-md-6">
@@ -904,6 +132,98 @@ color: var(--primary-color);
                         <div class="invalid-feedback">Please enter a valid email address.</div>
                     </div>
 
+                    <!-- Phone Field -->
+                    <div class="form-group">
+                        <label for="phone" class="form-label">
+                            <i class="fas fa-phone me-2"></i>Phone Number
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="tel" id="phone" name="phone" class="form-control" 
+                                   placeholder="Enter your phone number" required>
+                            <div class="input-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback">Please enter a valid phone number.</div>
+                    </div>
+
+                    <!-- Host-Specific Fields -->
+                    <div id="hostFields" class="host-fields">
+                        <div class="field-group">
+                            <h4 class="field-group-title">
+                                <i class="fas fa-home"></i>
+                                Host Information
+                            </h4>
+                            
+                            <!-- Location -->
+                            <div class="form-group">
+                                <label for="location" class="form-label">
+                                    <i class="fas fa-map-marker-alt me-2"></i>Location/City
+                                </label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="location" name="location" class="form-control" 
+                                           placeholder="Enter your city/location">
+                                    <div class="input-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="invalid-feedback">Please enter your location.</div>
+                            </div>
+
+                            <!-- Experience Type -->
+                            <div class="form-group">
+                                <label for="experienceType" class="form-label">
+                                    <i class="fas fa-star me-2"></i>Type of Experience
+                                </label>
+                                <div class="input-wrapper">
+                                    <select id="experienceType" name="experienceType" class="form-control">
+                                        <option value="">Select experience type</option>
+                                        <option value="homestay">Home Stay</option>
+                                        <option value="food">Food Experience</option>
+                                        <option value="tour">Tour/Activity</option>
+                                        <option value="workshop">Workshop/Class</option>
+                                        <option value="cultural">Cultural Experience</option>
+                                    </select>
+                                    <div class="input-icon">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="invalid-feedback">Please select an experience type.</div>
+                            </div>
+
+                            <!-- Languages -->
+                            <div class="form-group">
+                                <label for="languages" class="form-label">
+                                    <i class="fas fa-language me-2"></i>Languages Spoken
+                                </label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="languages" name="languages" class="form-control" 
+                                           placeholder="e.g., English, Spanish, French">
+                                    <div class="input-icon">
+                                        <i class="fas fa-language"></i>
+                                    </div>
+                                </div>
+                                <div class="invalid-feedback">Please enter languages you speak.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tourist-Specific Fields -->
+                    <div id="touristFields" class="tourist-fields">
+                        <div class="form-group">
+                            <label for="interests" class="form-label">
+                                <i class="fas fa-heart me-2"></i>Travel Interests (Optional)
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="text" id="interests" name="interests" class="form-control" 
+                                       placeholder="e.g., Culture, Food, Adventure, History">
+                                <div class="input-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Password Field -->
                     <div class="form-group">
                         <label for="password" class="form-label">
@@ -948,7 +268,7 @@ color: var(--primary-color);
 
                     <!-- Terms and Newsletter -->
                     <div class="form-options">
-                        <div class="form-check mb-3">
+                        <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
                             <label class="form-check-label" for="terms">
                                 I agree to the <a href="#" class="terms-link">Terms of Service</a> and 
@@ -956,7 +276,7 @@ color: var(--primary-color);
                             </label>
                             <div class="invalid-feedback">You must agree to the terms and conditions.</div>
                         </div>
-                        <div class="form-check mb-3">
+                        <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="newsletter" name="newsletter">
                             <label class="form-check-label" for="newsletter">
                                 Subscribe to our newsletter for updates and special offers
@@ -967,11 +287,11 @@ color: var(--primary-color);
                     <!-- Signup Button -->
                     <button type="submit" class="btn btn-signup" id="signupBtn">
                         <span class="btn-text">
-                            <i class="fas fa-user-plus me-2"></i>Create Account
+                            <i class="fas fa-user-plus me-2"></i><span id="signupBtnText">Create Account</span>
                         </span>
                         <span class="btn-loading d-none">
                             <div class="spinner me-2"></div>
-                            Creating Account...
+                            <span id="loadingText">Creating Account...</span>
                         </span>
                     </button>
 
@@ -998,7 +318,7 @@ color: var(--primary-color);
 
                     <!-- Login Link -->
                     <div class="login-link">
-                        <p>Already have an account? <a href="./login.html" id="loginLink">Sign in here</a></p>
+                        <p>Already have an account? <a href="#" id="loginLink">Sign in here</a></p>
                     </div>
                 </form>
             </div>
@@ -1022,495 +342,6 @@ color: var(--primary-color);
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Custom JavaScript -->
-    <script src="./signup.js">
-        // Signup Page JavaScript
-document.addEventListener("DOMContentLoaded", () => {
-  // Get form elements
-  const signupForm = document.getElementById("signupForm")
-  const firstNameInput = document.getElementById("firstName")
-  const lastNameInput = document.getElementById("lastName")
-  const emailInput = document.getElementById("email")
-  const passwordInput = document.getElementById("password")
-  const confirmPasswordInput = document.getElementById("confirmPassword")
-  const passwordToggle = document.getElementById("passwordToggle")
-  const confirmPasswordToggle = document.getElementById("confirmPasswordToggle")
-  const signupBtn = document.getElementById("signupBtn")
-  const alertContainer = document.getElementById("alertContainer")
-  const termsCheckbox = document.getElementById("terms")
-  const newsletterCheckbox = document.getElementById("newsletter")
-
-  // Password strength elements
-  const strengthFill = document.getElementById("strengthFill")
-  const strengthLevel = document.getElementById("strengthLevel")
-
-  // Social signup buttons
-  const googleSignupBtn = document.getElementById("googleSignup")
-  const facebookSignupBtn = document.getElementById("facebookSignup")
-  const githubSignupBtn = document.getElementById("githubSignup")
-
-  // Links
-  const loginLink = document.getElementById("loginLink")
-
-  // Toast
-  const toastEl = document.getElementById("toast")
-  const toast = new bootstrap.Toast(toastEl)
-  const toastMessage = document.getElementById("toast-message")
-
-  // ===== PASSWORD TOGGLE FUNCTIONALITY =====
-  function setupPasswordToggle(input, toggle) {
-    toggle.addEventListener("click", () => {
-      const type = input.getAttribute("type") === "password" ? "text" : "password"
-      input.setAttribute("type", type)
-
-      const icon = toggle.querySelector("i")
-      if (type === "password") {
-        icon.classList.remove("fa-eye-slash")
-        icon.classList.add("fa-eye")
-      } else {
-        icon.classList.remove("fa-eye")
-        icon.classList.add("fa-eye-slash")
-      }
-    })
-  }
-
-  setupPasswordToggle(passwordInput, passwordToggle)
-  setupPasswordToggle(confirmPasswordInput, confirmPasswordToggle)
-
-  // ===== FORM VALIDATION =====
-  function validateName(name) {
-    return name.trim().length >= 2 && /^[a-zA-Z\s]+$/.test(name.trim())
-  }
-
-  function validateEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
-  }
-
-  function validatePassword(password) {
-    return password.length >= 8
-  }
-
-  function checkPasswordStrength(password) {
-    let strength = 0
-    let level = "weak"
-
-    // Length check
-    if (password.length >= 8) strength++
-    if (password.length >= 12) strength++
-
-    // Character variety checks
-    if (/[a-z]/.test(password)) strength++
-    if (/[A-Z]/.test(password)) strength++
-    if (/[0-9]/.test(password)) strength++
-    if (/[^A-Za-z0-9]/.test(password)) strength++
-
-    // Determine strength level
-    if (strength <= 2) {
-      level = "weak"
-      strengthFill.className = "strength-fill weak"
-    } else if (strength <= 3) {
-      level = "fair"
-      strengthFill.className = "strength-fill fair"
-    } else if (strength <= 4) {
-      level = "good"
-      strengthFill.className = "strength-fill good"
-    } else {
-      level = "strong"
-      strengthFill.className = "strength-fill strong"
-    }
-
-    strengthLevel.textContent = level.charAt(0).toUpperCase() + level.slice(1)
-    return strength
-  }
-
-  function validatePasswordMatch(password, confirmPassword) {
-    return password === confirmPassword
-  }
-
-  function showAlert(message, type = "danger") {
-    const iconMap = {
-      success: "fa-check-circle text-success",
-      warning: "fa-exclamation-triangle text-warning",
-      danger: "fa-exclamation-circle text-danger",
-      info: "fa-info-circle text-primary",
-    }
-
-    const alertHTML = `
-            <div class="alert alert-${type} alert-dismissible fade show" role="alert">
-                <i class="fas ${iconMap[type]} me-2"></i>
-                ${message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        `
-    alertContainer.innerHTML = alertHTML
-
-    // Auto-dismiss after 5 seconds
-    setTimeout(() => {
-      const alert = alertContainer.querySelector(".alert")
-      if (alert) {
-        const bsAlert = new bootstrap.Alert(alert)
-        bsAlert.close()
-      }
-    }, 5000)
-  }
-
-  function showToast(message, type = "info") {
-    const iconMap = {
-      success: "fa-check-circle text-success",
-      warning: "fa-exclamation-triangle text-warning",
-      error: "fa-exclamation-circle text-danger",
-      info: "fa-info-circle text-primary",
-    }
-
-    const toastHeader = toast._element.querySelector(".toast-header i")
-    toastHeader.className = `fas ${iconMap[type]} me-2`
-
-    toastMessage.textContent = message
-    toast.show()
-  }
-
-  function setLoadingState(isLoading) {
-    const btnText = signupBtn.querySelector(".btn-text")
-    const btnLoading = signupBtn.querySelector(".btn-loading")
-
-    if (isLoading) {
-      btnText.classList.add("d-none")
-      btnLoading.classList.remove("d-none")
-      signupBtn.disabled = true
-    } else {
-      btnText.classList.remove("d-none")
-      btnLoading.classList.add("d-none")
-      signupBtn.disabled = false
-    }
-  }
-
-  // ===== REAL-TIME VALIDATION =====
-  firstNameInput.addEventListener("input", function () {
-    const name = this.value.trim()
-    if (name && !validateName(name)) {
-      this.classList.add("is-invalid")
-      this.classList.remove("is-valid")
-    } else if (name) {
-      this.classList.add("is-valid")
-      this.classList.remove("is-invalid")
-    } else {
-      this.classList.remove("is-valid", "is-invalid")
-    }
-  })
-
-  lastNameInput.addEventListener("input", function () {
-    const name = this.value.trim()
-    if (name && !validateName(name)) {
-      this.classList.add("is-invalid")
-      this.classList.remove("is-valid")
-    } else if (name) {
-      this.classList.add("is-valid")
-      this.classList.remove("is-invalid")
-    } else {
-      this.classList.remove("is-valid", "is-invalid")
-    }
-  })
-
-  emailInput.addEventListener("input", function () {
-    const email = this.value.trim()
-    if (email && !validateEmail(email)) {
-      this.classList.add("is-invalid")
-      this.classList.remove("is-valid")
-    } else if (email) {
-      this.classList.add("is-valid")
-      this.classList.remove("is-invalid")
-    } else {
-      this.classList.remove("is-valid", "is-invalid")
-    }
-  })
-
-  passwordInput.addEventListener("input", function () {
-    const password = this.value
-    const strength = checkPasswordStrength(password)
-
-    if (password && !validatePassword(password)) {
-      this.classList.add("is-invalid")
-      this.classList.remove("is-valid")
-    } else if (password) {
-      this.classList.add("is-valid")
-      this.classList.remove("is-invalid")
-    } else {
-      this.classList.remove("is-valid", "is-invalid")
-      strengthFill.className = "strength-fill"
-      strengthLevel.textContent = "Weak"
-    }
-
-    // Check confirm password match if it has value
-    if (confirmPasswordInput.value) {
-      const match = validatePasswordMatch(password, confirmPasswordInput.value)
-      if (match) {
-        confirmPasswordInput.classList.add("is-valid")
-        confirmPasswordInput.classList.remove("is-invalid")
-      } else {
-        confirmPasswordInput.classList.add("is-invalid")
-        confirmPasswordInput.classList.remove("is-valid")
-      }
-    }
-  })
-
-  confirmPasswordInput.addEventListener("input", function () {
-    const password = passwordInput.value
-    const confirmPassword = this.value
-
-    if (confirmPassword && !validatePasswordMatch(password, confirmPassword)) {
-      this.classList.add("is-invalid")
-      this.classList.remove("is-valid")
-    } else if (confirmPassword) {
-      this.classList.add("is-valid")
-      this.classList.remove("is-invalid")
-    } else {
-      this.classList.remove("is-valid", "is-invalid")
-    }
-  })
-
-  // ===== FORM SUBMISSION =====
-  signupForm.addEventListener("submit", (e) => {
-    e.preventDefault()
-
-    const firstName = firstNameInput.value.trim()
-    const lastName = lastNameInput.value.trim()
-    const email = emailInput.value.trim()
-    const password = passwordInput.value
-    const confirmPassword = confirmPasswordInput.value
-    const termsAccepted = termsCheckbox.checked
-    const newsletterSubscribed = newsletterCheckbox.checked
-
-    // Clear previous alerts
-    alertContainer.innerHTML = ""
-
-    // Validate inputs
-    let isValid = true
-
-    if (!firstName || !validateName(firstName)) {
-      firstNameInput.classList.add("is-invalid")
-      isValid = false
-    }
-
-    if (!lastName || !validateName(lastName)) {
-      lastNameInput.classList.add("is-invalid")
-      isValid = false
-    }
-
-    if (!email || !validateEmail(email)) {
-      emailInput.classList.add("is-invalid")
-      isValid = false
-    }
-
-    if (!password || !validatePassword(password)) {
-      passwordInput.classList.add("is-invalid")
-      isValid = false
-    }
-
-    if (!confirmPassword || !validatePasswordMatch(password, confirmPassword)) {
-      confirmPasswordInput.classList.add("is-invalid")
-      isValid = false
-    }
-
-    if (!termsAccepted) {
-      termsCheckbox.classList.add("is-invalid")
-      isValid = false
-    }
-
-    if (!isValid) {
-      showAlert("Please fill in all fields correctly and accept the terms.")
-      return
-    }
-
-    // Check password strength
-    const strength = checkPasswordStrength(password)
-    if (strength < 3) {
-      showAlert("Please choose a stronger password for better security.", "warning")
-      return
-    }
-
-    // Simulate signup process
-    setLoadingState(true)
-
-    // Simulate API call
-    setTimeout(() => {
-      setLoadingState(false)
-
-      // Check if email already exists (demo)
-      if (email === "test@example.com") {
-        showAlert("This email is already registered. Please use a different email or sign in.")
-        return
-      }
-
-      // Success
-      showAlert("Account created successfully! Please check your email to verify your account.", "success")
-
-      // Store user data (demo)
-      const userData = {
-        firstName,
-        lastName,
-        email,
-        newsletterSubscribed,
-        createdAt: new Date().toISOString(),
-      }
-
-      localStorage.setItem("pendingUser", JSON.stringify(userData))
-      showToast("Welcome! Your account has been created.", "success")
-
-      // Redirect after success message
-      setTimeout(() => {
-        showToast("Redirecting to login page...", "info")
-        // window.location.href = 'new-login.html';
-      }, 3000)
-    }, 2500)
-  })
-
-  // ===== SOCIAL SIGNUP HANDLERS =====
-  googleSignupBtn.addEventListener("click", () => {
-    showToast("Google signup integration would be implemented here.", "info")
-    console.log("Google signup clicked")
-  })
-
-  facebookSignupBtn.addEventListener("click", () => {
-    showToast("Facebook signup integration would be implemented here.", "info")
-    console.log("Facebook signup clicked")
-  })
-
-  githubSignupBtn.addEventListener("click", () => {
-    showToast("GitHub signup integration would be implemented here.", "info")
-    console.log("GitHub signup clicked")
-  })
-
-  // ===== LINK HANDLERS =====
-  loginLink.addEventListener("click", (e) => {
-    e.preventDefault()
-    showToast("Redirecting to login page...", "info")
-    // window.location.href = 'new-login.html';
-    console.log("Login link clicked")
-  })
-
-  // ===== TERMS CHECKBOX VALIDATION =====
-  termsCheckbox.addEventListener("change", function () {
-    if (this.checked) {
-      this.classList.remove("is-invalid")
-    }
-  })
-
-  // Smooth scroll for any anchor links
-  // document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  //   anchor.addEventListener("click", function (e) {
-  //     e.preventDefault()
-  //     const target = document.querySelector(this.getAttribute("href"))
-  //     if (target) {
-  //       target.scrollIntoView({
-  //         behavior: "smooth",
-  //         block: "start",
-  //       })
-  //     }
-  //   })
-  // })
-
-  // Add simple hover effect to signup card
-  // const signupCard = document.querySelector(".signup-card")
-
-  // signupCard.addEventListener("mouseenter", function () {
-  //   this.style.transform = "translateY(-5px)"
-  // })
-
-  // signupCard.addEventListener("mouseleave", function () {
-  //   this.style.transform = "translateY(0px)"
-  // })
-
-  // ===== KEYBOARD SHORTCUTS =====
-  document.addEventListener("keydown", (e) => {
-    // Enter key to submit form when focused on form elements
-    if (e.key === "Enter" && e.target.tagName === "INPUT") {
-      signupForm.dispatchEvent(new Event("submit"))
-    }
-
-    // Escape key to clear form
-    if (e.key === "Escape") {
-      signupForm.reset()
-      alertContainer.innerHTML = ""
-      document.querySelectorAll(".form-control").forEach((input) => {
-        input.classList.remove("is-valid", "is-invalid")
-      })
-      termsCheckbox.classList.remove("is-invalid")
-      strengthFill.className = "strength-fill"
-      strengthLevel.textContent = "Weak"
-    }
-  })
-
-  // ===== SMOOTH ANIMATIONS =====
-  // Add entrance animations
-  const animateElements = document.querySelectorAll(".signup-container, .brand-section")
-  animateElements.forEach((el, index) => {
-    el.style.opacity = "0"
-    el.style.transform = "translateY(30px)"
-
-    setTimeout(() => {
-      el.style.transition = "all 0.6s ease"
-      el.style.opacity = "1"
-      el.style.transform = "translateY(0)"
-    }, index * 200)
-  })
-
-  // ===== FOCUS MANAGEMENT =====
-  // Auto-focus first name input
-  firstNameInput.focus()
-
-  // ===== UTILITY FUNCTIONS =====
-  function debounce(func, wait) {
-    let timeout
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout)
-        func(...args)
-      }
-      clearTimeout(timeout)
-      timeout = setTimeout(later, wait)
-    }
-  }
-
-  // ===== RESPONSIVE ENHANCEMENTS =====
-  function handleResize() {
-    const isMobile = window.innerWidth <= 768
-
-    if (isMobile) {
-      document.body.classList.add("mobile-view")
-    } else {
-      document.body.classList.remove("mobile-view")
-    }
-  }
-
-  window.addEventListener("resize", debounce(handleResize, 250))
-  handleResize() // Initial call
-
-  console.log("Signup page initialized successfully!")
-})
-
-// ===== GLOBAL ERROR HANDLER =====
-window.addEventListener("error", (e) => {
-  console.error("JavaScript error:", e.error)
-})
-
-// Utility functions
-function debounce(func, wait) {
-  let timeout
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout)
-      func(...args)
-    }
-    clearTimeout(timeout)
-    timeout = setTimeout(later, wait)
-  }
-}
-
-// Add loading animation to page
-window.addEventListener("load", () => {
-  document.body.classList.add("loaded")
-})
-    </script>
+    <script src="./signup.js"></script>
 </body>
 </html>
