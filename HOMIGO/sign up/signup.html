@@ -6,7 +6,7 @@
     <title>Sign Up - Homeigo</title>
     
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -14,22 +14,21 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-  
-
- <link rel="stylesheet" href="./signup.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./signup.css">
 </head>
-
 <body>
     <!-- Main Container -->
     <div class="signup-wrapper">
-        <!-- Left Side - Fixed Branding -->
+        <!-- Fixed Left Side - Branding -->
         <div class="signup-left">
             <div class="brand-section">
                 <div class="homeigo-brand">
                     <span class="homeigo-logo">🏠</span>
                     <h1 class="homeigo-title">Homeigo</h1>
                 </div>
-                <h1 class="brand-title">Join Our Community</h1>
+                
+                <h2 class="brand-title">Join Our Community</h2>
                 <p class="brand-subtitle">Create your account and start your journey with authentic local experiences</p>
                 
                 <!-- Features List -->
@@ -50,7 +49,7 @@
             </div>
         </div>
 
-        <!-- Right Side - Scrollable Signup Form -->
+        <!-- Right Side - Scrollable Form -->
         <div class="signup-right">
             <div class="signup-container">
                 <!-- Header -->
@@ -58,6 +57,9 @@
                     <h2 class="signup-title">Create Account</h2>
                     <p class="signup-subtitle">Fill in your information to get started</p>
                 </div>
+
+                <!-- Alert Container -->
+                <div id="alertContainer"></div>
 
                 <!-- User Type Selection -->
                 <div class="user-type-selection">
@@ -74,16 +76,15 @@
                             <div class="user-type-desc">Share your culture and earn money</div>
                         </div>
                     </div>
+                    <div class="invalid-feedback" id="userTypeError"></div>
                 </div>
-
-                <!-- Alert Container -->
-                <div id="alertContainer"></div>
 
                 <!-- Signup Form -->
                 <form id="signupForm" class="signup-form" novalidate>
+                    <!-- Hidden User Type Input -->
                     <input type="hidden" id="userType" name="userType" value="">
 
-                    <!-- Name Fields Row -->
+                    <!-- Name Fields -->
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -92,12 +93,13 @@
                                 </label>
                                 <div class="input-wrapper">
                                     <input type="text" id="firstName" name="firstName" class="form-control" 
-                                           placeholder="Enter your first name" required>
+                                           placeholder="Enter your first name" required autocomplete="given-name"
+                                           aria-describedby="firstNameError">
                                     <div class="input-icon">
                                         <i class="fas fa-user"></i>
                                     </div>
                                 </div>
-                                <div class="invalid-feedback">Please enter your first name.</div>
+                                <div class="invalid-feedback" id="firstNameError" role="alert"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -107,12 +109,13 @@
                                 </label>
                                 <div class="input-wrapper">
                                     <input type="text" id="lastName" name="lastName" class="form-control" 
-                                           placeholder="Enter your last name" required>
+                                           placeholder="Enter your last name" required autocomplete="family-name"
+                                           aria-describedby="lastNameError">
                                     <div class="input-icon">
                                         <i class="fas fa-user"></i>
                                     </div>
                                 </div>
-                                <div class="invalid-feedback">Please enter your last name.</div>
+                                <div class="invalid-feedback" id="lastNameError" role="alert"></div>
                             </div>
                         </div>
                     </div>
@@ -124,12 +127,13 @@
                         </label>
                         <div class="input-wrapper">
                             <input type="email" id="email" name="email" class="form-control" 
-                                   placeholder="Enter your email" required>
+                                   placeholder="Enter your email" required autocomplete="email"
+                                   aria-describedby="emailError">
                             <div class="input-icon">
                                 <i class="fas fa-envelope"></i>
                             </div>
                         </div>
-                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                        <div class="invalid-feedback" id="emailError" role="alert"></div>
                     </div>
 
                     <!-- Phone Field -->
@@ -139,76 +143,69 @@
                         </label>
                         <div class="input-wrapper">
                             <input type="tel" id="phone" name="phone" class="form-control" 
-                                   placeholder="Enter your phone number" required>
+                                   placeholder="Enter your phone number" required autocomplete="tel"
+                                   aria-describedby="phoneError">
                             <div class="input-icon">
                                 <i class="fas fa-phone"></i>
                             </div>
                         </div>
-                        <div class="invalid-feedback">Please enter a valid phone number.</div>
+                        <div class="invalid-feedback" id="phoneError" role="alert"></div>
                     </div>
 
-                    <!-- Host-Specific Fields -->
+                    <!-- Host-specific fields -->
                     <div id="hostFields" class="host-fields">
                         <div class="field-group">
                             <h4 class="field-group-title">
-                                <i class="fas fa-home"></i>
-                                Host Information
+                                <i class="fas fa-home me-2"></i>Host Information
                             </h4>
                             
-                            <!-- Location -->
                             <div class="form-group">
                                 <label for="location" class="form-label">
                                     <i class="fas fa-map-marker-alt me-2"></i>Location/City
                                 </label>
                                 <div class="input-wrapper">
                                     <input type="text" id="location" name="location" class="form-control" 
-                                           placeholder="Enter your city/location">
+                                           placeholder="Enter your city/location" aria-describedby="locationError">
                                     <div class="input-icon">
                                         <i class="fas fa-map-marker-alt"></i>
                                     </div>
                                 </div>
-                                <div class="invalid-feedback">Please enter your location.</div>
+                                <div class="invalid-feedback" id="locationError" role="alert"></div>
                             </div>
 
-                            <!-- Experience Type -->
                             <div class="form-group">
                                 <label for="experienceType" class="form-label">
                                     <i class="fas fa-star me-2"></i>Type of Experience
                                 </label>
-                                <div class="input-wrapper">
-                                    <select id="experienceType" name="experienceType" class="form-control">
-                                        <option value="">Select experience type</option>
-                                        <option value="homestay">Home Stay</option>
-                                        <option value="food">Food Experience</option>
-                                        <option value="tour">Tour/Activity</option>
-                                        <option value="workshop">Workshop/Class</option>
-                                        <option value="cultural">Cultural Experience</option>
-                                    </select>
-                                    <div class="input-icon">
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="invalid-feedback">Please select an experience type.</div>
+                                <select id="experienceType" name="experienceType" class="form-control" 
+                                        aria-describedby="experienceTypeError">
+                                    <option value="">Select experience type</option>
+                                    <option value="homestay">Home Stay</option>
+                                    <option value="food">Food Experience</option>
+                                    <option value="tour">Tour/Activity</option>
+                                    <option value="workshop">Workshop/Class</option>
+                                    <option value="cultural">Cultural Experience</option>
+                                </select>
+                                <div class="invalid-feedback" id="experienceTypeError" role="alert"></div>
                             </div>
 
-                            <!-- Languages -->
                             <div class="form-group">
                                 <label for="languages" class="form-label">
                                     <i class="fas fa-language me-2"></i>Languages Spoken
                                 </label>
                                 <div class="input-wrapper">
                                     <input type="text" id="languages" name="languages" class="form-control" 
-                                           placeholder="e.g., English, Spanish, French">
+                                           placeholder="e.g., English, Spanish, French" aria-describedby="languagesError">
                                     <div class="input-icon">
                                         <i class="fas fa-language"></i>
                                     </div>
                                 </div>
-                                <div class="invalid-feedback">Please enter languages you speak.</div>
+                                <div class="invalid-feedback" id="languagesError" role="alert"></div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tourist-Specific Fields -->
+                    <!-- Tourist-specific fields -->
                     <div id="touristFields" class="tourist-fields">
                         <div class="form-group">
                             <label for="interests" class="form-label">
@@ -231,11 +228,13 @@
                         </label>
                         <div class="input-wrapper">
                             <input type="password" id="password" name="password" class="form-control" 
-                                   placeholder="Create a password" required minlength="8">
+                                   placeholder="Create a password" required minlength="8" 
+                                   autocomplete="new-password" aria-describedby="passwordError">
                             <div class="input-icon">
                                 <i class="fas fa-lock"></i>
                             </div>
-                            <button type="button" class="password-toggle" id="passwordToggle">
+                            <button type="button" class="password-toggle" id="passwordToggle" 
+                                    aria-label="Toggle password visibility">
                                 <i class="fas fa-eye"></i>
                             </button>
                         </div>
@@ -243,9 +242,11 @@
                             <div class="strength-bar">
                                 <div class="strength-fill" id="strengthFill"></div>
                             </div>
-                            <small class="strength-text">Password strength: <span id="strengthLevel">Weak</span></small>
+                            <div class="strength-text">
+                                Password strength: <span id="strengthLevel">Weak</span>
+                            </div>
                         </div>
-                        <div class="invalid-feedback">Password must be at least 8 characters long.</div>
+                        <div class="invalid-feedback" id="passwordError" role="alert"></div>
                     </div>
 
                     <!-- Confirm Password Field -->
@@ -255,15 +256,17 @@
                         </label>
                         <div class="input-wrapper">
                             <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" 
-                                   placeholder="Confirm your password" required>
+                                   placeholder="Confirm your password" required minlength="8" 
+                                   autocomplete="new-password" aria-describedby="confirmPasswordError">
                             <div class="input-icon">
                                 <i class="fas fa-lock"></i>
                             </div>
-                            <button type="button" class="password-toggle" id="confirmPasswordToggle">
+                            <button type="button" class="password-toggle" id="confirmPasswordToggle" 
+                                    aria-label="Toggle password visibility">
                                 <i class="fas fa-eye"></i>
                             </button>
                         </div>
-                        <div class="invalid-feedback">Passwords do not match.</div>
+                        <div class="invalid-feedback" id="confirmPasswordError" role="alert"></div>
                     </div>
 
                     <!-- Terms and Newsletter -->
@@ -274,7 +277,7 @@
                                 I agree to the <a href="#" class="terms-link">Terms of Service</a> and 
                                 <a href="#" class="terms-link">Privacy Policy</a>
                             </label>
-                            <div class="invalid-feedback">You must agree to the terms and conditions.</div>
+                            <div class="invalid-feedback" role="alert"></div>
                         </div>
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="newsletter" name="newsletter">
@@ -284,14 +287,14 @@
                         </div>
                     </div>
 
-                    <!-- Signup Button -->
+                    <!-- Submit Button -->
                     <button type="submit" class="btn btn-signup" id="signupBtn">
-                        <span class="btn-text">
-                            <i class="fas fa-user-plus me-2"></i><span id="signupBtnText">Create Account</span>
+                        <span class="btn-text" id="signupBtnText">
+                            <i class="fas fa-user-plus me-2"></i>Create Account
                         </span>
-                        <span class="btn-loading d-none">
+                        <span class="btn-loading d-none" id="loadingText">
                             <div class="spinner me-2"></div>
-                            <span id="loadingText">Creating Account...</span>
+                            Creating Account...
                         </span>
                     </button>
 
@@ -318,30 +321,28 @@
 
                     <!-- Login Link -->
                     <div class="login-link">
-                        <p>Already have an account? <a href="#" id="loginLink">Sign in here</a></p>
+                        <p>Already have an account? <a href="./login.html" id="loginLink">Sign in here</a></p>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Toast Container for Notifications -->
+    <!-- Toast Container -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="toast" class="toast" role="alert">
+        <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
                 <i class="fas fa-info-circle text-primary me-2"></i>
                 <strong class="me-auto">Notification</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
-            <div class="toast-body" id="toast-message">
-                <!-- Toast message will be inserted here -->
-            </div>
+            <div class="toast-body" id="toast-message"></div>
         </div>
     </div>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
     <script src="./signup.js"></script>
 </body>
 </html>

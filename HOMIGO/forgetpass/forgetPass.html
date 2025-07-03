@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password - Homeigo</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+  <link rel="stylesheet" href="./forgetPass.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="forgot-wrapper">
+        <!-- Fixed Left Side - Branding -->
+        <div class="forgot-left">
+            <div class="brand-section">
+                <div class="homeigo-brand">
+                    <span class="homeigo-logo">🏠</span>
+                    <h1 class="homeigo-title">Homeigo</h1>
+                </div>
+                
+                <h2 class="brand-title">Reset Password</h2>
+                <p class="brand-subtitle">Secure password recovery for your Homeigo account</p>
+                
+                <!-- Features List -->
+                <div class="features-list">
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure Recovery</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email Verification</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-lock"></i>
+                        <span>Account Protection</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Scrollable Form -->
+        <div class="forgot-right">
+            <div class="forgot-container">
+                <!-- Header -->
+                <div class="forgot-header">
+                    <div class="reset-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h2 class="forgot-title">Reset Your Password</h2>
+                    <p class="forgot-subtitle">Enter your email address and we'll send you a link to reset your password.</p>
+                </div>
+
+                <!-- Alert Container -->
+                <div id="alertContainer"></div>
+
+                <!-- Success Message (Hidden by default) -->
+                <div id="successMessage" class="success-message d-none">
+                    <i class="fas fa-check-circle"></i>
+                    <strong>Email Sent!</strong> Check your inbox for password reset instructions.
+                </div>
+
+                <!-- Reset Form -->
+                <form id="resetForm" class="forgot-form" novalidate>
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            <i class="fas fa-envelope me-2"></i>Email Address
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="email" id="email" name="email" class="form-control" 
+                                   placeholder="Enter your email address" required autocomplete="email"
+                                   aria-describedby="emailError">
+                            <div class="input-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback" id="emailError" role="alert"></div>
+                    </div>
+
+                    <!-- Reset Button -->
+                    <button type="submit" class="btn btn-reset" id="resetBtn">
+                        <span class="btn-text">
+                            <i class="fas fa-paper-plane me-2"></i>Send Reset Link
+                        </span>
+                        <span class="btn-loading d-none">
+                            <div class="spinner me-2"></div>
+                            Sending...
+                        </span>
+                    </button>
+                </form>
+
+                <!-- Back to Login -->
+                <div class="back-link">
+                    <p>
+                        <a href="../login/login.html" >
+                            <i class="fas fa-arrow-left me-1"></i>Back to Login
+                        </a>
+                    </p>
+                </div>
+
+                <!-- Help Section -->
+                <div class="help-section">
+                    <h6>
+                        <i class="fas fa-question-circle"></i>Need Help?
+                    </h6>
+                    <p>If you don't receive the email within a few minutes:</p>
+                    <ul>
+                        <li>Check your spam/junk folder</li>
+                        <li>Make sure you entered the correct email</li>
+                        <li>Contact our support team</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="fas fa-info-circle text-primary me-2"></i>
+                <strong class="me-auto">Notification</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toast-message"></div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="./forgetPass.js"></script>
+</body>
+</html>

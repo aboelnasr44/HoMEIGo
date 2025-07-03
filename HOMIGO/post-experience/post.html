@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create and post your unique local experience or accommodation on Homeigo. Share your culture with travelers worldwide.">
+    <meta name="keywords" content="host experience, post accommodation, local hosting, Homeigo host, create listing">
+    <meta name="theme-color" content="#954C2E">
+    <meta property="og:title" content="Post Your Experience - Homeigo Host">
+    <meta property="og:description" content="Share your unique local experience or accommodation with travelers from around the world.">
+    <meta property="og:type" content="website">
+    <title>Post Your Experience - Homeigo Host</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+
+<link rel="stylesheet" href="./post.css">
+</head>
+
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="logo-icon me-2">🏠</span>
+                Homeigo
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../search/search.html">Experiences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./plans.html">Plans</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./host-profile.html">Profile</a>
+                    </li>
+                 <li class="nav-item">
+                        <a class="nav-link" href="../become ahost/dashbord.html" onclick="showHostDashboard()">Become a Host</a>
+                    </li>
+                </ul>
+                <div class="d-flex ms-3">
+                    <button class="btn btn-outline-primary-custom me-2">
+                        <a href="../login/login.html" style="color: inherit; text-decoration: none;">Sign In</a>
+                    </button>
+                    <button class="btn btn-primary-custom">
+                        <a href="../sign up/signup.html" style="color: white; text-decoration: none;">Sign Up</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="main-content" class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h1 class="hero-title">
+                        Share Your <span class="highlight">Unique Experience</span>
+                    </h1>
+                    <p class="hero-description">
+                        Create an amazing listing for your accommodation or local experience. Help travelers discover authentic moments and create lasting memories.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 0%" id="progressBar"></div>
+            </div>
+            <div class="progress-text" id="progressText">Step 1 of 6: Choose Experience Type</div>
+        </div>
+    </div>
+
+    <!-- Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <form id="experienceForm">
+                <!-- Step 1: Experience Type -->
+                <div class="form-step" id="step1">
+                    <div class="form-card">
+                        <h2 class="section-title">
+                            <i class="bi bi-star section-icon"></i>
+                            What type of experience are you offering?
+                        </h2>
+                        
+                        <div class="experience-type-grid" id="experienceTypeGrid">
+                            <!-- Experience types will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Basic Information -->
+                <div class="form-step" id="step2" style="display: none;">
+                    <div class="form-card">
+                        <h2 class="section-title">
+                            <i class="bi bi-info-circle section-icon"></i>
+                            Tell us about your experience
+                        </h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="experienceTitle" class="form-label">Experience Title *</label>
+                                <input type="text" class="form-control" id="experienceTitle" placeholder="e.g., Traditional Cooking Class in My Home" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="experienceLocation" class="form-label">Location *</label>
+                                <input type="text" class="form-control" id="experienceLocation" placeholder="e.g., Cairo, Egypt" required>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="maxGuests" class="form-label">Maximum Guests *</label>
+                                <select class="form-select" id="maxGuests" required>
+                                    <option value="">Select...</option>
+                                    <option value="1">1 Guest</option>
+                                    <option value="2">2 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="6">6 Guests</option>
+                                    <option value="8">8 Guests</option>
+                                    <option value="10+">10+ Guests</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="duration" class="form-label">Duration *</label>
+                                <select class="form-select" id="duration" required>
+                                    <option value="">Select...</option>
+                                    <option value="1-2 hours">1-2 hours</option>
+                                    <option value="3-4 hours">3-4 hours</option>
+                                    <option value="Half day">Half day</option>
+                                    <option value="Full day">Full day</option>
+                                    <option value="2-3 days">2-3 days</option>
+                                    <option value="1 week">1 week</option>
+                                    <option value="Custom">Custom</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="language" class="form-label">Language *</label>
+                                <select class="form-select" id="language" required>
+                                    <option value="">Select...</option>
+                                    <option value="English">English</option>
+                                    <option value="Arabic">Arabic</option>
+                                    <option value="Spanish">Spanish</option>
+                                    <option value="French">French</option>
+                                    <option value="German">German</option>
+                                    <option value="Italian">Italian</option>
+                                    <option value="Multiple">Multiple Languages</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <label for="experienceDescription" class="form-label">Description *</label>
+                        <textarea class="form-control" id="experienceDescription" rows="5" placeholder="Describe your experience in detail. What makes it special? What will guests learn or do?" required></textarea>
+                    </div>
+                </div>
+
+                <!-- Step 3: Photos -->
+                <div class="form-step" id="step3" style="display: none;">
+                    <div class="form-card">
+                        <h2 class="section-title">
+                            <i class="bi bi-camera section-icon"></i>
+                            Add photos of your experience
+                        </h2>
+                        
+                        <div class="image-upload-area" id="imageUploadArea">
+                            <i class="bi bi-cloud-upload upload-icon"></i>
+                            <h4>Drag and drop photos here</h4>
+                            <p class="text-muted">or click to browse files</p>
+                            <input type="file" id="imageInput" multiple accept="image/*" style="display: none;">
+                        </div>
+                        
+                        <div class="image-preview-grid" id="imagePreviewGrid">
+                            <!-- Image previews will appear here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Amenities & Features -->
+                <div class="form-step" id="step4" style="display: none;">
+                    <div class="form-card">
+                        <h2 class="section-title">
+                            <i class="bi bi-check-circle section-icon"></i>
+                            What's included in your experience?
+                        </h2>
+                        
+                        <div class="amenities-grid" id="amenitiesGrid">
+                            <!-- Amenities will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Pricing -->
+                <div class="form-step" id="step5" style="display: none;">
+                    <div class="form-card">
+                        <h2 class="section-title">
+                            <i class="bi bi-currency-dollar section-icon"></i>
+                            Set your pricing
+                        </h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="basePrice" class="form-label">Base Price (USD) *</label>
+                                <input type="number" class="form-control" id="basePrice" placeholder="0" min="1" required>
+                                <small class="text-muted">Price per person for the base experience</small>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="pricingType" class="form-label">Pricing Type *</label>
+                                <select class="form-select" id="pricingType" required>
+                                    <option value="">Select...</option>
+                                    <option value="per-person">Per Person</option>
+                                    <option value="per-group">Per Group</option>
+                                    <option value="per-night">Per Night</option>
+                                    <option value="per-day">Per Day</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-grid">
+                            <div class="pricing-card">
+                                <div class="pricing-amount" id="displayPrice">$0</div>
+                                <div class="pricing-period" id="displayPeriod">per person</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="cancellationPolicy" class="form-label">Cancellation Policy *</label>
+                                <select class="form-select" id="cancellationPolicy" required>
+                                    <option value="">Select...</option>
+                                    <option value="flexible">Flexible - Full refund 24 hours before</option>
+                                    <option value="moderate">Moderate - Full refund 5 days before</option>
+                                    <option value="strict">Strict - 50% refund 7 days before</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="instantBook" class="form-label">Booking Type *</label>
+                                <select class="form-select" id="instantBook" required>
+                                    <option value="">Select...</option>
+                                    <option value="instant">Instant Book</option>
+                                    <option value="request">Request to Book</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6: Preview & Publish -->
+                <div class="form-step" id="step6" style="display: none;">
+                    <div class="form-card">
+                        <h2 class="section-title">
+                            <i class="bi bi-eye section-icon"></i>
+                            Preview your listing
+                        </h2>
+                        
+                        <div class="preview-section">
+                            <h4 class="mb-3">How your experience will appear to guests:</h4>
+                            <div class="preview-card" id="previewCard">
+                                <div class="preview-image" id="previewImage">
+                                    <i class="bi bi-image"></i>
+                                </div>
+                                <div class="preview-content">
+                                    <h3 class="preview-title" id="previewTitle">Your Experience Title</h3>
+                                    <p class="preview-location" id="previewLocation">
+                                        <i class="bi bi-geo-alt me-1"></i>Your Location
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="preview-price" id="previewPrice">$0</div>
+                                        <div class="text-warning">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <small class="text-muted ms-1">New</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button type="button" class="btn btn-save-draft" onclick="saveDraft()">
+                                <i class="bi bi-save me-2"></i>Save as Draft
+                            </button>
+                            <button type="button" class="btn btn-publish" onclick="publishExperience()">
+                                <i class="bi bi-check-circle me-2"></i>Publish Experience
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="button" class="btn btn-outline-primary-custom" id="prevBtn" onclick="changeStep(-1)" style="display: none;">
+                        <i class="bi bi-arrow-left me-2"></i>Previous
+                    </button>
+                    <button type="button" class="btn btn-primary-custom ms-auto" id="nextBtn" onclick="changeStep(1)">
+                        Next <i class="bi bi-arrow-right ms-2"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h5><i class="bi bi-house-heart me-2"></i>Homeigo</h5>
+                        <p class="text-muted">Connecting travelers with authentic local experiences worldwide. Live like a local, not a tourist.</p>
+                        <div class="mt-3">
+                            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Company</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">About Us</a></li>
+                            <li><a href="#" class="footer-link">Careers</a></li>
+                            <li><a href="#" class="footer-link">Press</a></li>
+                            <li><a href="#" class="footer-link">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Support</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Help Center</a></li>
+                            <li><a href="#" class="footer-link">Safety</a></li>
+                            <li><a href="#" class="footer-link">Cancellation</a></li>
+                            <li><a href="#" class="footer-link">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Hosting</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Become a Host</a></li>
+                            <li><a href="#" class="footer-link">Host Resources</a></li>
+                            <li><a href="#" class="footer-link">Community</a></li>
+                            <li><a href="#" class="footer-link">Host Insurance</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Legal</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                            <li><a href="#" class="footer-link">Terms of Service</a></li>
+                            <li><a href="#" class="footer-link">Cookie Policy</a></li>
+                            <li><a href="#" class="footer-link">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Homeigo. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        <i class="bi bi-credit-card me-2"></i>
+                        <i class="bi bi-paypal me-2"></i>
+                        <i class="bi bi-apple me-2"></i>
+                        <i class="bi bi-currency-bitcoin"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="./post.js"></script>
+</body>
+</html>

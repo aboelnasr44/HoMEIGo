@@ -113,7 +113,7 @@
             showNotification('Redirecting to host registration...', 'success');
             setTimeout(() => {
                 // In a real app, this would redirect to the registration page
-                window.location.href = 'host-registration.html';
+                window.location.href = '../post-experience/post.html';
             }, 1500);
         }
 

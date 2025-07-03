@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Live like a local, not a tourist. Discover authentic experiences with verified local hosts worldwide.">
+    <meta name="keywords" content="local experiences, authentic travel, local hosts, cultural immersion, Homeigo">
+    <meta name="theme-color" content="#954C2E">
+    <meta property="og:title" content="Homeigo - Live Like a Local, Not a Tourist">
+    <meta property="og:description" content="Discover authentic experiences with verified local hosts. Stay in real homes, eat traditional food, and explore hidden gems.">
+    <meta property="og:type" content="website">
+    <title>Homeigo - Live Like a Local, Not a Tourist</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+<link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="logo-icon me-2">🏠</span>
+                Homeigo
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../search/search.html">Experiences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../host-profile/profile.html">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about/about.css">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact/contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../become ahost/dashbord.html" onclick="showHostDashboard()">Become a Host</a>
+                    </li>
+                </ul>
+                <div class="d-flex ms-3">
+                    <button class="btn btn-outline-primary-custom me-2">
+                        <a href="../login/login.html" style="color: inherit; text-decoration: none;">Sign In</a>
+                    </button>
+                    <button class="btn btn-primary-custom">
+                        <a href="../sign up/signup.html" style="color: white; text-decoration: none;">Sign Up</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">
+                        Live Like a <span class="highlight">Local</span>,<br>
+                        Not a Tourist
+                    </h1>
+                    <p class="hero-description">
+                        Discover authentic experiences with verified local hosts. Stay in real homes, eat traditional food, and explore hidden gems that only locals know about.
+                    </p>
+                    
+                    <div class="d-flex flex-wrap gap-3 mb-4">
+                        <button class="btn btn-primary-custom btn-lg" onclick="scrollToSearch()">
+                            <i class="bi bi-search me-2"></i>Find Experiences
+                        </button>
+                        <button class="btn btn-outline-primary-custom btn-lg" onclick="showHostDashboard()">
+                            <i class="bi bi-house-add me-2"></i>Become a Host
+                        </button>
+                    </div>
+                    
+                    <div class="row mt-5">
+                        <div class="col-4">
+                            <div class="stat-item">
+                                <span class="stat-number" data-count="10000">0</span>
+                                <span class="stat-label">Happy Travelers</span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="stat-item">
+                                <span class="stat-number" data-count="2500">0</span>
+                                <span class="stat-label">Verified Hosts</span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="stat-item">
+                                <span class="stat-number" data-count="150">0</span>
+                                <span class="stat-label">Countries</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="experience-preview">
+                        <i class="bi bi-camera-video" style="font-size: 3rem;"></i>
+                        
+                        <div class="floating-card floating-card-1">
+                            <i class="bi bi-patch-check-fill"></i>
+                            <span>Verified Host</span>
+                        </div>
+                        
+                        <div class="floating-card floating-card-2">
+                            <i class="bi bi-star-fill"></i>
+                            <span>4.9 Rating</span>
+                        </div>
+                        
+                        <div class="floating-card floating-card-3">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <span>Cairo, Egypt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator" onclick="scrollToSearch()">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section id="search" class="search-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="text-center mb-5">
+                        <h2 class="display-5 fw-bold mb-3">Find Your Perfect Local Experience</h2>
+                        <p class="lead text-muted">Search by destination, experience type, or host preferences</p>
+                    </div>
+                    
+                    <div class="search-form">
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <div class="position-relative">
+                                    <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 search-field-icon"></i>
+                                    <input type="text" class="form-control ps-5" id="searchInput" placeholder="I want to live a local experience in...">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <button class="btn btn-search w-100" onclick="performSearch()">
+                                    <i class="bi bi-search me-2"></i>Search Experiences
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="row g-3 mt-3">
+                            <div class="col-md-4">
+                                <select class="form-select">
+                                    <option>Experience Type</option>
+                                    <option>Stay</option>
+                                    <option>Food</option>
+                                    <option>Tours</option>
+                                    <option>All Inclusive</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select">
+                                    <option>Number of Nights</option>
+                                    <option>1 Night</option>
+                                    <option>2-3 Nights</option>
+                                    <option>4-7 Nights</option>
+                                    <option>1+ Week</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select">
+                                    <option>Price Range</option>
+                                    <option>$50-100/night</option>
+                                    <option>$100-200/night</option>
+                                    <option>$200-500/night</option>
+                                    <option>$500+/night</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Experiences Section -->
+    <section id="experiences" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Popular Local Experiences</h2>
+                <p class="lead text-muted">Discover amazing experiences from our verified hosts around the world</p>
+            </div>
+            
+            <div class="row" id="experiencesContainer">
+                <!-- Experiences will be loaded here -->
+            </div>
+            
+            <div class="loading" id="loadingExperiences">
+                <div class="spinner"></div>
+                <p>Loading amazing experiences...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Why Choose Homeigo?</h2>
+                <p class="lead text-muted">Experience authentic local culture with verified hosts and transparent pricing</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h3 class="feature-title">Verified Hosts</h3>
+                        <p class="feature-description">All our hosts are verified with background checks and authentic reviews from real travelers.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-cup-hot"></i>
+                        </div>
+                        <h3 class="feature-title">Authentic Food</h3>
+                        <p class="feature-description">Taste real local cuisine prepared by your hosts using traditional family recipes.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-gem"></i>
+                        </div>
+                        <h3 class="feature-title">Hidden Gems</h3>
+                        <p class="feature-description">Discover secret spots and local attractions that only locals know about.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-piggy-bank"></i>
+                        </div>
+                        <h3 class="feature-title">Save Money</h3>
+                        <p class="feature-description">Save 60% compared to hotels while getting more authentic experience.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-credit-card"></i>
+                        </div>
+                        <h3 class="feature-title">Secure Payment</h3>
+                        <p class="feature-description">Multiple payment options including Visa, PayPal, Apple Pay, and Crypto.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-headset"></i>
+                        </div>
+                        <h3 class="feature-title">24/7 Support</h3>
+                        <p class="feature-description">Round-the-clock customer support to ensure your experience is perfect.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">How It Works</h2>
+                <p class="lead text-muted">Simple steps to your authentic local experience</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Search & Discover</h3>
+                        <p class="step-description">Search for local experiences by destination, type, or host preferences.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Choose Your Host</h3>
+                        <p class="step-description">Browse verified host profiles, watch intro videos, and read authentic reviews.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Book & Pay</h3>
+                        <p class="step-description">Select your dates, customize your package, and pay securely online.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Live the Experience</h3>
+                        <p class="step-description">Connect with your host and enjoy an authentic local experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-item">
+                        <div class="stats-number" data-count="10000">0</div>
+                        <div class="stats-label">Happy Travelers</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-item">
+                        <div class="stats-number" data-count="2500">0</div>
+                        <div class="stats-label">Verified Hosts</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-item">
+                        <div class="stats-number" data-count="150">0</div>
+                        <div class="stats-label">Countries</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-item">
+                        <div class="stats-number" data-count="98">0</div>
+                        <div class="stats-label">% Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h5><i class="bi bi-house-heart me-2"></i>Homeigo</h5>
+                        <p class="text-muted">Connecting travelers with authentic local experiences worldwide. Live like a local, not a tourist.</p>
+                        <div class="mt-3">
+                            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Company</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">About Us</a></li>
+                            <li><a href="#" class="footer-link">Careers</a></li>
+                            <li><a href="#" class="footer-link">Press</a></li>
+                            <li><a href="#" class="footer-link">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Support</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Help Center</a></li>
+                            <li><a href="#" class="footer-link">Safety</a></li>
+                            <li><a href="#" class="footer-link">Cancellation</a></li>
+                            <li><a href="#" class="footer-link">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Hosting</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link" onclick="showHostDashboard()">Become a Host</a></li>
+                            <li><a href="#" class="footer-link">Host Resources</a></li>
+                            <li><a href="#" class="footer-link">Community</a></li>
+                            <li><a href="#" class="footer-link">Host Insurance</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Legal</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                            <li><a href="#" class="footer-link">Terms of Service</a></li>
+                            <li><a href="#" class="footer-link">Cookie Policy</a></li>
+                            <li><a href="#" class="footer-link">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Homeigo. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        <i class="bi bi-credit-card me-2"></i>
+                        <i class="bi bi-paypal me-2"></i>
+                        <i class="bi bi-apple me-2"></i>
+                        <i class="bi bi-currency-bitcoin"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="./home.js"></script>
+</body>
+</html>

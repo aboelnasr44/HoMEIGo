@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Edit your host profile on Homeigo. Update your information, experiences, and settings to attract more guests.">
+    <meta name="keywords" content="edit host profile, update profile, host settings, Homeigo host dashboard">
+    <meta name="theme-color" content="#954C2E">
+    <meta property="og:title" content="Edit Host Profile - Homeigo">
+    <meta property="og:description" content="Manage your host profile and experiences on Homeigo platform.">
+    <meta property="og:type" content="website">
+    <title>Edit Host Profile - Homeigo</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+
+<link rel="stylesheet" href="./profile.css">
+</head>
+
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="../home/home.html">
+                <span class="logo-icon me-2">🏠</span>
+                Homeigo
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../home/home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../search/search.html">Experiences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../host-profile/profile.html">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about/about.css">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact/contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../become ahost/dashbord.html" onclick="showHostDashboard()">Become a Host</a>
+                    </li>
+                </ul>
+                <div class="d-flex ms-3">
+                    <button class="btn btn-outline-primary-custom me-2">
+                        <a href="../login/login.html" style="color: inherit; text-decoration: none;">Sign In</a>
+                    </button>
+                    <button class="btn btn-primary-custom">
+                        <a href="../sign up/signup.html" style="color: white; text-decoration: none;">Sign Up</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="main-content" class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h1 class="hero-title">
+                        Edit Your <span class="highlight">Host Profile</span>
+                    </h1>
+                    <p class="hero-description">
+                        Keep your profile updated to attract more guests and showcase your unique experiences.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="container">
+            <div class="row">
+                <!-- Sidebar Navigation -->
+                <div class="col-lg-3">
+                    <div class="sidebar">
+                        <ul class="sidebar-nav">
+                            <li>
+                                <a href="#" class="nav-link active" onclick="showTab('profile')">
+                                    <i class="bi bi-person-circle"></i>
+                                    Profile Information
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link" onclick="showTab('experiences')">
+                                    <i class="bi bi-star"></i>
+                                    My Experiences
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link" onclick="showTab('settings')">
+                                    <i class="bi bi-gear"></i>
+                                    Account Settings
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link" onclick="showTab('stats')">
+                                    <i class="bi bi-graph-up"></i>
+                                    Statistics
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link" onclick="showTab('verification')">
+                                    <i class="bi bi-shield-check"></i>
+                                    Verification
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Main Content Area -->
+                <div class="col-lg-9">
+                    <!-- Profile Information Tab -->
+                    <div id="profile" class="content-tab active">
+                        <div class="content-section">
+                            <h2 class="section-title">
+                                <i class="bi bi-person-circle section-icon"></i>
+                                Profile Information
+                            </h2>
+                            
+                            <!-- Profile Avatar -->
+                            <div class="profile-avatar-section">
+                                <div class="profile-avatar" onclick="changeAvatar()">
+                                    👨‍🍳
+                                    <div class="avatar-overlay">
+                                        <i class="bi bi-camera"></i>
+                                    </div>
+                                    <div class="verified-badge">
+                                        <i class="bi bi-patch-check-fill"></i>
+                                    </div>
+                                </div>
+                                <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                                <p class="text-muted">Click to change profile photo</p>
+                            </div>
+
+                            <form id="profileForm">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="firstName" class="form-label">First Name *</label>
+                                        <input type="text" class="form-control" id="firstName" value="Mostafa" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="lastName" class="form-label">Last Name *</label>
+                                        <input type="text" class="form-control" id="lastName" value="Ahmed" required>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Email Address *</label>
+                                        <input type="email" class="form-control" id="email" value="mostafa@example.com" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone" value="+20 123 456 7890">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="location" class="form-label">Location *</label>
+                                        <input type="text" class="form-control" id="location" value="Cairo, Egypt" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                                        <input type="date" class="form-control" id="dateOfBirth" value="1985-03-15">
+                                    </div>
+                                </div>
+
+                                <label for="bio" class="form-label">About Me *</label>
+                                <textarea class="form-control" id="bio" rows="5" required>Ahlan wa sahlan! Welcome to Cairo! I'm Mostafa, a passionate local guide and chef who has been sharing the authentic beauty of Egypt with travelers for over 3 years. Born and raised in the heart of Cairo, I know every hidden gem, every authentic restaurant, and every story that makes this ancient city come alive.</textarea>
+
+                                <label for="languages" class="form-label">Languages I Speak</label>
+                                <div class="language-tags" id="languageTags">
+                                    <div class="language-tag">
+                                        Arabic (Native)
+                                        <span class="remove-tag" onclick="removeLanguage(this)">×</span>
+                                    </div>
+                                    <div class="language-tag">
+                                        English (Fluent)
+                                        <span class="remove-tag" onclick="removeLanguage(this)">×</span>
+                                    </div>
+                                    <div class="language-tag">
+                                        French (Conversational)
+                                        <span class="remove-tag" onclick="removeLanguage(this)">×</span>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="newLanguage" placeholder="Add a language (e.g., Spanish - Intermediate)">
+                                    <button type="button" class="btn btn-outline-primary-custom" onclick="addLanguage()">
+                                        <i class="bi bi-plus"></i> Add
+                                    </button>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="hostingSince" class="form-label">Hosting Since</label>
+                                        <input type="date" class="form-control" id="hostingSince" value="2021-01-15">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="responseTime" class="form-label">Typical Response Time</label>
+                                        <select class="form-select" id="responseTime">
+                                            <option value="within-hour" selected>Within 1 hour</option>
+                                            <option value="within-few-hours">Within a few hours</option>
+                                            <option value="within-day">Within a day</option>
+                                            <option value="few-days">A few days or more</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="action-buttons">
+                                    <button type="button" class="btn btn-cancel" onclick="cancelChanges()">
+                                        <i class="bi bi-x-circle me-2"></i>Cancel
+                                    </button>
+                                    <button type="submit" class="btn btn-save">
+                                        <i class="bi bi-check-circle me-2"></i>Save Changes
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- My Experiences Tab -->
+                    <div id="experiences" class="content-tab">
+                        <div class="content-section">
+                            <h2 class="section-title">
+                                <i class="bi bi-star section-icon"></i>
+                                My Experiences
+                            </h2>
+                            
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <p class="text-muted mb-0">Manage your listed experiences</p>
+                                <button class="btn btn-primary-custom" onclick="addNewExperience()">
+                                    <i class="bi bi-plus-circle me-2"></i>Add New Experience
+                                </button>
+                            </div>
+
+                            <div id="experiencesList">
+                                <!-- Experience cards will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account Settings Tab -->
+                    <div id="settings" class="content-tab">
+                        <div class="content-section">
+                            <h2 class="section-title">
+                                <i class="bi bi-gear section-icon"></i>
+                                Account Settings
+                            </h2>
+
+                            <form id="settingsForm">
+                                <h4 class="mb-3">Notification Preferences</h4>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <strong>Email Notifications</strong>
+                                        <p class="text-muted mb-0">Receive booking confirmations and updates via email</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <strong>SMS Notifications</strong>
+                                        <p class="text-muted mb-0">Get instant booking alerts via SMS</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <strong>Marketing Emails</strong>
+                                        <p class="text-muted mb-0">Receive tips and promotional content</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+
+                                <hr class="my-4">
+
+                                <h4 class="mb-3">Privacy Settings</h4>
+
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <strong>Profile Visibility</strong>
+                                        <p class="text-muted mb-0">Make your profile visible to guests</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <strong>Show Phone Number</strong>
+                                        <p class="text-muted mb-0">Display phone number on your profile</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+
+                                <hr class="my-4">
+
+                                <h4 class="mb-3">Change Password</h4>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="currentPassword" class="form-label">Current Password</label>
+                                        <input type="password" class="form-control" id="currentPassword">
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="newPassword" class="form-label">New Password</label>
+                                        <input type="password" class="form-control" id="newPassword">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                                        <input type="password" class="form-control" id="confirmPassword">
+                                    </div>
+                                </div>
+
+                                <div class="action-buttons">
+                                    <button type="button" class="btn btn-cancel" onclick="cancelSettings()">
+                                        <i class="bi bi-x-circle me-2"></i>Cancel
+                                    </button>
+                                    <button type="submit" class="btn btn-save">
+                                        <i class="bi bi-check-circle me-2"></i>Save Settings
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Statistics Tab -->
+                    <div id="stats" class="content-tab">
+                        <div class="content-section">
+                            <h2 class="section-title">
+                                <i class="bi bi-graph-up section-icon"></i>
+                                Your Statistics
+                            </h2>
+
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-number" data-count="127">0</div>
+                                    <div class="stat-label">Total Reviews</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number">4.9</div>
+                                    <div class="stat-label">Average Rating</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number" data-count="500">0</div>
+                                    <div class="stat-label">Happy Guests</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number" data-count="98">0</div>
+                                    <div class="stat-label">Response Rate %</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number" data-count="4">0</div>
+                                    <div class="stat-label">Active Experiences</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number" data-count="3">0</div>
+                                    <div class="stat-label">Years Hosting</div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Recent Activity</h4>
+                                    <div class="list-group">
+                                        <div class="list-group-item">
+                                            <strong>New booking</strong> - Traditional Cooking Class
+                                            <small class="text-muted d-block">2 hours ago</small>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <strong>Review received</strong> - 5 stars from Sarah
+                                            <small class="text-muted d-block">1 day ago</small>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <strong>Experience updated</strong> - Desert Adventure
+                                            <small class="text-muted d-block">3 days ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Earnings Overview</h4>
+                                    <div class="list-group">
+                                        <div class="list-group-item d-flex justify-content-between">
+                                            <span>This Month</span>
+                                            <strong>$1,250</strong>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between">
+                                            <span>Last Month</span>
+                                            <strong>$980</strong>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between">
+                                            <span>Total Earnings</span>
+                                            <strong>$15,670</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Verification Tab -->
+                    <div id="verification" class="content-tab">
+                        <div class="content-section">
+                            <h2 class="section-title">
+                                <i class="bi bi-shield-check section-icon"></i>
+                                Account Verification
+                            </h2>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-success me-3" style="font-size: 1.5rem;"></i>
+                                        <div>
+                                            <strong>Email Verified</strong>
+                                            <p class="text-muted mb-0">mostafa@example.com</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-success me-3" style="font-size: 1.5rem;"></i>
+                                        <div>
+                                            <strong>Phone Verified</strong>
+                                            <p class="text-muted mb-0">+20 123 456 7890</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-check-circle-fill text-success me-3" style="font-size: 1.5rem;"></i>
+                                        <div>
+                                            <strong>Identity Verified</strong>
+                                            <p class="text-muted mb-0">Government ID confirmed</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-x-circle text-danger me-3" style="font-size: 1.5rem;"></i>
+                                        <div>
+                                            <strong>Address Verification</strong>
+                                            <p class="text-muted mb-0">Upload utility bill or bank statement</p>
+                                            <button class="btn btn-outline-primary-custom btn-sm mt-2">
+                                                <i class="bi bi-upload me-1"></i>Upload Document
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <h4>Verification Benefits</h4>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-success me-2"></i>
+                                            Increased trust from guests
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-success me-2"></i>
+                                            Higher search ranking
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-success me-2"></i>
+                                            Access to premium features
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-success me-2"></i>
+                                            Verified host badge
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-check text-success me-2"></i>
+                                            Priority customer support
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h5><i class="bi bi-house-heart me-2"></i>Homeigo</h5>
+                        <p class="text-muted">Connecting travelers with authentic local experiences worldwide. Live like a local, not a tourist.</p>
+                        <div class="mt-3">
+                            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Company</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">About Us</a></li>
+                            <li><a href="#" class="footer-link">Careers</a></li>
+                            <li><a href="#" class="footer-link">Press</a></li>
+                            <li><a href="#" class="footer-link">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Support</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Help Center</a></li>
+                            <li><a href="#" class="footer-link">Safety</a></li>
+                            <li><a href="#" class="footer-link">Cancellation</a></li>
+                            <li><a href="#" class="footer-link">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Hosting</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Become a Host</a></li>
+                            <li><a href="#" class="footer-link">Host Resources</a></li>
+                            <li><a href="#" class="footer-link">Community</a></li>
+                            <li><a href="#" class="footer-link">Host Insurance</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Legal</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                            <li><a href="#" class="footer-link">Terms of Service</a></li>
+                            <li><a href="#" class="footer-link">Cookie Policy</a></li>
+                            <li><a href="#" class="footer-link">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Homeigo. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        <i class="bi bi-credit-card me-2"></i>
+                        <i class="bi bi-paypal me-2"></i>
+                        <i class="bi bi-apple me-2"></i>
+                        <i class="bi bi-currency-bitcoin"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src ="./profile.js"></script>
+</body>
+</html>

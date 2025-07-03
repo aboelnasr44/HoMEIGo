@@ -1,4 +1,4 @@
-    const experiences = [
+       const experiences = [
             {
                 id: 1,
                 title: "Live with Mostafa in Cairo",

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search and discover amazing local experiences with Homeigo">
+    <meta name="keywords" content="search experiences, local tours, activities, homeigo booking">
+    <meta name="theme-color" content="#954C2E">
+    <title>Search Experiences - Homeigo</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+
+<link rel="stylesheet" href="./search.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="logo-icon me-2">🏠</span>
+                Homeigo
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../home/home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#search">Experiences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../host-profile/profile.html">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about/about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact/contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../become ahost/dashbord.html" onclick="showHostDashboard()">Become a Host</a>
+                    </li>
+                </ul>
+                <div class="d-flex ms-3">
+                    <a href="../login/login.html" class="btn btn-outline-primary-custom me-2">Sign In</a>
+                    <a href="../sign up/signup.html" class="btn btn-primary-custom">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Hero Section -->
+    <section class="search-hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    <div class="search-hero-content text-center">
+                        <h1 class="search-hero-title">
+                            Find Your Perfect <span class="highlight">Experience</span>
+                        </h1>
+                        <p class="search-hero-description">
+                            Discover amazing activities, tours, and adventures tailored just for you
+                        </p>
+                        
+                        <!-- Main Search Form -->
+                        <div class="search-form-container">
+                            <form id="searchForm" class="search-form">
+                                <div class="search-input-group">
+                                    <div class="search-field">
+                                        <i class="bi bi-search search-field-icon"></i>
+                                        <input type="text" id="searchInput" class="form-control search-input" 
+                                               placeholder="What experience are you looking for?" autocomplete="off">
+                                        <div id="searchSuggestions" class="search-suggestions"></div>
+                                    </div>
+                                    <div class="search-field">
+                                        <i class="bi bi-geo-alt search-field-icon"></i>
+                                        <input type="text" id="locationInput" class="form-control search-input" 
+                                               placeholder="Where?" autocomplete="off">
+                                    </div>
+                                    <div class="search-field">
+                                        <i class="bi bi-calendar search-field-icon"></i>
+                                        <input type="date" id="dateInput" class="form-control search-input">
+                                    </div>
+                                    <button type="submit" class="btn btn-search">
+                                        <i class="bi bi-search me-2"></i>
+                                        Search
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Quick Filters -->
+                        <div class="quick-filters">
+                            <span class="filter-label">Popular searches:</span>
+                            <button class="filter-tag" data-filter="adventure">Adventure</button>
+                            <button class="filter-tag" data-filter="food">Food Tours</button>
+                            <button class="filter-tag" data-filter="culture">Cultural</button>
+                            <button class="filter-tag" data-filter="nature">Nature</button>
+                            <button class="filter-tag" data-filter="nightlife">Nightlife</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Results Section -->
+    <section class="search-results-section">
+        <div class="container">
+            <!-- Search Stats -->
+            <div class="search-stats mb-4">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h2 class="results-title">Featured Experiences</h2>
+                        <p class="results-subtitle" id="resultsCount">Showing 6 amazing experiences</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search-controls">
+                            <div class="sort-dropdown">
+                                <select class="form-select" id="sortSelect">
+                                    <option value="featured">Featured</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="rating">Highest Rated</option>
+                                    <option value="newest">Newest</option>
+                                </select>
+                            </div>
+                            <div class="view-toggle">
+                                <button class="view-btn active" data-view="grid" title="Grid View">
+                                    <i class="bi bi-grid"></i>
+                                </button>
+                                <button class="view-btn" data-view="list" title="List View">
+                                    <i class="bi bi-list"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Cards Grid -->
+            <div class="experiences-grid" id="experiencesGrid">
+                <!-- Experience Card 1 -->
+                <div class="experience-card" data-category="adventure" data-price="150" data-rating="4.8">
+                    <div class="experience-image">
+                        <div class="verified-badge">Verified</div>
+                        <div class="image-placeholder">🏔️ Mountain Adventure</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">Mountain Hiking Adventure</h3>
+                        <p class="experience-subtitle">Guided mountain trek with stunning views</p>
+                        <div class="experience-meta">
+                            <span class="meta-item">
+                                <i class="bi bi-star-fill"></i>
+                                4.8 (124 reviews)
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-clock"></i>
+                                6 hours
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-people"></i>
+                                Max 8 people
+                            </span>
+                        </div>
+                        <div class="experience-footer">
+                            <span class="price">$150</span>
+                            <button class="btn btn-primary-custom btn-sm">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Card 2 -->
+                <div class="experience-card" data-category="food" data-price="85" data-rating="4.9">
+                    <div class="experience-image">
+                        <div class="verified-badge">Verified</div>
+                        <div class="image-placeholder">🍽️ Food Tour</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">Local Food Walking Tour</h3>
+                        <p class="experience-subtitle">Taste authentic local cuisine and hidden gems</p>
+                        <div class="experience-meta">
+                            <span class="meta-item">
+                                <i class="bi bi-star-fill"></i>
+                                4.9 (89 reviews)
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-clock"></i>
+                                3 hours
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-people"></i>
+                                Max 12 people
+                            </span>
+                        </div>
+                        <div class="experience-footer">
+                            <span class="price">$85</span>
+                            <button class="btn btn-primary-custom btn-sm">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Card 3 -->
+                <div class="experience-card" data-category="culture" data-price="120" data-rating="4.7">
+                    <div class="experience-image">
+                        <div class="verified-badge">Verified</div>
+                        <div class="image-placeholder">🏛️ Cultural Tour</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">Historical City Tour</h3>
+                        <p class="experience-subtitle">Explore ancient landmarks and cultural sites</p>
+                        <div class="experience-meta">
+                            <span class="meta-item">
+                                <i class="bi bi-star-fill"></i>
+                                4.7 (156 reviews)
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-clock"></i>
+                                4 hours
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-people"></i>
+                                Max 15 people
+                            </span>
+                        </div>
+                        <div class="experience-footer">
+                            <span class="price">$120</span>
+                            <button class="btn btn-primary-custom btn-sm">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Card 4 -->
+                <div class="experience-card" data-category="nature" data-price="95" data-rating="4.6">
+                    <div class="experience-image">
+                        <div class="verified-badge">Verified</div>
+                        <div class="image-placeholder">🦁 Nature Safari</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">Wildlife Safari Experience</h3>
+                        <p class="experience-subtitle">Discover local wildlife in their natural habitat</p>
+                        <div class="experience-meta">
+                            <span class="meta-item">
+                                <i class="bi bi-star-fill"></i>
+                                4.6 (78 reviews)
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-clock"></i>
+                                5 hours
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-people"></i>
+                                Max 10 people
+                            </span>
+                        </div>
+                        <div class="experience-footer">
+                            <span class="price">$95</span>
+                            <button class="btn btn-primary-custom btn-sm">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Card 5 -->
+                <div class="experience-card" data-category="adventure" data-price="200" data-rating="4.9">
+                    <div class="experience-image">
+                        <div class="verified-badge">Verified</div>
+                        <div class="image-placeholder">🏄‍♂️ Water Sports</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">Water Sports Adventure</h3>
+                        <p class="experience-subtitle">Kayaking, snorkeling, and beach activities</p>
+                        <div class="experience-meta">
+                            <span class="meta-item">
+                                <i class="bi bi-star-fill"></i>
+                                4.9 (203 reviews)
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-clock"></i>
+                                8 hours
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-people"></i>
+                                Max 6 people
+                            </span>
+                        </div>
+                        <div class="experience-footer">
+                            <span class="price">$200</span>
+                            <button class="btn btn-primary-custom btn-sm">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Card 6 -->
+                <div class="experience-card" data-category="nightlife" data-price="75" data-rating="4.5">
+                    <div class="experience-image">
+                        <div class="verified-badge">Verified</div>
+                        <div class="image-placeholder">🌃 Nightlife Tour</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">Evening City Lights Tour</h3>
+                        <p class="experience-subtitle">Experience the city's vibrant nightlife</p>
+                        <div class="experience-meta">
+                            <span class="meta-item">
+                                <i class="bi bi-star-fill"></i>
+                                4.5 (92 reviews)
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-clock"></i>
+                                4 hours
+                            </span>
+                            <span class="meta-item">
+                                <i class="bi bi-people"></i>
+                                Max 20 people
+                            </span>
+                        </div>
+                        <div class="experience-footer">
+                            <span class="price">$75</span>
+                            <button class="btn btn-primary-custom btn-sm">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-5">
+                <button class="btn btn-outline-primary-custom btn-lg" id="loadMoreBtn">
+                    <i class="bi bi-plus me-2"></i>
+                    Load More Experiences
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Detail Modal -->
+    <div class="modal fade" id="experienceModal" tabindex="-1" aria-labelledby="experienceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 position-relative">
+                    <div class="modal-image-header w-100" id="modalImageHeader">
+                        <div class="modal-image-overlay"></div>
+                        <div class="modal-image-content">
+                            <h4 class="modal-title text-white" id="experienceModalLabel">Experience Title</h4>
+                            <div class="modal-verified-badge">Verified</div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white position-absolute" data-bs-dismiss="modal" aria-label="Close" style="top: 15px; right: 15px; z-index: 10;"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="text-muted mb-3" id="modalSubtitle">Experience subtitle</p>
+                            <div class="experience-details mb-4">
+                                <h5 class="mb-3">About This Experience</h5>
+                                <p id="modalDescription">Detailed description of the experience...</p>
+                            </div>
+                            
+                            <div class="experience-highlights mb-4">
+                                <h5 class="mb-3">What's Included</h5>
+                                <ul id="modalIncludes" class="list-unstyled">
+                                    <!-- Includes will be populated by JavaScript -->
+                                </ul>
+                            </div>
+                            
+                            <div class="experience-highlights">
+                                <h5 class="mb-3">Highlights</h5>
+                                <ul id="modalHighlights" class="list-unstyled">
+                                    <!-- Highlights will be populated by JavaScript -->
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="booking-card p-3 border rounded">
+                                <div class="price-section mb-3">
+                                    <span class="price-amount" id="modalPrice">$0</span>
+                                    <span class="price-unit">per person</span>
+                                </div>
+                                
+                                <div class="experience-meta-modal mb-3">
+                                    <div class="meta-row">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <span id="modalRating">4.8</span>
+                                        <span class="text-muted">(<span id="modalReviews">124</span> reviews)</span>
+                                    </div>
+                                    <div class="meta-row">
+                                        <i class="fas fa-clock text-primary"></i>
+                                        <span id="modalDuration">6 hours</span>
+                                    </div>
+                                    <div class="meta-row">
+                                        <i class="fas fa-users text-success"></i>
+                                        <span>Max <span id="modalMaxPeople">8</span> people</span>
+                                    </div>
+                                    <div class="meta-row">
+                                        <i class="fas fa-map-marker-alt text-danger"></i>
+                                        <span id="modalLocation">Location</span>
+                                    </div>
+                                    <div class="meta-row">
+                                        <i class="fas fa-user-tie text-info"></i>
+                                        <span>Host: <span id="modalHost">Host Name</span></span>
+                                    </div>
+                                </div>
+                                
+                                <button type="button" class="btn btn-primary-custom w-100 btn-lg" id="bookNowBtn">
+                                    <i class="fas fa-calendar-check me-2"></i>
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<footer id="contact" class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h5><i class="bi bi-house-heart me-2"></i>Homeigo</h5>
+                        <p class="text-muted">Connecting travelers with authentic local experiences worldwide. Live like a local, not a tourist.</p>
+                        <div class="mt-3">
+                            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Company</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">About Us</a></li>
+                            <li><a href="#" class="footer-link">Careers</a></li>
+                            <li><a href="#" class="footer-link">Press</a></li>
+                            <li><a href="#" class="footer-link">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Support</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Help Center</a></li>
+                            <li><a href="#" class="footer-link">Safety</a></li>
+                            <li><a href="#" class="footer-link">Cancellation</a></li>
+                            <li><a href="#" class="footer-link">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Hosting</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link" onclick="showHostDashboard()">Become a Host</a></li>
+                            <li><a href="#" class="footer-link">Host Resources</a></li>
+                            <li><a href="#" class="footer-link">Community</a></li>
+                            <li><a href="#" class="footer-link">Host Insurance</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Legal</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                            <li><a href="#" class="footer-link">Terms of Service</a></li>
+                            <li><a href="#" class="footer-link">Cookie Policy</a></li>
+                            <li><a href="#" class="footer-link">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Homeigo. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        <i class="bi bi-credit-card me-2"></i>
+                        <i class="bi bi-paypal me-2"></i>
+                        <i class="bi bi-apple me-2"></i>
+                        <i class="bi bi-currency-bitcoin"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Searching for experiences...</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="./search.js"></script>
+</body>
+</html>

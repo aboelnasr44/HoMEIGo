@@ -34,7 +34,7 @@
    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <a class="navbar-brand d-flex align-items-center" href="./home.html">
                 <span class="logo-icon me-2">🏠</span>
                 Homeigo
             </a>
@@ -46,30 +46,30 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link " href="./home.html">Home</a>
+                        <a class="nav-link " href="../home/home.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./search.html">Experiences</a>
+                        <a class="nav-link" href="../search/search.html">Experiences</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./profile.html">Profile</a>
+                        <a class="nav-link" href="../host-profile/profile.html">Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./contact.html">Contact</a>
+                        <a class="nav-link" href="../contact/contact.html">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="showHostDashboard()">Become a Host</a>
+                        <a class="nav-link" href="../become ahost/dashboard.html" onclick="showHostDashboard()">Become a Host</a>
                     </li>
                 </ul>
                 <div class="d-flex ms-3">
                     <button class="btn btn-outline-primary-custom me-2">
-                        <a href="login.html" style="color: inherit; text-decoration: none;">Sign In</a>
+                        <a href="../login/login.html" style="color: inherit; text-decoration: none;">Sign In</a>
                     </button>
                     <button class="btn btn-primary-custom">
-                        <a href="signup.html" style="color: white; text-decoration: none;">Sign Up</a>
+                        <a href="../sign up/signup.html" style="color: white; text-decoration: none;">Sign Up</a>
                     </button>
                 </div>
             </div>
@@ -102,10 +102,6 @@
                 <div class="stat-item">
                     <span class="stat-number" data-count="2500">0</span>
                     <span class="stat-label">Verified Hosts</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-count="150">0</span>
-                    <span class="stat-label">Countries</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" data-count="98">0</span>
@@ -230,25 +226,84 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer" id="contact">
+       <!-- Footer -->
+<footer id="contact" class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h4 style="color: var(--bronze); margin-bottom: 20px;">Stay Connected</h4>
-                    <p>Follow us on social media for travel inspiration, host stories, and community updates.</p>
-                    
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h5><i class="bi bi-house-heart me-2"></i>Homeigo</h5>
+                        <p class="text-muted">Connecting travelers with authentic local experiences worldwide. Live like a local, not a tourist.</p>
+                        <div class="mt-3">
+                            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+                        </div>
                     </div>
-                    
-                    <p>&copy; 2024 Homeigo. All rights reserved. | 
-                        <a href="#" style="color: var(--bronze);">Privacy Policy</a> | 
-                        <a href="#" style="color: var(--bronze);">Terms of Service</a>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Company</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">About Us</a></li>
+                            <li><a href="#" class="footer-link">Careers</a></li>
+                            <li><a href="#" class="footer-link">Press</a></li>
+                            <li><a href="#" class="footer-link">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Support</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Help Center</a></li>
+                            <li><a href="#" class="footer-link">Safety</a></li>
+                            <li><a href="#" class="footer-link">Cancellation</a></li>
+                            <li><a href="#" class="footer-link">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Hosting</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link" onclick="showHostDashboard()">Become a Host</a></li>
+                            <li><a href="#" class="footer-link">Host Resources</a></li>
+                            <li><a href="#" class="footer-link">Community</a></li>
+                            <li><a href="#" class="footer-link">Host Insurance</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h5>Legal</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                            <li><a href="#" class="footer-link">Terms of Service</a></li>
+                            <li><a href="#" class="footer-link">Cookie Policy</a></li>
+                            <li><a href="#" class="footer-link">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Homeigo. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        <i class="bi bi-credit-card me-2"></i>
+                        <i class="bi bi-paypal me-2"></i>
+                        <i class="bi bi-apple me-2"></i>
+                        <i class="bi bi-currency-bitcoin"></i>
                     </p>
                 </div>
             </div>
