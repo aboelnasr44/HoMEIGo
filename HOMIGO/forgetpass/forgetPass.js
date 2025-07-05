@@ -1,246 +1,133 @@
-        // Forgot Password Page JavaScript
-        document.addEventListener("DOMContentLoaded", () => {
-          // Get form elements
-          const resetForm = document.getElementById("resetForm")
-          const emailInput = document.getElementById("email")
-          const resetBtn = document.getElementById("resetBtn")
-          const alertContainer = document.getElementById("alertContainer")
-          const successMessage = document.getElementById("successMessage")
+document.addEventListener("DOMContentLoaded", () => {
+  // DOM Elements
+  const form = document.getElementById("request-reset-form")
+  const emailInput = document.getElementById("reset-email")
+  const submitBtn = document.getElementById("send-reset-btn")
+  const backToLoginLink = document.getElementById("back-to-login")
 
-          // Toast
-          const toastEl = document.getElementById("toast")
-          const toastMessage = document.getElementById("toast-message")
+  // Initialize Bootstrap Toast
+  let toast = null
+  const toastEl = document.getElementById("toast")
+  const toastMessage = document.getElementById("toast-message")
 
-          // Bootstrap Toast
-          let toast = null
-          if (window.bootstrap && window.bootstrap.Toast) {
-            toast = new window.bootstrap.Toast(toastEl)
-          }
+  if (window.bootstrap && window.bootstrap.Toast) {
+    toast = new window.bootstrap.Toast(toastEl)
+  }
 
-          // ===== FORM VALIDATION =====
-          function validateEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-            return emailRegex.test(email)
-          }
+  // Utility Functions
+  function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
+  }
 
-          function showAlert(message, type = "danger") {
-            const iconMap = {
-              success: "fa-check-circle",
-              warning: "fa-exclamation-triangle",
-              danger: "fa-exclamation-circle",
-              info: "fa-info-circle",
-            }
+  function showToast(message, type = "info") {
+    if (!toast) return
 
-            const alertHTML = `
-                    <div class="alert alert-${type} alert-dismissible fade show" role="alert">
-                        <i class="fas ${iconMap[type]} me-2"></i>
-                        ${message}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                `
-            alertContainer.innerHTML = alertHTML
+    const iconMap = {
+      success: "fa-check-circle text-success",
+      error: "fa-exclamation-circle text-danger",
+      warning: "fa-exclamation-triangle text-warning",
+      info: "fa-info-circle text-primary",
+    }
 
-            // Auto-dismiss after 5 seconds
-            setTimeout(() => {
-              const alert = alertContainer.querySelector(".alert")
-              if (alert && window.bootstrap && window.bootstrap.Alert) {
-                const bsAlert = new window.bootstrap.Alert(alert)
-                bsAlert.close()
-              }
-            }, 5000)
-          }
+    const toastHeader = toastEl.querySelector(".toast-header i")
+    if (toastHeader) {
+      toastHeader.className = `fas ${iconMap[type]} me-2`
+    }
 
-          function showToast(message, type = "info") {
-            if (!toast) return
+    toastMessage.textContent = message
+    toast.show()
+  }
 
-            const iconMap = {
-              success: "fa-check-circle text-success",
-              warning: "fa-exclamation-triangle text-warning",
-              error: "fa-exclamation-circle text-danger",
-              info: "fa-info-circle text-primary",
-            }
+  function setLoadingState(button, isLoading) {
+    const btnText = button.querySelector(".btn-text")
+    const btnLoading = button.querySelector(".btn-loading")
 
-            const toastHeader = toastEl.querySelector(".toast-header i")
-            if (toastHeader) {
-              toastHeader.className = `fas ${iconMap[type]} me-2`
-            }
-            toastMessage.textContent = message
-            toast.show()
-          }
+    if (isLoading) {
+      button.classList.add("loading")
+      button.disabled = true
+      if (btnText) btnText.classList.add("d-none")
+      if (btnLoading) btnLoading.classList.remove("d-none")
+    } else {
+      button.classList.remove("loading")
+      button.disabled = false
+      if (btnText) btnText.classList.remove("d-none")
+      if (btnLoading) btnLoading.classList.add("d-none")
+    }
+  }
 
-          function setLoadingState(isLoading) {
-            const btnText = resetBtn.querySelector(".btn-text")
-            const btnLoading = resetBtn.querySelector(".btn-loading")
+  function showFieldError(field, message) {
+    field.classList.add("is-invalid")
+    field.classList.remove("is-valid")
+    const feedback = field.parentNode.querySelector(".invalid-feedback")
+    if (feedback) {
+      feedback.textContent = message
+    }
+  }
 
-            if (isLoading) {
-              btnText.classList.add("d-none")
-              btnLoading.classList.remove("d-none")
-              resetBtn.disabled = true
-            } else {
-              btnText.classList.remove("d-none")
-              btnLoading.classList.add("d-none")
-              resetBtn.disabled = false
-            }
-          }
+  function clearFieldError(field) {
+    field.classList.remove("is-invalid")
+    field.classList.add("is-valid")
+  }
 
-          function showFieldError(field, message) {
-            field.classList.add("is-invalid")
-            const feedback = field.parentNode.querySelector(".invalid-feedback")
-            if (feedback) {
-              feedback.textContent = message
-              feedback.style.display = "block"
-            }
-          }
+  // Form Handler
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault()
 
-          function clearFieldError(field) {
-            field.classList.remove("is-invalid")
-            field.classList.add("is-valid")
-            const feedback = field.parentNode.querySelector(".invalid-feedback")
-            if (feedback) {
-              feedback.style.display = "none"
-            }
-          }
+    const email = emailInput.value.trim()
 
-          function showSuccess() {
-            resetForm.style.display = "none"
-            successMessage.classList.remove("d-none")
+    if (!email) {
+      showFieldError(emailInput, "Email is required")
+      return
+    }
 
-            // Auto-redirect after 5 seconds
-            setTimeout(() => {
-              window.location.href = "login.html"
-            }, 5000)
-          }
+    if (!validateEmail(email)) {
+      showFieldError(emailInput, "Please enter a valid email address")
+      return
+    }
 
-          // ===== REAL-TIME VALIDATION =====
-          emailInput.addEventListener("input", function () {
-            const email = this.value.trim()
-            if (email && !validateEmail(email)) {
-              showFieldError(this, "Please enter a valid email address")
-            } else if (email) {
-              clearFieldError(this)
-            } else {
-              this.classList.remove("is-valid", "is-invalid")
-            }
-          })
+    clearFieldError(emailInput)
+    setLoadingState(submitBtn, true)
 
-          // ===== FORM SUBMISSION =====
-          resetForm.addEventListener("submit", (e) => {
-            e.preventDefault()
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 2000))
 
-            const email = emailInput.value.trim()
+      // Store email in localStorage for next step
+      localStorage.setItem("resetEmail", email)
 
-            // Clear previous alerts
-            alertContainer.innerHTML = ""
+      showToast("Reset link sent successfully!", "success")
 
-            // Validate inputs
-            let isValid = true
+      // Redirect to next step
+      setTimeout(() => {
+        window.location.href = "./step2.html"
+      }, 1000)
+    } catch (error) {
+      showToast("Failed to send reset link. Please try again.", "error")
+    } finally {
+      setLoadingState(submitBtn, false)
+    }
+  })
 
-            if (!email) {
-              showFieldError(emailInput, "Email is required")
-              isValid = false
-            } else if (!validateEmail(email)) {
-              showFieldError(emailInput, "Please enter a valid email address")
-              isValid = false
-            }
+  // Email Input Validation
+  emailInput.addEventListener("input", () => {
+    const email = emailInput.value.trim()
+    if (email && validateEmail(email)) {
+      clearFieldError(emailInput)
+    }
+  })
 
-            if (!isValid) {
-              showAlert("Please enter a valid email address.")
-              return
-            }
+  // Back to Login Handler
+  backToLoginLink.addEventListener("click", (e) => {
+    e.preventDefault()
+    showToast("Redirecting to login...", "info")
+    setTimeout(() => {
+      window.location.href = "../login/login.html"
+    }, 1000)
+  })
 
-            // Simulate password reset process
-            setLoadingState(true)
+  // Auto-focus email input
+  emailInput.focus()
 
-            // Simulate API call
-            setTimeout(() => {
-              setLoadingState(false)
-
-              // Simulate different scenarios
-              const random = Math.random()
-
-              if (random > 0.2) {
-                // 80% chance of success
-                showSuccess()
-                showToast("Password reset email sent successfully!", "success")
-              } else {
-                // 20% chance of error
-                showAlert("Email not found in our system. Please check your email address or create a new account.", "danger")
-                showToast("Email not found", "error")
-              }
-            }, 2000)
-          })
-
-          // ===== KEYBOARD SHORTCUTS =====
-          document.addEventListener("keydown", (e) => {
-            // Enter key to submit form when focused on email input
-            if (e.key === "Enter" && e.target === emailInput) {
-              e.preventDefault()
-              resetForm.dispatchEvent(new Event("submit"))
-            }
-
-            // Escape key to clear form
-            if (e.key === "Escape") {
-              resetForm.reset()
-              alertContainer.innerHTML = ""
-              emailInput.classList.remove("is-valid", "is-invalid")
-              showToast("Form cleared", "info")
-            }
-          })
-
-          // ===== SMOOTH ANIMATIONS =====
-          // Add entrance animations
-          const animateElements = document.querySelectorAll(".forgot-container, .brand-section")
-          animateElements.forEach((el, index) => {
-            el.style.opacity = "0"
-            el.style.transform = "translateY(30px)"
-            setTimeout(() => {
-              el.style.transition = "all 0.6s ease"
-              el.style.opacity = "1"
-              el.style.transform = "translateY(0)"
-            }, index * 200)
-          })
-
-          // ===== FOCUS MANAGEMENT =====
-          // Auto-focus email input on load
-          setTimeout(() => {
-            emailInput.focus()
-          }, 300)
-
-          // ===== UTILITY FUNCTIONS =====
-          function debounce(func, wait) {
-            let timeout
-            return function executedFunction(...args) {
-              const later = () => {
-                clearTimeout(timeout)
-                func(...args)
-              }
-              clearTimeout(timeout)
-              timeout = setTimeout(later, wait)
-            }
-          }
-
-          // ===== RESPONSIVE ENHANCEMENTS =====
-          function handleResize() {
-            const isMobile = window.innerWidth <= 768
-            if (isMobile) {
-              document.body.classList.add("mobile-view")
-            } else {
-              document.body.classList.remove("mobile-view")
-            }
-          }
-
-          window.addEventListener("resize", debounce(handleResize, 250))
-          handleResize()
-
-          console.log("Forgot password page initialized successfully!")
-        })
-
-        // ===== GLOBAL ERROR HANDLER =====
-        window.addEventListener("error", (e) => {
-          console.error("JavaScript error:", e.error)
-        })
-
-        // Add loading animation to page
-        window.addEventListener("load", () => {
-          document.body.classList.add("loaded")
-        })
+  console.log("Step 1 - Email Request initialized successfully!")
+})
